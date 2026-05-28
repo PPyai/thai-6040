@@ -345,7 +345,7 @@
             </div>
         </div>
 
-        <div id="history-section" class="app-section">
+<div id="history-section" class="app-section">
             <div class="card">
                 <h2>🗓️ ปฏิทินการใช้สิทธิเดือนนี้</h2>
                 <div id="calendar-grid" style="width: 100%; margin-bottom: 20px;"></div>
@@ -356,22 +356,31 @@
                 <div style="position: relative; height: 260px; width: 100%; display: flex; justify-content: center; margin-top: 10px;">
                     <canvas id="categoryChart"></canvas>
                 </div>
-                <div style="margin-top: 15px; font-size: 14px; color: var(--text-muted); text-align: center;">สรุปรายการราคาสินค้าจากตะกร้าทั้งหมดที่คุณซื้อ</div>
             </div>
 
             <div class="card">
-                <h2>ประวัติการใช้สิทธิ</h2>
+                <h2>📜 ประวัติการใช้สิทธิ</h2>
                 <div class="form-group">
                     <input type="text" id="search-history" placeholder="🔍 พิมพ์ค้นหาวันที่ หรือชื่อสินค้า..." oninput="renderHistory()">
                 </div>
                 <div id="history-list" class="scrollable-history"></div>
+            </div>
 
-                <div class="btn-group" style="margin-top:20px;">
-                    <button class="btn btn-secondary" onclick="exportToCSV()" style="background-color: #2b6cb0;">📥 ส่งออกประวัติเป็นไฟล์ Excel (CSV)</button>
-                    <button class="btn btn-danger" onclick="resetAllData()" style="font-size: 16px; padding: 10px;">🧹 ล้างข้อมูลระบบทั้งหมด</button>
+            <div class="card">
+                <h2>⚙️ จัดการข้อมูลระบบ</h2>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="backupData()" style="background-color: #2b6cb0;">💾 สำรองข้อมูล (Backup)</button>
+                    <label class="btn btn-warning" style="cursor: pointer; display: block; width: 100%; max-width: 400px; box-sizing: border-box;">
+                        📂 กู้คืนข้อมูล (Restore)
+                        <input type="file" id="restore-file" accept=".json" style="display: none;" onchange="restoreData(event)">
+                    </label>
+                    <button class="btn btn-secondary" onclick="exportToCSV()">📥 ส่งออกประวัติเป็นไฟล์ Excel (CSV)</button>
+                    <button class="btn btn-danger" onclick="resetAllData()">🧹 ล้างข้อมูลระบบทั้งหมด</button>
                 </div>
             </div>
         </div>
+        
+
 
         <div id="notes-section" class="app-section">
             <div class="card">
@@ -385,31 +394,50 @@
             </div>
         </div>
 
+        <!-- แท็บสนับสนุน -->
         <div id="support-section" class="app-section">
             <div class="card">
                 <h2>สนับสนุนผู้พัฒนา</h2>
+                <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 20px; text-align: center;">
+                    คุณสามารถสนับสนุนและเป็นกำลังใจได้ผ่านช่องทาง PromptPay
+                </p>
+                
                 <div style="background: white; padding: 20px; border-radius: 12px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 15px;">
-                    <img src="https://img1.pic.in.th/images/21460422.jpg" style="max-width: 100%; width: 300px; border-radius: 8px;">
+                    <img src="https://img1.pic.in.th/images/21460422.jpg" id="qr-image" alt="PromptPay QR Code" style="max-width: 100%; width: 300px; height: auto; border-radius: 8px; display: block; margin: 0 auto;">
                 </div>
+                <p style="font-size: 16px; color: var(--warning); font-weight: bold; margin-top: 5px; text-align: center;">
+                    💡 สามารถกดค้างที่รูปภาพ หรือกดปุ่มด้านล่างเพื่อบันทึกรูปภาพ
+                </p>
+
                 <button class="btn btn-primary" onclick="downloadQRImage()" style="margin: 15px auto; display: block;">💾 กดเซฟรูป QR Code</button>
-            </div>
-            
-            <div class="card">
-                <h2>จัดการข้อมูลสำรอง</h2>
-                <div class="btn-group">
-                    <button class="btn btn-primary" onclick="backupData()">💾 สำรองข้อมูลลงเครื่อง (Backup)</button>
-                    <label class="btn btn-warning" style="cursor: pointer; display: block; width: 100%; max-width: 400px; box-sizing: border-box;">
-                        📂 กู้คืนข้อมูล (Restore)
-                        <input type="file" id="restore-file" accept=".json" style="display: none;" onchange="restoreData(event)">
-                    </label>
+
+                <div class="form-group" style="margin-top: 25px; display: none;">
+                    <label for="promptpay-num">หมายเลข PromptPay (เพื่อกดคัดลอก):</label>
+                    <input type="text" id="promptpay-num" value="000-000-0000" readonly style="background: #edf2f7; letter-spacing: 2px; color: #2d3748;">
                 </div>
+                <button class="btn btn-success" onclick="copyPromptPayNumber()" style="margin: 0 auto; display: block; display: none;">📋 กดคัดลอกหมายเลข</button>
             </div>
-        </div>
+       </div>
 
         <div class="footer">
             <strong>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.6</strong><br>
              โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank" style="font-size:18px; color: #00ccff; text-decoration:none;">#โปรแกรมมั่วที่รัก</a>
         </div>
+
+        <div align="center"><br>
+            <div id="histats_counter"></div>
+            <script type="text/javascript">var _Hasync= _Hasync|| [];
+            _Hasync.push(['Histats.start', '1,5029433,4,30,130,80,00011111']);
+            _Hasync.push(['Histats.fasi', '1']);
+            _Hasync.push(['Histats.track_hits', '']);
+            (function() {
+            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+            })();</script>
+            <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5029433&101" alt="" border="0"></a></noscript>
+            </div>
+
     </div>
 
     <div id="install-guide-modal" class="modal-overlay">
@@ -1176,6 +1204,40 @@
         function showInstallGuide() { document.getElementById('install-guide-modal').style.display = 'flex'; }
         
         window.onload = initApp;
+
+function downloadQRImage() {
+            const imageUrl = "https://img1.pic.in.th/images/21460422.jpg";
+            fetch(imageUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'PromptPay_QR_Code.jpg';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    alert('💾 บันทึกรูปภาพสำเร็จ! สามารถนำไปสแกนในแอปธนาคารได้เลยครับ');
+                })
+                .catch(() => {
+                    window.open(imageUrl, '_blank');
+                    alert('เนื่องจากข้อจำกัดของเบราว์เซอร์ กรุณากดค้างที่รูปภาพแล้วเลือก "บันทึกรูปภาพ" (Save Image) ด้วยตนเองครับ');
+                });
+        }
+
+        function copyPromptPayNumber() {
+            const numInput = document.getElementById('promptpay-num');
+            numInput.select();
+            numInput.setSelectionRange(0, 99999); 
+            
+            navigator.clipboard.writeText(numInput.value).then(() => {
+                alert('📋 คัดลอกหมายเลข PromptPay เรียบร้อยแล้ว! สามารถนำไปวางในแอปธนาคารเพื่อโอนได้ทันทีครับ');
+            }).catch(err => {
+                alert('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาคลุมดำและคัดลอกด้วยตนเอง');
+            });
+        }
+
     </script>
 </body>
 </html>
