@@ -1146,7 +1146,7 @@ function optimizeAll() {
             renderNotes();
         }
 
-        function exportToCSV() {
+function exportToCSV() {
             if (appData.history.length === 0) {
                 alert('ไม่มีข้อมูลประวัติที่จะส่งออก');
                 return;
@@ -1167,7 +1167,15 @@ function optimizeAll() {
             const link = document.createElement("a");
             const url = URL.createObjectURL(blob);
             link.setAttribute("href", url);
-            link.setAttribute("download", `คนละครึ่งพลัส_ประวัติการใช้งาน_${new Date().toLocaleDateString('th-TH')}.csv`);
+
+            // ดึงเวลาปัจจุบันเพื่อตั้งชื่อไฟล์ไม่ให้ซ้ำ
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('th-TH').replace(/\//g, '-');
+            const timeStr = now.toLocaleTimeString('th-TH', { hour12: false }).replace(/:/g, '-');
+            
+            // ตั้งชื่อไฟล์ CSV พร้อมวันที่และเวลา
+            link.setAttribute("download", `คนละครึ่งพลัส_ประวัติการใช้งาน_${dateStr}_เวลา_${timeStr}.csv`);
+            
             link.style.visibility = 'hidden';
             document.body.appendChild(link);
             link.click();
