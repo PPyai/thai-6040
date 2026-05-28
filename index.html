@@ -1150,47 +1150,136 @@
             }
         }
 
-        // V.2.4: ฟังก์ชันสำหรับดาวน์โหลดสลิปเป็นรูปภาพ
-        function downloadReceiptImage() {
+// V.2.4: ฟังก์ชันสำหรับดาวน์โหลดสลิปเป็นรูปภาพ (อัปเดตเพิ่มโลโก้และรายละเอียด)
+function downloadReceiptImage() {
+            if (!currentCalculation) {
+                alert('กรุณาคำนวณรายการก่อนบันทึกสลิปครับ');
+                return;
+            }
+
             const receiptBox = document.getElementById('calc-result-box');
             const buttonsGroup = receiptBox.querySelector('.btn-group');
+            const titleH2 = receiptBox.querySelector('h2'); 
             
             // 1. ซ่อนปุ่มต่างๆ ชั่วคราวก่อนเพื่อไม่ให้ติดไปในรูป
             if(buttonsGroup) buttonsGroup.style.display = 'none';
+            if(titleH2) titleH2.style.display = 'none'; 
             
-            // ปรับสีพื้นหลังให้เป็นสีขาว/สว่าง บังคับเวลาเปิดโหมดกลางคืน
-            const originalBg = receiptBox.style.background;
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            if (isDarkMode) receiptBox.style.background = '#2d3748';
+            // 2. ใช้ลิงก์ Raw ของ GitHub โดยตรงเพื่อเลี่ยงปัญหา Redirect/CORS
+            const imgUrl = "https://raw.githubusercontent.com/PPyai/thai-6040/main/60402569W.png";
+            
+            const logoImg = new Image();
+            logoImg.crossOrigin = "anonymous"; 
+            logoImg.style.height = "129px"; 
+            logoImg.style.width = "auto";  
+            logoImg.style.maxWidth = "300px"; 
+            logoImg.style.borderRadius = "8px";
+            logoImg.style.marginBottom = "10px";
+            logoImg.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+            logoImg.src = imgUrl; 
 
-            // 2. ใช้ html2canvas จับภาพ
-            html2canvas(receiptBox, { 
-                scale: 2, // เพิ่มความคมชัด
-                backgroundColor: isDarkMode ? '#1a202c' : '#ffffff' 
-            }).then(canvas => {
-                // คืนค่าปุ่มและสีพื้นหลังกลับมาเหมือนเดิม
-                if(buttonsGroup) buttonsGroup.style.display = 'flex';
-                receiptBox.style.background = originalBg;
+            // 3. สร้างส่วนหัวสลิป (Header)
+            const slipHeader = document.createElement('div');
+            slipHeader.id = 'temp-slip-header';
+            slipHeader.innerHTML = `
+                <div id="slip-header-content" style="text-align: center; margin-bottom: 15px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px;">
+                    <h3 style="margin: 0; color: var(--primary); font-size: 22px;">สลิปการใช้สิทธิ 60:40</h3>
+                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 5px;">
+                        วันที่: ${currentCalculation.date} | เวลา: ${new Date().toLocaleTimeString('th-TH', {hour: '2-digit', minute:'2-digit'})} น.
+                    </div>
+                </div>
+            `;
+            receiptBox.insertBefore(slipHeader, receiptBox.firstChild);
+            
+            // แทรกรูปลงในกล่อง DOM
+            document.getElementById('slip-header-content').prepend(logoImg);
 
-                // 3. สร้างไฟล์และสั่งดาวน์โหลด
-                const url = canvas.toDataURL("image/png");
-                const a = document.createElement("a");
-                a.href = url;
-                
-                const now = new Date();
-                const dateStr = now.toLocaleDateString('th-TH').replace(/\//g, '-');
-                const timeStr = now.toLocaleTimeString('th-TH', { hour12: false }).replace(/:/g, '-');
-                
-                a.download = `Receipt_6040Plus_${dateStr}_${timeStr}.png`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                
-            }).catch(err => {
-                alert("เกิดข้อผิดพลาดในการสร้างรูปภาพสลิป กรุณาลองใหม่อีกครั้ง");
-                if(buttonsGroup) buttonsGroup.style.display = 'flex';
-                receiptBox.style.background = originalBg;
+            // 4. สร้างส่วนรายละเอียดสินค้า (Item List)
+            const slipItems = document.createElement('div');
+            slipItems.id = 'temp-slip-items';
+            let itemsHtml = `
+                <div style="text-align: left; margin-bottom: 15px; font-size: 17px; color: var(--text-main);">
+                    <strong>🛍️ รายการสินค้า:</strong>
+                    <ul style="padding-left: 20px; margin-top: 8px; margin-bottom: 15px; list-style-type: disc;">
+            `;
+            basket.forEach(item => {
+                itemsHtml += `<li>${item.name} <span style="float: right;">${item.price.toFixed(2)} บ.</span></li>`;
             });
+            itemsHtml += `</ul></div>`;
+            slipItems.innerHTML = itemsHtml;
+            slipHeader.after(slipItems);
+
+            // 5. สร้างส่วนท้ายสลิป (Footer)
+            const slipFooter = document.createElement('div');
+            slipFooter.id = 'temp-slip-footer';
+            slipFooter.innerHTML = `
+                <div style="text-align: center; margin-top: 20px; border-top: 2px dashed #cbd5e0; padding-top: 15px; font-size: 14px; color: var(--text-muted);">
+                    สร้างโดยแอป คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569<br>
+                    <span style="font-size: 12px; opacity: 0.7;">https://ppyai.github.io/thai-6040/</span>
+                </div>
+            `;
+            receiptBox.appendChild(slipFooter);
+
+            const originalBg = receiptBox.style.background;
+            const originalPadding = receiptBox.style.padding;
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            receiptBox.style.background = isDarkMode ? '#2d3748' : '#ffffff';
+            receiptBox.style.padding = '30px 20px';
+
+            // 6. ฟังก์ชันหลักสำหรับ ถ่ายภาพ (Capture)
+            const executeCapture = () => {
+                // 🔥 จุดสำคัญ: เพิ่ม Timeout หน่วงเวลาให้เบราว์เซอร์วาดรูปเสร็จ 100% (รอ 0.5 วิ)
+                setTimeout(() => {
+                    html2canvas(receiptBox, { 
+                        scale: 2.5, 
+                        backgroundColor: isDarkMode ? '#1a202c' : '#ffffff',
+                        useCORS: true,
+                        allowTaint: true
+                    }).then(canvas => {
+                        // คืนค่าหน้าจอกลับมาเหมือนเดิม
+                        slipHeader.remove();
+                        slipItems.remove();
+                        slipFooter.remove();
+                        if(titleH2) titleH2.style.display = 'block';
+                        if(buttonsGroup) buttonsGroup.style.display = 'flex';
+                        receiptBox.style.background = originalBg;
+                        receiptBox.style.padding = originalPadding;
+
+                        // สร้างไฟล์และสั่งดาวน์โหลด
+                        const url = canvas.toDataURL("image/png");
+                        const a = document.createElement("a");
+                        a.href = url;
+                        
+                        const now = new Date();
+                        const dateStr = now.toLocaleDateString('th-TH').replace(/\//g, '-');
+                        const timeStr = now.toLocaleTimeString('th-TH', { hour12: false }).replace(/:/g, '-');
+                        
+                        a.download = `Receipt_6040Plus_${dateStr}_${timeStr}.png`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        
+                    }).catch(err => {
+                        console.error("Canvas Error: ", err);
+                        alert("เกิดข้อผิดพลาดในการสร้างรูปภาพสลิป กรุณาลองใหม่อีกครั้ง");
+                        slipHeader.remove();
+                        slipItems.remove();
+                        slipFooter.remove();
+                        if(titleH2) titleH2.style.display = 'block';
+                        if(buttonsGroup) buttonsGroup.style.display = 'flex';
+                        receiptBox.style.background = originalBg;
+                        receiptBox.style.padding = originalPadding;
+                    });
+                }, 500); // <- หน่วงเวลา 500 มิลลิวินาที (0.5 วินาที)
+            };
+
+            // 7. เช็คว่ารูปลิงก์โหลดเสร็จหรือยัง
+            if (logoImg.complete) {
+                executeCapture();
+            } else {
+                logoImg.onload = () => executeCapture();
+                logoImg.onerror = () => executeCapture();
+            }
         }
 
         function copyReceiptText() {
