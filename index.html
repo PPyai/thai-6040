@@ -249,9 +249,36 @@
             </div>
         </div>
 
+<!-- แท็บคำนวณ -->
         <div id="calculator" class="app-section">
+            
+            <!-- กู้คืน: คำอธิบายเงื่อนไขโครงการ -->
+            <div align="left" style="background: #f7fafc; padding: 15px; border-radius: 10px; border-left: 5px solid var(--primary); margin-bottom: 20px;">
+                <div style="font-size: 16px; font-weight: bold; color: var(--primary); margin-bottom: 5px;">
+                    📌 เงื่อนไขโครงการ (รัฐออก 60% : เราจ่าย 40%)
+                </div>
+                <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">
+                    รัฐช่วยจ่ายสูงสุด 200 บาท/วัน (ไม่เกิน 1,000 บาท/เดือน รวมทั้งหมด 4,000 บาท)
+                </div>
+
+                <div style="font-size: 15px; font-weight: bold; color: hotpink; margin-bottom: 5px;">
+                    💡 สรุปการใช้จ่ายให้คุ้มสิทธิที่สุด:
+                </div>
+                <div style="font-size: 14px; line-height: 1.8; margin-left: 5px;">
+                    <span style="color: var(--danger);">🗓️ <b>รายวัน:</b> ซื้อของ <b>333.33 บาท</b></span> (รัฐออก 200 บาท | เติมเอง 133.33 บาท)<br>
+                    <span style="color: var(--success);">📅 <b>รายเดือน:</b> ซื้อของ <b>1,666.67 บาท</b></span> (รัฐออก 1,000 บาท | เติมเอง 666.67 บาท)<br>
+                    <span style="color: var(--primary);">🏆 <b>ตลอดโครงการ:</b> ซื้อของ <b>6,666.67 บาท</b></span> (รัฐออก 4,000 บาท | เติมเอง 2,666.67 บาท)
+                </div>
+
+                <div style="font-size: 13px; color: orange; margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 8px;">
+                    * 🛒 หากซื้อเกินยอดที่ระบุไว้ คุณจะต้องจ่ายส่วนต่างเพิ่มเอง 100%
+                </div>
+            </div><br>
+
             <div class="card">
                 <h2>คำนวณจำนวนเงิน 60:40</h2>
+                <!-- โค้ดส่วนอื่นๆ ในหน้าคำนวณยังเหมือนเดิม -->
+
                 <div class="form-group">
                     <label for="item-name" style="text-align: left;">ชื่อสินค้า / บริการ</label>
                     <input type="text" id="item-name" placeholder="ตัวอย่าง: ข้าว, น้ำ, ตัดผม">
@@ -723,13 +750,74 @@
         }
 
         // Tools
-        function optimizeAll() { document.getElementById('optimize-result1').innerHTML = `<div style="background: #ebf8ff; padding: 15px; border-radius: 10px; border: 1px solid #bee3f8; text-align: left;"><div style="color: var(--primary); font-weight: bold; font-size: 18px;">🎯 ภาพรวมโครงการ</div><div>🛒 ซื้อสินค้ารวมได้สูงสุด: <b>6,666.67 บาท</b></div><div style="color: var(--success);">🟢 รัฐช่วยออกให้: <b>4,000 บาท</b></div><div style="color: var(--danger);">💵 เราต้องเตรียมเงินเติม: <b>2,666.67 บาท</b></div></div><br>`; }
-        function optimizeDay() { document.getElementById('optimize-result2').innerHTML = `<div style="background: #f0fff4; padding: 15px; border-radius: 10px; border: 1px solid #c6f6d5; text-align: left;"><div style="color: var(--success); font-weight: bold; font-size: 18px;">📅 แผนรายวัน</div><div>🛒 ยอดซื้อสินค้าแนะนำ: <b>333.33 บาท</b></div><div style="color: var(--success);">🟢 รัฐช่วย: <b>200 บาท</b> | <span style="color: var(--danger);">💵 เติมเอง: <b>133.33 บาท</b></span></div></div><br>`; }
-        function optimizeMonth() { document.getElementById('optimize-result3').innerHTML = `<div style="background: #fffff0; padding: 15px; border-radius: 10px; border: 1px solid #fefcbf; text-align: left;"><div style="color: var(--warning); font-weight: bold; font-size: 18px;">📆 แผนรายเดือน</div><div>🛒 ยอดซื้อสินค้าแนะนำ: <b>1,666.67 บาท</b></div><div style="color: var(--success);">🟢 รัฐช่วย: <b>1,000 บาท</b> | <span style="color: var(--danger);">💵 เติมเอง: <b>666.67 บาท</b></span></div></div><br>`; }
+        function optimizeAll() {
+            let box = document.getElementById('optimize-result1');
+            if (box.innerHTML.trim() !== '') { box.innerHTML = ''; return; }
+            box.innerHTML = `
+                <div style="background: #ebf8ff; padding: 15px; border-radius: 10px; border: 1px solid #bee3f8; text-align: left; line-height: 1.8;">
+                    <div style="color: var(--primary); font-weight: bold; font-size: 18px; margin-bottom: 8px;">🎯 ภาพรวมโครงการ (1 มิถุนายน - 30 กันยายน 2569)</div>
+                    <div>🛒 ซื้อสินค้ารวมได้สูงสุด: <b>6,666.67 บาท</b></div>
+                    <div style="color: var(--success);">🟢 รัฐช่วยออกให้: <b>4,000 บาท</b></div>
+                    <div style="color: var(--danger);">💵 เราต้องเตรียมเงินเติม: <b>2,666.67 บาท</b></div>
+                    <div style="font-size: 14px; color: var(--warning); margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 8px;">
+                        *หมายเหตุ: รัฐช่วยสูงสุด 200 บาท/วัน และ 1,000 บาท/เดือน (ส่วนเกินจ่ายเอง 100%) ใช้ซื้อสินค้าและบริการจำเป็นในชีวิตประจำวัน เช่น อาหาร, เครื่องดื่ม, ของใช้ภายในบ้าน และร้านค้าชุมชน ไม่สามารถใช้ซื้อสลากกินแบ่งรัฐบาล, เครื่องดื่มแอลกอฮอล์, และบุหรี่ได้
+                    </div>
+                </div><br>
+            `;
+        }
+
+        function optimizeDay() {
+            let box = document.getElementById('optimize-result2');
+            if (box.innerHTML.trim() !== '') { box.innerHTML = ''; return; }
+            box.innerHTML = `
+                <div style="background: #f0fff4; padding: 15px; border-radius: 10px; border: 1px solid #c6f6d5; text-align: left; line-height: 1.8;">
+                    <div style="color: var(--success); font-weight: bold; font-size: 18px; margin-bottom: 8px;">📅 แผนการใช้จ่าย "รายวัน"</div>
+                    <div>🛒 ยอดซื้อสินค้าแนะนำ: <b>333.33 บาท</b></div>
+                    <div style="color: var(--success);">🟢 รัฐช่วยออกให้: <b>200 บาท</b></div>
+                    <div style="color: var(--danger);">💵 เราจ่ายเอง/เติมเงิน: <b>133.33 บาท</b></div>
+                    <div style="font-size: 14px; color: var(--text-muted); margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 8px;">
+                        *หากซื้อเกิน 333.33 บาท ในวันนั้น ต้องจ่ายส่วนเกินเองทั้งหมด และรอใช้ใหม่ในวันถัดไป จนกว่าจะครบ 1,000 บาท ที่รัฐช่วยออกในแต่ละเดือน
+                    </div>
+                </div><br>
+            `;
+        }
+        
+        function optimizeMonth() {
+            let box = document.getElementById('optimize-result3');
+            if (box.innerHTML.trim() !== '') { box.innerHTML = ''; return; }
+            box.innerHTML = `
+                <div style="background: #fffff0; padding: 15px; border-radius: 10px; border: 1px solid #fefcbf; text-align: left; line-height: 1.8;">
+                    <div style="color: var(--warning); font-weight: bold; font-size: 18px; margin-bottom: 8px;">📆 แผนการใช้จ่าย "รายเดือน"</div>
+                    <div>🛒 ยอดซื้อสินค้าแนะนำ: <b>1,666.67 บาท</b></div>
+                    <div style="color: var(--success);">🟢 รัฐช่วยออกให้: <b>1,000 บาท</b></div>
+                    <div style="color: var(--danger);">💵 เราจ่ายเอง/เติมเงิน: <b>666.67 บาท</b></div>
+                    <div style="font-size: 14px; color: var(--text-muted); margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 8px;">
+                        *หากใช้สิทธิรัฐครบ 1,000 บาท แล้ว ต้องรอใช้ใหม่ในเดือนถัดไป หากใช้ไม่หมด จะไม่สามารถสมทบไปใช้ในเดือนถัดไปได้
+                    </div>
+                </div><br>
+            `;
+        }
+
         function optimizePurchase() {
+            let box = document.getElementById('optimize-result');
+            if (box.innerHTML.trim() !== '') { box.innerHTML = ''; return; }
+            
             let availableGov = Math.min(appData.dailyQuota, appData.monthQuota, appData.totalQuota);
-            if (availableGov <= 0) { document.getElementById('optimize-result').innerHTML = '<div style="color:red;">❌ สิทธิคงเหลือของคุณหมดแล้ว</div><br>'; return; }
-            document.getElementById('optimize-result').innerHTML = `<div style="background: #fff5f5; padding: 20px; border-radius: 10px; border: 2px dashed #feb2b2; text-align: center;"><div style="color: var(--success); font-size: 16px;">🟢 สิทธิรัฐเหลือ: <b>${availableGov.toFixed(2)} บาท</b></div><div style="color: var(--danger); font-size: 32px; font-weight: bold;">ซื้อให้คุ้มที่: ${(availableGov/0.6).toFixed(2)} บาท</div></div><br>`;
+            
+            if (availableGov <= 0) {
+                box.innerHTML = '<div style="color: var(--danger); font-size: 18px; font-weight: bold; margin-top: 10px;">❌ สิทธิคงเหลือของคุณหมดแล้ว</div><br>';
+                return;
+            }
+            
+            let idealPurchase = roundUp2(availableGov / 0.6);
+            
+            box.innerHTML = `
+                <div style="background: #fff5f5; padding: 20px; border-radius: 10px; border: 2px dashed #feb2b2; text-align: center; line-height: 1.6;">
+                    <div style="color: var(--success); font-size: 16px;">🟢 สิทธิรัฐช่วยจ่ายที่เหลือตอนนี้: <b>${availableGov.toFixed(2)} บาท</b></div>
+                    <div style="color: var(--text-main); font-size: 16px; margin-top: 8px;">🛍️ เพื่อใช้สิทธิให้คุ้มที่สุด ควรซื้อสินค้ามูลค่า:</div>
+                    <div style="color: var(--danger); font-size: 32px; font-weight: bold; margin-top: 5px;">${idealPurchase.toFixed(2)} บาท</div>
+                </div><br>
+            `;
         }
 
         // Calculation
