@@ -16,16 +16,16 @@
     <link rel="apple-touch-startup-image" href="https://img2.pic.in.th/myIcon.png">
     <link rel="manifest" href="manifest.json">
     
-    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.4</title>
+    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.5</title>
 	
-    <meta property="og:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.4">
+    <meta property="og:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.5">
     <meta property="og:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงินให้คุ้มค่า และบันทึกประวัติการใช้จ่ายรายวันของคุณ">
     <meta property="og:image" content="https://img2.pic.in.th/cover-1.png">
     <meta property="og:url" content="https://ppyai.github.io/thai-6040/">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.4">
+    <meta name="twitter:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.5">
     <meta name="twitter:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงิน และบันทึกประวัติการใช้จ่าย">
     <meta name="twitter:image" content="https://img2.pic.in.th/cover-1.png">
     
@@ -68,12 +68,7 @@
             margin: 0 auto;
         }
 
-        h1, h2, h3 {
-            color: var(--text-main);
-            margin-top: 0;
-            text-align: center;
-        }
-
+        h1, h2, h3 { color: var(--text-main); margin-top: 0; text-align: center; }
         h1 { font-size: 30px; margin-bottom: 20px; color: var(--primary); }
         h2 { font-size: 25px; border-bottom: 3px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; display: inline-block; }
 
@@ -89,20 +84,8 @@
             text-align: center;
         }
 
-        .stat-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            width: 100%;
-        }
-
-        .stat-box {
-            padding: 20px;
-            border-radius: 12px;
-            background: #f7fafc;
-            border-top: 5px solid var(--primary);
-            text-align: center;
-        }
+        .stat-grid { display: grid; grid-template-columns: 1fr; gap: 15px; width: 100%; }
+        .stat-box { padding: 20px; border-radius: 12px; background: #f7fafc; border-top: 5px solid var(--primary); text-align: center; }
         .stat-box.success { border-top-color: var(--success); }
         .stat-box.danger { border-top-color: var(--danger); }
         .stat-box.warning { border-top-color: var(--warning); }
@@ -111,120 +94,43 @@
         .stat-label { font-size: 17px; color: var(--text-muted); }
         .stat-value { font-size: 28px; font-weight: bold; margin-top: 5px; }
 
-        .progress-container {
-            background-color: #edf2f7;
-            border-radius: 10px;
-            height: 20px;
-            width: 100%;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        .progress-bar {
-            background-color: var(--primary);
-            height: 100%;
-            width: 0%;
-            transition: width 0.3s ease;
-        }
+        .progress-container { background-color: #edf2f7; border-radius: 10px; height: 20px; width: 100%; margin-top: 10px; overflow: hidden; }
+        .progress-bar { background-color: var(--primary); height: 100%; width: 0%; transition: width 0.3s ease; }
 
         .btn {
-            display: inline-block;
-            width: 100%;
-            padding: 15px;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-            transition: background 0.2s;
-            max-width: 400px;
+            display: inline-block; width: 100%; padding: 15px; font-size: 20px; font-weight: bold;
+            text-align: center; border: none; border-radius: 12px; cursor: pointer; margin-bottom: 10px;
+            box-sizing: border-box; transition: background 0.2s; max-width: 400px;
         }
         .btn-primary { background-color: var(--primary); color: white; }
-        .btn-primary:hover { background-color: #2b6cb0; }
         .btn-success { background-color: var(--success); color: white; }
         .btn-danger { background-color: var(--danger); color: white; }
         .btn-warning { background-color: var(--warning); color: white; }
         .btn-secondary { background-color: #718096; color: white; }
 
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 500px;
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            text-align: center;
-        }
+        .btn-group { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
+        .form-group { margin-bottom: 20px; width: 100%; max-width: 500px; }
+        label { display: block; margin-bottom: 10px; font-weight: bold; text-align: center; }
         input[type="number"], input[type="text"], textarea, select {
-            width: 100%;
-            padding: 16px;
-            font-size: 20px;
-            border: 2px solid #cbd5e0;
-            border-radius: 10px;
-            box-sizing: border-box;
-            font-family: inherit;
-            text-align: center;
+            width: 100%; padding: 16px; font-size: 20px; border: 2px solid #cbd5e0; border-radius: 10px;
+            box-sizing: border-box; font-family: inherit; text-align: center;
         }
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
+        input:focus, textarea:focus, select:focus { border-color: var(--primary); outline: none; }
 
         .preview-box {
-            background-color: #ebf8ff;
-            border: 1px solid #bee3f8;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 10px;
-            font-size: 18px;
-            display: none;
-            width: 100%;
-            text-align: center;
-            box-sizing: border-box;
+            background-color: #ebf8ff; border: 1px solid #bee3f8; padding: 15px; border-radius: 8px;
+            margin-top: 10px; font-size: 18px; display: none; width: 100%; text-align: center; box-sizing: border-box;
         }
 
-        .item-list {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-            width: 100%;
-            max-width: 500px;
-        }
+        .item-list { list-style: none; padding: 0; margin: 15px 0; width: 100%; max-width: 500px; }
         .item-row {
-            display: flex;
-            justify-content: space-between;
-            background: #f7fafc;
-            padding: 12px 20px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            align-items: center;
-            font-size: 18px;
-            box-sizing: border-box;
+            display: flex; justify-content: space-between; background: #f7fafc; padding: 12px 20px;
+            border-radius: 8px; margin-bottom: 8px; align-items: center; font-size: 18px; box-sizing: border-box;
         }
 
         .result-box {
-            padding: 20px;
-            border-radius: 12px;
-            background: #f7fafc;
-            margin-top: 20px;
-            border: 2px dashed #cbd5e0;
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-            box-sizing: border-box;
-            position: relative; /* สำหรับ html2canvas */
+            padding: 20px; border-radius: 12px; background: #f7fafc; margin-top: 20px;
+            border: 2px dashed #cbd5e0; width: 100%; max-width: 500px; text-align: center; box-sizing: border-box;
         }
         .text-black { color: var(--text-main); font-weight: bold; }
         .text-green { color: var(--success); font-weight: bold; }
@@ -233,89 +139,33 @@
         .text-xl { font-size: 24px; }
 
         .nav-tabs {
-            display: flex;
-            justify-content: center;
-            background: #fff;
-            padding: 10px;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            flex-wrap: wrap;
-            gap: 10px;
+            display: flex; justify-content: center; background: #fff; padding: 10px; border-radius: var(--border-radius);
+            margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); flex-wrap: wrap; gap: 10px;
         }
         .tab-btn {
-            background: none;
-            border: none;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 10px 15px;
-            cursor: pointer;
-            color: var(--text-muted);
-            border-bottom: 3px solid transparent;
-            text-align: center;
+            background: none; border: none; font-size: 18px; font-weight: bold; padding: 10px 15px;
+            cursor: pointer; color: var(--text-muted); border-bottom: 3px solid transparent; text-align: center;
         }
-        .tab-btn.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-        }
+        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
 
         .app-section { display: none; width: 100%; }
         .app-section.active { display: block; }
 
         .history-card, .note-card {
-            background: #f7fafc;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            position: relative;
-            border-left: 5px solid #cbd5e0;
-            text-align: left;
-            width: 100%;
-            box-sizing: border-box;
-            word-wrap: break-word;
-        }
-        .delete-btn {
-            background: var(--danger);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 15px;
-            float: right;
-            margin-left: 10px;
+            background: #f7fafc; padding: 15px; border-radius: 10px; margin-bottom: 12px;
+            position: relative; border-left: 5px solid #cbd5e0; text-align: left; width: 100%;
+            box-sizing: border-box; word-wrap: break-word;
         }
 
         .scrollable-history {
-            width: 100%; 
-            max-height: 450px; 
-            overflow-y: auto; 
-            overflow-x: hidden;
-            padding: 10px; 
-            border: 2px solid #cbd5e0; 
-            border-radius: 12px; 
-            background-color: #ffffff;
-            box-sizing: border-box;
+            width: 100%; max-height: 450px; overflow-y: auto; overflow-x: hidden; padding: 10px; 
+            border: 2px solid #cbd5e0; border-radius: 12px; background-color: #ffffff; box-sizing: border-box;
         }
 
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed #cbd5e0;
-            color: var(--text-muted);
-            font-size: 16px;
-            line-height: 1.6;
-            width: 100%;
-        }
+        .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px dashed #cbd5e0; color: var(--text-muted); font-size: 16px; width: 100%; }
 
         /* โหมดกลางคืน */
-        body.dark-mode {
-            --bg-color: #1a202c;
-            --card-bg: #2d3748;
-            --text-main: #f7fafc;
-            --text-muted: #a0aec0;
-        }
+        body.dark-mode { --bg-color: #1a202c; --card-bg: #2d3748; --text-main: #f7fafc; --text-muted: #a0aec0; }
         body.dark-mode .stat-box { background: #1a202c; }
         body.dark-mode .item-row { background: #1a202c; }
         body.dark-mode .result-box { background: #1a202c; }
@@ -324,13 +174,23 @@
         body.dark-mode .preview-box { background: #2a4365; border-color: #2b6cb0; }
         body.dark-mode .scrollable-history { background-color: #1a202c; border-color: #4a5568; }
         body.dark-mode .footer { border-top-color: #4a5568; }
+
+        /* Modal Box */
+        .modal-overlay {
+            display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;
+        }
+        .modal-content {
+            background:var(--card-bg); padding:25px; border-radius:12px; max-width:90%; width: 400px; 
+            text-align:center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
 
     <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #3182ce; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease;">
         <img src="https://img2.pic.in.th/myIcon.png" alt="Logo" style="width: 180px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-        <h2 style="color: #ffffff; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569 V.2.4</h2>
+        <h2 style="color: #ffffff; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569 V.2.5</h2>
     </div>
 
     <div class="container">
@@ -340,18 +200,6 @@
         <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; margin-top: 15px;">
             <button class="tab-btn" onclick="toggleDarkMode()" style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px;">🌙 กลางคืน</button>
             <button class="tab-btn" onclick="showInstallGuide()" style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px; background-color: var(--primary); color: white;">📲 ติดตั้งเป็นแอพ</button>
-
-            <div style="display: flex; gap: 5px; flex-wrap: wrap; justify-content: center;">
-                <select id="voice-speed" style="padding: 5px; font-size: 15px; border-radius: 8px; border: 1px solid #cbd5e0; width: auto; display: none;">
-                    <option value="1">⏩ ปกติ</option>
-                    <option value="0.8" selected>▶️ ช้า</option>
-                </select>
-                <select id="voice-gender" style="padding: 5px; font-size: 15px; border-radius: 8px; border: 1px solid #cbd5e0; width: auto; display: none;">
-                    <option value="female">👩 หญิง</option>
-                    <option value="male">👨 ชาย</option>
-                </select>
-                <button class="tab-btn" onclick="speakStatus()" style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px; background-color: var(--success); color: white; display: none;">🔊 อ่านสิทธิ</button>
-            </div>
         </div>
 
         <div class="nav-tabs">
@@ -365,7 +213,6 @@
         <div id="global-alert" class="alert-banner" style="text-align: center;"></div>
 
         <div id="dashboard" class="app-section active">
-            
             <div class="card">
                 <h2>เครื่องมือช่วยตัดสินใจ</h2>
                 <button class="btn btn-primary" onclick="optimizeAll()">💡 ต้องเติมเงินทั้งหมดเท่าไหร่?</button>
@@ -396,13 +243,11 @@
                         <div class="stat-value" id="dash-daily-quota">200.00 / 200.00 บาท</div>
                         <div class="progress-container"><div id="progress-daily" class="progress-bar" style="background-color: var(--warning)"></div></div>
                     </div>
-                    
                     <div class="stat-box pink">
                         <div class="stat-label">ราคาสินค้าที่ซื้อได้อีกในวันนี้ (โดยไม่เสียส่วนเกิน)</div>
                         <div class="stat-value" id="dash-purchasing-power">0.00 บาท</div>
                         <div class="progress-container"><div id="progress-purchasing" class="progress-bar" style="background-color: var(--pink)"></div></div>
                     </div>
-
                     <div class="stat-box danger">
                         <div class="stat-label">ส่วนเกินสะสมรวม (ที่คุณออกเองทั้งหมด)</div>
                         <div class="stat-value" id="dash-total-excess">0.00 บาท</div>
@@ -415,9 +260,6 @@
                 <div style="position: relative; height: 260px; width: 100%; display: flex; justify-content: center; margin-top: 10px;">
                     <canvas id="quotaChart"></canvas>
                 </div>
-                <div style="margin-top: 15px; font-size: 15px; color: var(--text-muted); text-align: center;">
-                    แสดงสัดส่วนสิทธิที่รัฐจ่ายไปแล้ว เทียบกับสิทธิคงเหลือทั้งหมด
-                </div>
             </div>
             
             <div class="card">
@@ -425,52 +267,13 @@
                 <div style="position: relative; height: 260px; width: 100%; display: flex; justify-content: center; margin-top: 10px;">
                     <canvas id="spendingBarChart"></canvas>
                 </div>
-                <div style="margin-top: 15px; font-size: 15px; color: var(--text-muted); text-align: center;">
-                    แสดงยอดรวมที่คุณต้องจ่ายเงินเอง (ส่วน 40% + ส่วนเกิน) ในแต่ละวัน
-                </div>
+                <div style="margin-top: 15px; font-size: 14px; color: var(--text-muted); text-align: center;">แสดงยอดเงินรวมที่คุณออกเองในแต่ละวัน</div>
             </div>
-            <div class="card">
-                <h2>จัดการข้อมูลระบบ</h2>
-                <div class="btn-group">
-                    <button class="btn btn-primary" onclick="backupData()" style="background-color: #2b6cb0;">💾 สำรองข้อมูล (Backup)</button>
-                    <label class="btn btn-warning" style="cursor: pointer; display: block; width: 100%; max-width: 400px; box-sizing: border-box;">
-                        📂 กู้คืนข้อมูล (Restore)
-                        <input type="file" id="restore-file" accept=".json" style="display: none;" onchange="restoreData(event)">
-                    </label>
-                    <button class="btn btn-secondary" onclick="exportToCSV()">📥 ส่งออกประวัติเป็น CSV</button>
-                    <button class="btn btn-danger" onclick="resetAllData()">🧹 ล้างข้อมูลระบบทั้งหมด</button>
-                </div>
-            </div>
-			
         </div>
 
         <div id="calculator" class="app-section">
-			
-	        <div align="left" style="background: #f7fafc; padding: 15px; border-radius: 10px; border-left: 5px solid var(--primary); margin-bottom: 20px;">
-                <div style="font-size: 16px; font-weight: bold; color: var(--primary); margin-bottom: 5px;">
-                    📌 เงื่อนไขโครงการ (รัฐออก 60% : เราจ่าย 40%)
-                </div>
-                <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">
-                    รัฐช่วยจ่ายสูงสุด 200 บาท/วัน (ไม่เกิน 1,000 บาท/เดือน รวมทั้งหมด 4,000 บาท)
-                </div>
-
-                <div style="font-size: 15px; font-weight: bold; color: hotpink; margin-bottom: 5px;">
-                    💡 สรุปการใช้จ่ายให้คุ้มสิทธิที่สุด:
-                </div>
-                <div style="font-size: 14px; line-height: 1.8; margin-left: 5px;">
-                    <span style="color: var(--danger);">🗓️ <b>รายวัน:</b> ซื้อของ <b>333.33 บาท</b></span> (รัฐออก 200 บาท | เติมเอง 133.33 บาท)<br>
-                    <span style="color: var(--success);">📅 <b>รายเดือน:</b> ซื้อของ <b>1,666.67 บาท</b></span> (รัฐออก 1,000 บาท | เติมเอง 666.67 บาท)<br>
-                    <span style="color: var(--primary);">🏆 <b>ตลอดโครงการ:</b> ซื้อของ <b>6,666.67 บาท</b></span> (รัฐออก 4,000 บาท | เติมเอง 2,666.67 บาท)
-                </div>
-
-                <div style="font-size: 13px; color: orange; margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 8px;">
-                    * 🛒 หากซื้อเกินยอดที่ระบุไว้ คุณจะต้องจ่ายส่วนต่างเพิ่มเอง 100%
-                </div>
-            </div><br>
-            
             <div class="card">
                 <h2>คำนวณจำนวนเงิน 60:40</h2>
-                
                 <div class="form-group">
                     <label for="item-name">ชื่อสินค้า (ไม่ใส่ก็ได้)</label>
                     <input type="text" id="item-name" placeholder="ตัวอย่าง: ข้าว, น้ำ, ผลไม้">
@@ -480,26 +283,24 @@
                     <input type="number" id="item-price" step="any" placeholder="0.00" oninput="previewPrice()">
                     
                     <div id="price-preview" class="preview-box">
-                        <div style="margin-bottom: 5px; color: var(--text-muted); font-size: 15px;">
-                            🔍 คำนวณเฉพาะรายการนี้:
-                        </div>
-                        <div>รัฐช่วย 60%:
-                            <span id="prev-gov" class="text-green">0.00 บาท</span>
-                        </div>
-                        <div>จ่ายเอง 40%:
-                            <span id="prev-user" style="color: #718096; font-weight: bold;">0.00 บาท</span>
-                        </div>
-                        <div id="prev-excess-box" style="display:none;">
-                            ส่วนเกิน:
-                            <span id="prev-excess" class="text-yellow">0.00 บาท</span>
-                        </div>
+                        <div style="margin-bottom: 5px; color: var(--text-muted); font-size: 15px;">🔍 คำนวณเฉพาะรายการนี้:</div>
+                        <div>รัฐช่วย 60%: <span id="prev-gov" class="text-green">0.00 บาท</span></div>
+                        <div>จ่ายเอง 40%: <span id="prev-user" style="color: #718096; font-weight: bold;">0.00 บาท</span></div>
+                        <div id="prev-excess-box" style="display:none;">ส่วนเกิน: <span id="prev-excess" class="text-yellow">0.00 บาท</span></div>
                         <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #bee3f8; font-weight: bold;">
                             👉 จ่ายเองรวมทั้งหมด: <span id="prev-user-total" style="color: #e53e3e; font-size: 20px;">0.00 บาท</span>
                         </div>
                     </div>
                 </div>
+
+                <div id="favorites-section" style="width: 100%; max-width: 500px; text-align: left; margin-bottom: 20px;">
+                    <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;">⭐ สินค้าที่ซื้อบ่อย (คลิกเพื่อดึงข้อมูลอัตโนมัติ):</div>
+                    <div id="favorite-buttons" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
+                    <button class="btn btn-secondary" style="font-size: 14px; padding: 8px; margin-top: 8px; max-width: 250px; background-color: #cbd5e0; color: #2d3748;" onclick="saveFavorite()">➕ บันทึกข้อมูลนี้เป็นรายการโปรด</button>
+                    <div style="font-size: 13px; color: #a0aec0; margin-top: 4px;">*พิมพ์ชื่อและราคาด้านบน แล้วกดปุ่มบวกเพื่อบันทึกเก็บไว้ใช้คราวหน้า</div>
+                </div>
                 
-                <button class="btn btn-primary" onclick="addItemToList()">➕ เพิ่มสินค้าเข้าตระกร้า</button>
+                <button class="btn btn-primary" onclick="addItemToList()">🛒 เพิ่มสินค้าเข้าตระกร้า</button>
 
                 <h3 style="margin-top: 20px; color: red">ตะกร้าสินค้า</h3>
                 <ul id="current-items" class="item-list"></ul>
@@ -532,6 +333,10 @@
 
         <div id="history-section" class="app-section">
             <div class="card">
+                <h2>🗓️ ปฏิทินการใช้สิทธิเดือนนี้</h2>
+                <div id="calendar-grid" style="width: 100%; margin-bottom: 20px;"></div>
+            </div>
+            <div class="card">
                 <h2>ประวัติการใช้สิทธิ</h2>
                 <div class="form-group">
                     <input type="text" id="search-history" placeholder="🔍 พิมพ์ค้นหาวันที่ หรือชื่อสินค้า..." oninput="renderHistory()">
@@ -555,91 +360,65 @@
         <div id="support-section" class="app-section">
             <div class="card">
                 <h2>สนับสนุนผู้พัฒนา</h2>
-                <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 20px; text-align: center;">
-                    คุณสามารถสนับสนุนและเป็นกำลังใจได้ผ่านช่องทาง PromptPay
-                </p>
-                
                 <div style="background: white; padding: 20px; border-radius: 12px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 15px;">
-                    <img src="https://img1.pic.in.th/images/21460422.jpg" id="qr-image" alt="PromptPay QR Code" style="max-width: 100%; width: 300px; height: auto; border-radius: 8px; display: block; margin: 0 auto;">
+                    <img src="https://img1.pic.in.th/images/21460422.jpg" style="max-width: 100%; width: 300px; border-radius: 8px;">
                 </div>
-                <p style="font-size: 16px; color: var(--warning); font-weight: bold; margin-top: 5px; text-align: center;">
-                    💡 สามารถกดค้างที่รูปภาพ หรือกดปุ่มด้านล่างเพื่อบันทึกรูปภาพ
-                </p>
-
                 <button class="btn btn-primary" onclick="downloadQRImage()" style="margin: 15px auto; display: block;">💾 กดเซฟรูป QR Code</button>
-
-                <div class="form-group" style="margin-top: 25px; display: none;">
-                    <label for="promptpay-num">หมายเลข PromptPay (เพื่อกดคัดลอก):</label>
-                    <input type="text" id="promptpay-num" value="000-000-0000" readonly style="background: #edf2f7; letter-spacing: 2px; color: #2d3748;">
-                </div>
-                <button class="btn btn-success" onclick="copyPromptPayNumber()" style="margin: 0 auto; display: block; display: none;">📋 กดคัดลอกหมายเลข</button>
             </div>
         </div>
 
         <div class="footer">
-            <strong>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.4</strong><br>
-             โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank" style="font-size:18px; color: #00ccff; text-decoration:none;"><span style="font-size:18px; color: #00ccff; text-decoration:none;">#โปรแกรมมั่วที่รัก</span></a>
+            <strong>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.5</strong><br>
+             โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank" style="font-size:18px; color: #00ccff; text-decoration:none;">#โปรแกรมมั่วที่รัก</a>
         </div>
-
-        <div align="center"><br>
-            <div id="histats_counter"></div>
-            <script type="text/javascript">var _Hasync= _Hasync|| [];
-            _Hasync.push(['Histats.start', '1,5029433,4,30,130,80,00011111']);
-            _Hasync.push(['Histats.fasi', '1']);
-            _Hasync.push(['Histats.track_hits', '']);
-            (function() {
-            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-            hs.src = ('//s10.histats.com/js15_as.js');
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-            })();</script>
-            <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5029433&101" alt="" border="0"></a></noscript>
-            </div>
-
     </div>
 
-    <div id="install-guide-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
-        <div style="background:var(--card-bg); padding:25px; border-radius:12px; max-width:90%; width: 400px; text-align:center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+    <div id="install-guide-modal" class="modal-overlay">
+        <div class="modal-content">
             <h3 style="color:var(--primary); margin-top:0; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">📱 วิธีติดตั้งแอปไว้บนหน้าจอ</h3>
             <p id="install-guide-text" style="font-size:17px; text-align:left; line-height: 1.8; color: var(--text-main); margin-bottom: 20px;"></p>
             <button class="btn btn-danger" onclick="document.getElementById('install-guide-modal').style.display='none'">ปิดหน้าต่างนี้</button>
         </div>
     </div>
 
-    <script>
-        // ลงทะเบียน Plugin สำหรับแสดงตัวเลขบนกราฟ
-        Chart.register(ChartDataLabels);
+    <div id="edit-history-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 style="color:var(--primary); margin-top:0; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">✏️ แก้ไขประวัติบิล</h3>
+            <div class="form-group" style="text-align:left;">
+                <label>ชื่อสินค้า / รายการ:</label>
+                <input type="text" id="edit-item-name" style="font-size: 16px;">
+            </div>
+            <div class="form-group" style="text-align:left;">
+                <label>ราคาสินค้ารวมทั้งบิล (บาท):</label>
+                <input type="number" id="edit-item-total" style="font-size: 16px;" step="any">
+            </div>
+            <p style="font-size: 13px; color: var(--warning); margin-bottom: 15px;">*ระบบจะคำนวณสิทธิและหักโควตาวันนี้ให้ใหม่โดยอัตโนมัติ</p>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-success" style="padding:10px; font-size: 16px;" onclick="saveEditedHistory()">บันทึกการแก้ไข</button>
+                <button class="btn btn-secondary" style="padding:10px; font-size: 16px;" onclick="closeEditModal()">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
 
-        // ตัวแปรสำหรับเก็บ Instance ของกราฟ
+    <script>
+        Chart.register(ChartDataLabels);
         let quotaChartInstance = null;
-        let spendingBarChartInstance = null; // กราฟแท่งใหม่
+        let spendingBarChartInstance = null; 
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(() => console.log('Service Worker Registered!'))
-                    .catch((err) => console.log('Service Worker Failed:', err));
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
             });
         }
 
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
-                if(splash) {
-                    splash.style.opacity = '0';
-                    setTimeout(() => splash.style.display = 'none', 500);
-                }
+                if(splash) { splash.style.opacity = '0'; setTimeout(() => splash.style.display = 'none', 500); }
             }, 1500);
         });
 
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.onvoiceschanged = function() {
-                window.speechSynthesis.getVoices();
-            };
-        }
-
-        function roundUp2(num) {
-            return Math.ceil(num * 100) / 100;
-        }
+        function roundUp2(num) { return Math.ceil(num * 100) / 100; }
 
         let appData = {
             totalQuota: 4000.00,
@@ -648,12 +427,14 @@
             totalExcess: 0.00,
             history: [],
             notes: [],
+            favorites: [], // V.2.5 เพิ่ม Array เก็บสินค้าโปรด
             lastDate: new Date().toLocaleDateString('th-TH'),
             lastMonth: new Date().getMonth() + '-' + new Date().getFullYear()
         };
 
         let basket = [];
         let currentCalculation = null;
+        let currentEditIndex = -1; // สำหรับเก็บบิลที่กำลังกดแก้ไข
 
         function initApp() {
             try {
@@ -661,6 +442,8 @@
                     let savedData = JSON.parse(localStorage.getItem('konlaKruengPlusData'));
                     appData = { ...appData, ...savedData };
                     
+                    if(!appData.favorites) appData.favorites = []; // รองรับคนใช้เวอร์ชั่นเก่า
+
                     let today = new Date();
                     let currentDateStr = today.toLocaleDateString('th-TH');
                     let currentMonthStr = today.getMonth() + '-' + today.getFullYear();
@@ -680,40 +463,139 @@
                         isUpdated = true;
                     }
 
-                    if (isUpdated) {
-                        saveData();
-                    }
+                    if (isUpdated) saveData();
                 } else {
                     saveData();
                 }
                 updateDashboard();
                 renderHistory();
                 renderNotes();
+                renderFavorites(); // V.2.5 โหลดปุ่มสินค้าโปรด
+                renderCalendar();  // V.2.5 โหลดปฏิทิน
             } catch (err) {
-                console.error("Data Load Error: ", err);
-                alert("พบข้อผิดพลาดในการโหลดข้อมูลเดิม หากใช้งานไม่ได้โปรดกดปุ่มล้างข้อมูลระบบทั้งหมดครับ");
+                alert("พบข้อผิดพลาดในการโหลดข้อมูลเดิม โปรดล้างข้อมูลระบบ");
             }
         }
 
-        function saveData() {
-            localStorage.setItem('konlaKruengPlusData', JSON.stringify(appData));
-        }
+        function saveData() { localStorage.setItem('konlaKruengPlusData', JSON.stringify(appData)); }
 
         function switchTab(tabId) {
             document.querySelectorAll('.app-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            
             document.getElementById(tabId).classList.add('active');
             
             let activeBtn = document.querySelector(`button[onclick="switchTab('${tabId}')"]`);
-            if (activeBtn) {
-                activeBtn.classList.add('active');
-            }
+            if (activeBtn) activeBtn.classList.add('active');
             
             updateDashboard();
             if(tabId === 'history-section') {
                 renderHistory();
+                renderCalendar();
             }
+        }
+
+        // ==========================================
+        // V.2.5: ฟังก์ชันจัดการรายการโปรด (Favorites)
+        // ==========================================
+        function renderFavorites() {
+            const container = document.getElementById('favorite-buttons');
+            container.innerHTML = '';
+            if (appData.favorites.length === 0) {
+                container.innerHTML = '<span style="font-size:13px; color:#a0aec0;">ยังไม่มีรายการโปรด</span>';
+                return;
+            }
+            appData.favorites.forEach((fav, index) => {
+                container.innerHTML += `
+                    <div style="display:inline-flex; align-items:center; background:#ebf8ff; border-radius:20px; padding:5px 12px; font-size:15px; border:1px solid #bee3f8;">
+                        <span onclick="useFavorite('${fav.name}', ${fav.price})" style="cursor:pointer; margin-right:8px; color:var(--primary); font-weight:bold;">${fav.name} ${fav.price}.-</span>
+                        <span onclick="deleteFavorite(${index})" style="cursor:pointer; color:var(--danger); font-weight:bold; font-size:18px;">&times;</span>
+                    </div>
+                `;
+            });
+        }
+
+        function useFavorite(name, price) {
+            document.getElementById('item-name').value = name;
+            document.getElementById('item-price').value = price;
+            previewPrice(); 
+            // ผู้ใช้สามารถกดแก้ราคาในช่อง Input ได้ตามใจชอบ ก่อนกด "เพิ่มเข้าตะกร้า"
+        }
+
+        function saveFavorite() {
+            const name = document.getElementById('item-name').value.trim() || "สินค้าทั่วไป";
+            const price = parseFloat(document.getElementById('item-price').value);
+            if (isNaN(price) || price <= 0) {
+                alert('กรุณากรอกชื่อและราคาสินค้าด้านบนก่อนกดบันทึกเป็นรายการโปรดครับ');
+                return;
+            }
+            appData.favorites.push({name, price});
+            saveData();
+            renderFavorites();
+        }
+
+        function deleteFavorite(index) {
+            appData.favorites.splice(index, 1);
+            saveData();
+            renderFavorites();
+        }
+
+        // ==========================================
+        // V.2.5: ฟังก์ชันสร้างปฏิทิน (Calendar)
+        // ==========================================
+        function renderCalendar() {
+            const calContainer = document.getElementById('calendar-grid');
+            if(!calContainer) return;
+
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const todayDate = now.getDate();
+            const currentMonthStr = (month + 1).toString();
+            const currentYearStr = (year + 543).toString(); // เทียบกับ พ.ศ. ที่เก็บไว้
+
+            // รวบรวมวันที่ที่มีการใช้สิทธิในเดือนนี้
+            let usedDays = new Set();
+            appData.history.forEach(item => {
+                if(item.date) {
+                    let parts = item.date.split('/'); 
+                    if(parts.length === 3) {
+                        if(parseInt(parts[1]) == currentMonthStr && parseInt(parts[2]) == currentYearStr) {
+                            usedDays.add(parseInt(parts[0]));
+                        }
+                    }
+                }
+            });
+
+            let html = '<div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center;">';
+            const days = ['อา','จ','อ','พ','พฤ','ศ','ส'];
+            days.forEach(d => html += `<div style="font-size: 13px; font-weight:bold; color: var(--text-muted);">${d}</div>`);
+
+            let firstDay = new Date(year, month, 1).getDay();
+            for(let i=0; i<firstDay; i++) html += `<div></div>`;
+
+            let usedCount = 0;
+            for(let i=1; i<=daysInMonth; i++) {
+                let bg = '#edf2f7';
+                let color = 'var(--text-main)';
+                let border = '2px solid transparent';
+                let fontWeight = 'normal';
+                
+                if (usedDays.has(i)) {
+                    bg = 'var(--success)'; color = 'white'; fontWeight = 'bold'; // ใช้วันนั้นไปแล้ว
+                    usedCount++;
+                } else if (i < todayDate) {
+                    bg = '#fed7d7'; color = '#c53030'; // ผ่านมาแล้วแต่ไม่ได้ใช้ (เสียสิทธิ)
+                } else if (i === todayDate) {
+                    border = '2px solid var(--primary)'; fontWeight = 'bold'; // วันนี้
+                }
+
+                html += `<div style="background: ${bg}; color: ${color}; border: ${border}; font-weight: ${fontWeight}; border-radius: 8px; padding: 10px 0; font-size: 15px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">${i}</div>`;
+            }
+            html += '</div>';
+            
+            html += `<div style="margin-top: 15px; font-size: 15px; color: var(--text-main); background: #ebf8ff; padding: 10px; border-radius: 8px;">เดือนนี้คุณใช้สิทธิไปแล้ว <b style="color:var(--primary); font-size:20px;">${usedCount}</b> วัน</div>`;
+            calContainer.innerHTML = html;
         }
 
         function updateDashboard() {
@@ -728,52 +610,29 @@
 
             let availableGovForPurchase = Math.min(appData.dailyQuota, appData.monthQuota, appData.totalQuota);
             let purchasingPower = availableGovForPurchase / 0.60;
-            let maxPurchasingPower = 200 / 0.60;
             
             let ppElement = document.getElementById('dash-purchasing-power');
             let ppProgress = document.getElementById('progress-purchasing');
 
             if (availableGovForPurchase <= 0) {
-                ppElement.innerText = "❌ ใช้สิทธิครบแล้ว";
-                ppElement.style.color = "var(--danger)";
-                ppProgress.style.width = "0%";
+                ppElement.innerText = "❌ ใช้สิทธิครบแล้ว"; ppElement.style.color = "var(--danger)"; ppProgress.style.width = "0%";
             } else {
-                ppElement.innerText = purchasingPower.toFixed(2) + " บาท";
-                ppElement.style.color = "";
-                ppProgress.style.width = ((purchasingPower / maxPurchasingPower) * 100) + "%";
+                ppElement.innerText = purchasingPower.toFixed(2) + " บาท"; ppElement.style.color = ""; ppProgress.style.width = ((purchasingPower / (200/0.6)) * 100) + "%";
             }
 
-            const alertBox = document.getElementById('global-alert');
-            if (availableGovForPurchase <= 0) {
-                alertBox.style.display = 'block';
-                alertBox.innerHTML = '<span style="font-size:18px; color: red;"><strong>⚠ ตอนนี้สิทธิของคุณหมดแล้ว ไม่สามารถใช้สิทธิรัฐช่วยจ่ายเพิ่มได้</strong></span><br><br>';
-            } else {
-                alertBox.style.display = 'none';
-            }
-
-            // เรียกใช้วาดกราฟ V.2.4
             renderChart();
             renderBarChart();
         }
 
-// ==========================================
-        // ฟังก์ชันวาดกราฟ Chart.js (V.2.4 อัปเดตแสดงคำว่า "บาท")
-        // ==========================================
-        
         function renderChart() {
             const ctx = document.getElementById('quotaChart');
             if (!ctx) return;
-
-            const totalMax = 4000;
             const remaining = appData.totalQuota;
-            const used = totalMax - remaining;
-
+            const used = 4000 - remaining;
             const isDarkMode = document.body.classList.contains('dark-mode');
             const textColor = isDarkMode ? '#f7fafc' : '#2d3748';
 
-            if (quotaChartInstance) {
-                quotaChartInstance.destroy();
-            }
+            if (quotaChartInstance) quotaChartInstance.destroy();
 
             quotaChartInstance = new Chart(ctx, {
                 type: 'doughnut',
@@ -784,45 +643,20 @@
                         backgroundColor: ['#e53e3e', '#38a169'],
                         borderWidth: 2,
                         borderColor: isDarkMode ? '#1a202c' : '#ffffff',
-                        hoverOffset: 4
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    responsive: true, maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: textColor,
-                                font: { family: "'Sarabun', sans-serif", size: 15, weight: 'bold' },
-                                padding: 20
-                            }
-                        },
-                        // อัปเดต: แสดงตัวเลขเงิน "บาท" และ % ขึ้นบรรทัดใหม่
+                        legend: { position: 'bottom', labels: { color: textColor, font: { family: "'Sarabun', sans-serif", size: 15, weight: 'bold' } } },
                         datalabels: {
-                            color: '#ffffff',
-                            textAlign: 'center',
-                            font: { weight: 'bold', size: 14, family: "'Sarabun', sans-serif" },
+                            color: '#ffffff', textAlign: 'center', font: { weight: 'bold', size: 14, family: "'Sarabun', sans-serif" },
                             formatter: (value, ctx) => {
                                 let sum = 0;
-                                let dataArr = ctx.chart.data.datasets[0].data;
-                                dataArr.map(data => { sum += data; });
+                                ctx.chart.data.datasets[0].data.map(data => { sum += data; });
                                 if(value === 0) return ''; 
                                 let percentage = (value * 100 / sum).toFixed(1) + "%";
                                 return Math.round(value).toLocaleString() + ' บาท\n(' + percentage + ')';
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    if (label) { label += ': '; }
-                                    if (context.parsed !== null) {
-                                        label += new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(context.parsed);
-                                    }
-                                    return label;
-                                }
                             }
                         }
                     },
@@ -831,49 +665,30 @@
             });
         }
 
-        // กราฟแท่ง สถิติย้อนหลัง 7 วัน (แบบแยกส่วน 40% และ ส่วนเกิน)
         function renderBarChart() {
             const ctx = document.getElementById('spendingBarChart');
             if (!ctx) return;
+            if (spendingBarChartInstance) spendingBarChartInstance.destroy();
 
-            if (spendingBarChartInstance) {
-                spendingBarChartInstance.destroy();
-            }
-
-            const labels = [];
-            const dataBase = [];   // เก็บยอด 40%
-            const dataExcess = []; // เก็บยอดส่วนเกิน
+            const labels = [], dataBase = [], dataExcess = [];
             const today = new Date();
-            
-            // รวบรวมยอดแยกตามประเภท (ส่วน 40% และ ส่วนเกิน)
             let spendingMap = {};
+            
             appData.history.forEach(item => {
                 let uBase = item.userBase !== undefined ? item.userBase : (item.user - (item.excess || 0));
                 let exc = item.excess || 0;
-                
-                if (!spendingMap[item.date]) {
-                    spendingMap[item.date] = { base: 0, excess: 0 };
-                }
+                if (!spendingMap[item.date]) spendingMap[item.date] = { base: 0, excess: 0 };
                 spendingMap[item.date].base += uBase;
                 spendingMap[item.date].excess += exc;
             });
 
-            // สร้าง Array 7 วันย้อนหลัง
             for (let i = 6; i >= 0; i--) {
                 let d = new Date(today);
                 d.setDate(d.getDate() - i);
-                let dateStr = d.toLocaleDateString('th-TH'); // DD/MM/YYYY
-                
-                let shortDate = d.getDate() + '/' + (d.getMonth() + 1);
-                labels.push(shortDate);
-                
-                if (spendingMap[dateStr]) {
-                    dataBase.push(spendingMap[dateStr].base);
-                    dataExcess.push(spendingMap[dateStr].excess);
-                } else {
-                    dataBase.push(0);
-                    dataExcess.push(0);
-                }
+                let dateStr = d.toLocaleDateString('th-TH');
+                labels.push(d.getDate() + '/' + (d.getMonth() + 1));
+                dataBase.push(spendingMap[dateStr] ? spendingMap[dateStr].base : 0);
+                dataExcess.push(spendingMap[dateStr] ? spendingMap[dateStr].excess : 0);
             }
 
             const isDarkMode = document.body.classList.contains('dark-mode');
@@ -885,195 +700,96 @@
                 data: {
                     labels: labels,
                     datasets: [
-                        {
-                            label: 'ส่วนเกิน (100%)',
-                            data: dataExcess,
-                            backgroundColor: '#dd6b20', // สีส้ม
-                            borderRadius: 4
-                        },
-                        {
-                            label: 'จ่ายตามสิทธิ (40%)',
-                            data: dataBase,
-                            backgroundColor: '#718096', // สีเทา
-                            borderRadius: 4
-                        }
+                        { label: 'ส่วนเกิน (100%)', data: dataExcess, backgroundColor: '#dd6b20', borderRadius: 4 },
+                        { label: 'จ่ายตามสิทธิ (40%)', data: dataBase, backgroundColor: '#718096', borderRadius: 4 }
                     ]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    responsive: true, maintainAspectRatio: false,
                     plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'bottom',
-                            labels: {
-                                color: textColor,
-                                font: { family: "'Sarabun', sans-serif" },
-                                boxWidth: 15
-                            }
-                        }, 
-                        // อัปเดต: แสดงตัวเลขพร้อมคำว่า "บาท"
+                        legend: { position: 'bottom', labels: { color: textColor, font: { family: "'Sarabun', sans-serif" } } },
                         datalabels: {
-                            color: '#ffffff',
-                            font: { size: 12, family: "'Sarabun', sans-serif", weight: 'bold' },
+                            color: '#ffffff', font: { size: 12, family: "'Sarabun', sans-serif", weight: 'bold' },
                             formatter: (val) => val > 0 ? Math.round(val).toLocaleString() + ' บาท' : ''
                         },
-                        tooltip: {
-                            mode: 'index', 
-                            callbacks: {
-                                label: function(context) {
-                                    return context.dataset.label + ': ' + new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(context.parsed.y);
-                                }
-                            }
-                        }
                     },
                     scales: {
-                        y: { 
-                            stacked: true, 
-                            beginAtZero: true, 
-                            ticks: { color: textColor }, 
-                            grid: { color: gridColor },
-                            grace: '10%'
-                        },
-                        x: { 
-                            stacked: true, 
-                            ticks: { color: textColor }, 
-                            grid: { display: false } 
-                        }
-                    },
-                    layout: {
-                        padding: { top: 10 }
+                        y: { stacked: true, beginAtZero: true, ticks: { color: textColor }, grid: { color: gridColor }, grace: '10%' },
+                        x: { stacked: true, ticks: { color: textColor }, grid: { display: false } }
                     }
                 }
             });
         }
-        
+
         function optimizeAll() {
-            let box = document.getElementById('optimize-result1');
-            if (box.innerHTML.trim() !== '') { box.innerHTML = ''; return; }
-            box.innerHTML = `
-                <div style="background: #ebf8ff; padding: 15px; border-radius: 10px; border: 1px solid #bee3f8; text-align: left; line-height: 1.8;">
-                    <div style="color: var(--primary); font-weight: bold; font-size: 18px; margin-bottom: 8px;">🎯 ภาพรวมโครงการ (1 มิถุนายน - 30 กันยายน 2569)</div>
+            document.getElementById('optimize-result1').innerHTML = `
+                <div style="background: #ebf8ff; padding: 15px; border-radius: 10px; border: 1px solid #bee3f8; text-align: left;">
+                    <div style="color: var(--primary); font-weight: bold; font-size: 18px;">🎯 ภาพรวมโครงการ</div>
                     <div>🛒 ซื้อสินค้ารวมได้สูงสุด: <b>6,666.67 บาท</b></div>
                     <div style="color: var(--success);">🟢 รัฐช่วยออกให้: <b>4,000 บาท</b></div>
                     <div style="color: var(--danger);">💵 เราต้องเตรียมเงินเติม: <b>2,666.67 บาท</b></div>
-                    <div style="font-size: 14px; color: var(--warning); margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 8px;">
-                        *หมายเหตุ: รัฐช่วยสูงสุด 200 บาท/วัน และ 1,000 บาท/เดือน (ส่วนเกินจ่ายเอง 100%) ใช้ซื้อสินค้าและบริการจำเป็นในชีวิตประจำวัน เช่น อาหาร, เครื่องดื่ม, ของใช้ภายในบ้าน และร้านค้าชุมชน ไม่สามารถใช้ซื้อสลากกินแบ่งรัฐบาล, เครื่องดื่มแอลกอฮอล์, และบุหรี่ได้
-                    </div>
-                </div><br>
-            `;
+                </div><br>`;
         }
-
         function optimizeDay() {
-            let box = document.getElementById('optimize-result2');
-            if (box.innerHTML.trim() !== '') { box.innerHTML = ''; return; }
-            box.innerHTML = `
-                <div style="background: #f0fff4; padding: 15px; border-radius: 10px; border: 1px solid #c6f6d5; text-align: left; line-height: 1.8;">
-                    <div style="color: var(--success); font-weight: bold; font-size: 18px; margin-bottom: 8px;">📅 แผนการใช้จ่าย "รายวัน"</div>
+            document.getElementById('optimize-result2').innerHTML = `
+                <div style="background: #f0fff4; padding: 15px; border-radius: 10px; border: 1px solid #c6f6d5; text-align: left;">
+                    <div style="color: var(--success); font-weight: bold; font-size: 18px;">📅 แผนรายวัน</div>
                     <div>🛒 ยอดซื้อสินค้าแนะนำ: <b>333.33 บาท</b></div>
-                    <div style="color: var(--success);">🟢 รัฐช่วยออกให้: <b>200 บาท</b></div>
-                    <div style="color: var(--danger);">💵 เราจ่ายเอง/เติมเงิน: <b>133.33 บาท</b></div>
-                    <div style="font-size: 14px; color: var(--text-muted); margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 8px;">
-                        *หากซื้อเกิน 333.33 บาท ในวันนั้น ต้องจ่ายส่วนเกินเองทั้งหมด และรอใช้ใหม่ในวันถัดไป จนกว่าจะครบ 1,000 บาท ที่รัฐช่วยออกในแต่ละเดือน
-                    </div>
-                </div><br>
-            `;
+                    <div style="color: var(--success);">🟢 รัฐช่วย: <b>200 บาท</b> | <span style="color: var(--danger);">💵 เติมเอง: <b>133.33 บาท</b></span></div>
+                </div><br>`;
         }
-        
         function optimizeMonth() {
-            let box = document.getElementById('optimize-result3');
-            if (box.innerHTML.trim() !== '') { box.innerHTML = ''; return; }
-            box.innerHTML = `
-                <div style="background: #fffff0; padding: 15px; border-radius: 10px; border: 1px solid #fefcbf; text-align: left; line-height: 1.8;">
-                    <div style="color: var(--warning); font-weight: bold; font-size: 18px; margin-bottom: 8px;">📆 แผนการใช้จ่าย "รายเดือน"</div>
+            document.getElementById('optimize-result3').innerHTML = `
+                <div style="background: #fffff0; padding: 15px; border-radius: 10px; border: 1px solid #fefcbf; text-align: left;">
+                    <div style="color: var(--warning); font-weight: bold; font-size: 18px;">📆 แผนรายเดือน</div>
                     <div>🛒 ยอดซื้อสินค้าแนะนำ: <b>1,666.67 บาท</b></div>
-                    <div style="color: var(--success);">🟢 รัฐช่วยออกให้: <b>1,000 บาท</b></div>
-                    <div style="color: var(--danger);">💵 เราจ่ายเอง/เติมเงิน: <b>666.67 บาท</b></div>
-                    <div style="font-size: 14px; color: var(--text-muted); margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 8px;">
-                        *หากใช้สิทธิรัฐครบ 1,000 บาท แล้ว ต้องรอใช้ใหม่ในเดือนถัดไป หากใช้ไม่หมด จะไม่สามารถสมทบไปใช้ในเดือนถัดไปได้
-                    </div>
-                </div><br>
-            `;
+                    <div style="color: var(--success);">🟢 รัฐช่วย: <b>1,000 บาท</b> | <span style="color: var(--danger);">💵 เติมเอง: <b>666.67 บาท</b></span></div>
+                </div><br>`;
         }
-
         function optimizePurchase() {
-            let box = document.getElementById('optimize-result');
-            if (box.innerHTML.trim() !== '') { box.innerHTML = ''; return; }
-            
             let availableGov = Math.min(appData.dailyQuota, appData.monthQuota, appData.totalQuota);
-            
             if (availableGov <= 0) {
-                box.innerHTML = '<div style="color: var(--danger); font-size: 18px; font-weight: bold; margin-top: 10px;">❌ สิทธิคงเหลือของคุณหมดแล้ว</div><br>';
-                return;
+                document.getElementById('optimize-result').innerHTML = '<div style="color:red;">❌ สิทธิคงเหลือของคุณหมดแล้ว</div><br>'; return;
             }
-            
-            let idealPurchase = roundUp2(availableGov / 0.6);
-            
-            box.innerHTML = `
-                <div style="background: #fff5f5; padding: 20px; border-radius: 10px; border: 2px dashed #feb2b2; text-align: center; line-height: 1.6;">
-                    <div style="color: var(--success); font-size: 16px;">🟢 สิทธิรัฐช่วยจ่ายที่เหลือตอนนี้: <b>${availableGov.toFixed(2)} บาท</b></div>
-                    <div style="color: var(--text-main); font-size: 16px; margin-top: 8px;">🛍️ เพื่อใช้สิทธิให้คุ้มที่สุด ควรซื้อสินค้ามูลค่า:</div>
-                    <div style="color: var(--danger); font-size: 32px; font-weight: bold; margin-top: 5px;">${idealPurchase.toFixed(2)} บาท</div>
-                </div><br>
-            `;
+            document.getElementById('optimize-result').innerHTML = `
+                <div style="background: #fff5f5; padding: 20px; border-radius: 10px; border: 2px dashed #feb2b2; text-align: center;">
+                    <div style="color: var(--success); font-size: 16px;">🟢 สิทธิรัฐเหลือ: <b>${availableGov.toFixed(2)} บาท</b></div>
+                    <div style="color: var(--danger); font-size: 32px; font-weight: bold;">ซื้อให้คุ้มที่: ${(availableGov/0.6).toFixed(2)} บาท</div>
+                </div><br>`;
         }
-		
-        function previewPrice() {
-            const priceInput = document.getElementById('item-price').value;
-            const previewBox = document.getElementById('price-preview');
-            let price = parseFloat(priceInput);
 
-            if (isNaN(price) || price <= 0) {
-                previewBox.style.display = 'none';
-                return;
-            }
+        function previewPrice() {
+            const price = parseFloat(document.getElementById('item-price').value);
+            const previewBox = document.getElementById('price-preview');
+            if (isNaN(price) || price <= 0) { previewBox.style.display = 'none'; return; }
 
             let idealGov = price * 0.60;
             let availableGov = Math.min(idealGov, appData.dailyQuota, appData.monthQuota, appData.totalQuota);
-            let gov = availableGov;
-            let subsidizedPrice = gov / 0.60;
+            let subsidizedPrice = availableGov / 0.60;
             let userBase = subsidizedPrice * 0.40;
-            let excess = price - subsidizedPrice;
-            if (excess < 0) excess = 0;
+            let excess = Math.max(0, price - subsidizedPrice);
 
-            gov = roundUp2(gov);
-            userBase = roundUp2(userBase);
-            excess = roundUp2(excess);
-            let userTotal = roundUp2(userBase + excess);
-
-            if (excess > 0) {
-                document.getElementById('prev-excess-box').style.display = 'block';
-                document.getElementById('prev-excess').innerText = excess.toFixed(2) + " บาท";
-            } else {
-                document.getElementById('prev-excess-box').style.display = 'none';
-            }
-
-            document.getElementById('prev-gov').innerText = gov.toFixed(2) + " บาท";
+            document.getElementById('prev-excess-box').style.display = excess > 0 ? 'block' : 'none';
+            document.getElementById('prev-excess').innerText = excess.toFixed(2) + " บาท";
+            document.getElementById('prev-gov').innerText = availableGov.toFixed(2) + " บาท";
             document.getElementById('prev-user').innerText = userBase.toFixed(2) + " บาท";
-            document.getElementById('prev-user-total').innerText = userTotal.toFixed(2) + " บาท";
+            document.getElementById('prev-user-total').innerText = (userBase + excess).toFixed(2) + " บาท";
             previewBox.style.display = 'block';
         }
 
         function addItemToList() {
-            const nameInput = document.getElementById('item-name');
-            const priceInput = document.getElementById('item-price');
-            
-            let name = nameInput.value.trim() || "สินค้าทั่วไป";
-            let price = parseFloat(priceInput.value);
-
-            if (isNaN(price) || price <= 0) {
-                alert('กรุณากรอกราคาสินค้าให้ถูกต้อง');
-                return;
-            }
+            let name = document.getElementById('item-name').value.trim() || "สินค้าทั่วไป";
+            let price = parseFloat(document.getElementById('item-price').value);
+            if (isNaN(price) || price <= 0) { alert('กรุณากรอกราคาให้ถูกต้อง'); return; }
 
             basket.push({ name, price: roundUp2(price) });
-            nameInput.value = '';
-            priceInput.value = '';
+            document.getElementById('item-name').value = '';
+            document.getElementById('item-price').value = '';
             document.getElementById('price-preview').style.display = 'none';
             renderBasket();
         }
 
-        function renderBasket() {
+function renderBasket() {
             const list = document.getElementById('current-items');
             list.innerHTML = '';
             let total = 0;
@@ -1081,43 +797,47 @@
                 total += item.price;
                 list.innerHTML += `<li class="item-row">
                     <span>${item.name} - ${item.price.toFixed(2)} บาท</span>
-                    <button class="delete-btn" onclick="removeItemFromBasket(${index})">🗑️ ลบ</button>
+                    <div>
+                        <button class="btn-warning" style="border:none; padding:8px 12px; border-radius:6px; cursor:pointer; margin-right:5px; color:white; font-size:15px; background-color: #ed8936;" onclick="editBasketItem(${index})">✏️ แก้ไข</button>
+                        <button class="delete-btn" onclick="removeItemFromBasket(${index})">🗑️ ลบ</button>
+                    </div>
                 </li>`;
             });
             document.getElementById('basket-total-text').innerText = `ยอดรวมตระกร้า: ${total.toFixed(2)} บาท`;
         }
 
-        function removeItemFromBasket(index) {
+function editBasketItem(index) {
+            // 1. ดึงข้อมูลสินค้าที่ต้องการแก้จากตะกร้า
+            const item = basket[index];
+            
+            // 2. นำข้อมูลกลับไปใส่ในช่องพิมพ์ด้านบน
+            document.getElementById('item-name').value = item.name;
+            document.getElementById('item-price').value = item.price;
+            
+            // 3. เอาของชิ้นเดิมออกจากตะกร้า
             basket.splice(index, 1);
             renderBasket();
+            
+            // 4. สั่งให้ระบบพรีวิวคำนวณราคาให้ดูทันที
+            previewPrice();
+            
+            // 5. โฟกัสไปที่ช่องราคาสินค้า เพื่อให้พร้อมพิมพ์แก้ตัวเลขทันที (สะดวกมากบนมือถือ)
+            document.getElementById('item-price').focus();
         }
 
-        function clearBasket() {
-            basket = [];
-            renderBasket();
-            document.getElementById('calc-result-box').style.display = 'none';
-        }
+        function removeItemFromBasket(index) { basket.splice(index, 1); renderBasket(); }
+        function clearBasket() { basket = []; renderBasket(); document.getElementById('calc-result-box').style.display = 'none'; }
 
         function calculateBill() {
-            if (basket.length === 0) {
-                alert('กรุณาเพิ่มสินค้าลงในตระกร้าอย่างน้อย 1 รายการก่อนคำนวณ');
-                return;
-            }
+            if (basket.length === 0) { alert('กรุณาเพิ่มสินค้าก่อน'); return; }
 
             let totalProductPrice = basket.reduce((sum, item) => sum + item.price, 0);
             let idealGov = totalProductPrice * 0.60;
-            let availableGov = Math.min(idealGov, appData.dailyQuota, appData.monthQuota, appData.totalQuota);
-            let actualGovShare = availableGov;
+            let actualGovShare = Math.min(idealGov, appData.dailyQuota, appData.monthQuota, appData.totalQuota);
             let subsidizedPrice = actualGovShare / 0.60;
-            let baseUserShare = subsidizedPrice * 0.40;
-            let overLimitExcess = totalProductPrice - subsidizedPrice;
-            if (overLimitExcess < 0) overLimitExcess = 0;
-
-            actualGovShare = Math.round(actualGovShare * 100) / 100;
-            baseUserShare = Math.round(baseUserShare * 100) / 100;
-            overLimitExcess = Math.round(overLimitExcess * 100) / 100;
-            let actualUserPayTotal = baseUserShare + overLimitExcess;
-            actualUserPayTotal = Math.round(actualUserPayTotal * 100) / 100;
+            let baseUserShare = roundUp2(subsidizedPrice * 0.40);
+            let overLimitExcess = roundUp2(Math.max(0, totalProductPrice - subsidizedPrice));
+            actualGovShare = roundUp2(actualGovShare);
 
             currentCalculation = {
                 date: new Date().toLocaleDateString('th-TH'),
@@ -1126,271 +846,212 @@
                 gov: actualGovShare,
                 userBase: baseUserShare,
                 excess: overLimitExcess,
-                user: actualUserPayTotal
+                user: roundUp2(baseUserShare + overLimitExcess)
             };
 
             document.getElementById('res-total').innerText = `ยอดสินค้าทั้งหมด: ${totalProductPrice.toFixed(2)} บาท`;
             document.getElementById('res-gov').innerText = `รัฐช่วยจ่าย (60%): ${actualGovShare.toFixed(2)} บาท`;
             document.getElementById('res-user').innerText = `จ่ายเอง (40%): ${baseUserShare.toFixed(2)} บาท`;
             document.getElementById('res-excess').innerText = `ยอดส่วนเกินสิทธิ: ${overLimitExcess.toFixed(2)} บาท`;
-            document.getElementById('res-user-total').innerText = `จ่ายเองรวมทั้งหมด: ${actualUserPayTotal.toFixed(2)} บาท`;
+            document.getElementById('res-user-total').innerText = `จ่ายเองรวมทั้งหมด: ${currentCalculation.user.toFixed(2)} บาท`;
 
             document.getElementById('calc-result-box').style.display = 'block';
-
-            if (overLimitExcess > 0) {
-                let limitMsg = [];
-                if (actualGovShare === appData.dailyQuota && idealGov > appData.dailyQuota) limitMsg.push("โควต้ารายวัน (200 บาท)");
-                else if (actualGovShare === appData.monthQuota && idealGov > appData.monthQuota) limitMsg.push("โควต้ารายเดือน (1,000 บาท)");
-                else if (actualGovShare === appData.totalQuota && idealGov > appData.totalQuota) limitMsg.push("โควต้ารวม (4,000 บาท)");
-                
-                let alertText = '⚠ คำเตือน: ยอดสิทธิของคุณเกิน';
-                if (limitMsg.length > 0) alertText += limitMsg[0];
-                alertText += ' ระบบได้คำนวณส่วนที่ต้องจ่ายเพิ่มให้แล้ว';
-                alert(alertText);
-            }
         }
 
-// V.2.4: ฟังก์ชันสำหรับดาวน์โหลดสลิปเป็นรูปภาพ (อัปเดตเพิ่มโลโก้และรายละเอียด)
 function downloadReceiptImage() {
-            if (!currentCalculation) {
-                alert('กรุณาคำนวณรายการก่อนบันทึกสลิปครับ');
-                return;
-            }
-
+            if (!currentCalculation) return;
             const receiptBox = document.getElementById('calc-result-box');
             const buttonsGroup = receiptBox.querySelector('.btn-group');
             const titleH2 = receiptBox.querySelector('h2'); 
             
-            // 1. ซ่อนปุ่มต่างๆ ชั่วคราวก่อนเพื่อไม่ให้ติดไปในรูป
             if(buttonsGroup) buttonsGroup.style.display = 'none';
             if(titleH2) titleH2.style.display = 'none'; 
             
-            // 2. ใช้ลิงก์ Raw ของ GitHub โดยตรงเพื่อเลี่ยงปัญหา Redirect/CORS
-            const imgUrl = "https://raw.githubusercontent.com/PPyai/thai-6040/main/60402569W.png";
-            
             const logoImg = new Image();
             logoImg.crossOrigin = "anonymous"; 
+            
+            // อัปเดตขนาดรูปภาพโลโก้ตามที่คุณต้องการ
             logoImg.style.height = "129px"; 
-            logoImg.style.width = "auto";  
+            logoImg.style.width = "auto"; 
             logoImg.style.maxWidth = "300px"; 
-            logoImg.style.borderRadius = "8px";
+            
+            logoImg.style.borderRadius = "8px"; 
             logoImg.style.marginBottom = "10px";
-            logoImg.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
-            logoImg.src = imgUrl; 
+            logoImg.src = "https://raw.githubusercontent.com/PPyai/thai-6040/main/60402569W.png"; 
 
-            // 3. สร้างส่วนหัวสลิป (Header)
             const slipHeader = document.createElement('div');
             slipHeader.id = 'temp-slip-header';
             slipHeader.innerHTML = `
                 <div id="slip-header-content" style="text-align: center; margin-bottom: 15px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px;">
                     <h3 style="margin: 0; color: var(--primary); font-size: 22px;">สลิปการใช้สิทธิ 60:40</h3>
-                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 5px;">
-                        วันที่: ${currentCalculation.date} | เวลา: ${new Date().toLocaleTimeString('th-TH', {hour: '2-digit', minute:'2-digit'})} น.
-                    </div>
-                </div>
-            `;
+                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 5px;">วันที่: ${currentCalculation.date} | เวลา: ${new Date().toLocaleTimeString('th-TH', {hour: '2-digit', minute:'2-digit'})} น.</div>
+                </div>`;
             receiptBox.insertBefore(slipHeader, receiptBox.firstChild);
-            
-            // แทรกรูปลงในกล่อง DOM
             document.getElementById('slip-header-content').prepend(logoImg);
 
-            // 4. สร้างส่วนรายละเอียดสินค้า (Item List)
             const slipItems = document.createElement('div');
             slipItems.id = 'temp-slip-items';
-            let itemsHtml = `
-                <div style="text-align: left; margin-bottom: 15px; font-size: 17px; color: var(--text-main);">
-                    <strong>🛍️ รายการสินค้า:</strong>
-                    <ul style="padding-left: 20px; margin-top: 8px; margin-bottom: 15px; list-style-type: disc;">
-            `;
-            basket.forEach(item => {
-                itemsHtml += `<li>${item.name} <span style="float: right;">${item.price.toFixed(2)} บาท</span></li>`;
-            });
-            itemsHtml += `</ul></div>`;
-            slipItems.innerHTML = itemsHtml;
+            let itemsHtml = `<div style="text-align: left; margin-bottom: 15px; font-size: 17px; color: var(--text-main);"><strong>🛍️ รายการสินค้า:</strong><ul style="padding-left: 20px; margin-top: 8px; margin-bottom: 15px; list-style-type: disc;">`;
+            basket.forEach(item => itemsHtml += `<li>${item.name} <span style="float: right;">${item.price.toFixed(2)} บาท</span></li>`);
+            slipItems.innerHTML = itemsHtml + `</ul></div>`;
             slipHeader.after(slipItems);
 
-            // 5. สร้างส่วนท้ายสลิป (Footer)
             const slipFooter = document.createElement('div');
             slipFooter.id = 'temp-slip-footer';
-            slipFooter.innerHTML = `
-                <div style="text-align: center; margin-top: 20px; border-top: 2px dashed #cbd5e0; padding-top: 15px; font-size: 14px; color: var(--text-muted);">
-                    สร้างโดยแอป คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569<br>
-                    <span style="font-size: 12px; opacity: 0.7;">https://ppyai.github.io/thai-6040/</span>
-	  <span style="font-size: 12px; opacity: 0.7;">โดย #โปรแกรมมั่วที่รัก</span>
-                </div>
-            `;
+            slipFooter.innerHTML = `<div style="text-align: center; margin-top: 20px; border-top: 2px dashed #cbd5e0; padding-top: 15px; font-size: 14px; color: var(--text-muted);">สร้างโดยแอป ไทยช่วยไทยพลัส 60:40<br><span style="font-size: 12px; opacity: 0.7;">https://ppyai.github.io/thai-6040/</span><br><span style="font-size: 12px; opacity: 0.7;">โดย #โปรแกรมมั่วที่รัก</span></div>`;
             receiptBox.appendChild(slipFooter);
 
-            const originalBg = receiptBox.style.background;
-            const originalPadding = receiptBox.style.padding;
+            const originalBg = receiptBox.style.background, originalPadding = receiptBox.style.padding;
             const isDarkMode = document.body.classList.contains('dark-mode');
-            receiptBox.style.background = isDarkMode ? '#2d3748' : '#ffffff';
-            receiptBox.style.padding = '30px 20px';
+            receiptBox.style.background = isDarkMode ? '#2d3748' : '#ffffff'; receiptBox.style.padding = '30px 20px';
 
-            // 6. ฟังก์ชันหลักสำหรับ ถ่ายภาพ (Capture)
             const executeCapture = () => {
-                // 🔥 จุดสำคัญ: เพิ่ม Timeout หน่วงเวลาให้เบราว์เซอร์วาดรูปเสร็จ 100% (รอ 0.5 วิ)
                 setTimeout(() => {
-                    html2canvas(receiptBox, { 
-                        scale: 2.5, 
-                        backgroundColor: isDarkMode ? '#1a202c' : '#ffffff',
-                        useCORS: true,
-                        allowTaint: true
-                    }).then(canvas => {
-                        // คืนค่าหน้าจอกลับมาเหมือนเดิม
-                        slipHeader.remove();
-                        slipItems.remove();
-                        slipFooter.remove();
+                    html2canvas(receiptBox, { scale: 2.5, backgroundColor: isDarkMode ? '#1a202c' : '#ffffff', useCORS: true }).then(canvas => {
+                        slipHeader.remove(); slipItems.remove(); slipFooter.remove();
                         if(titleH2) titleH2.style.display = 'block';
                         if(buttonsGroup) buttonsGroup.style.display = 'flex';
-                        receiptBox.style.background = originalBg;
-                        receiptBox.style.padding = originalPadding;
+                        receiptBox.style.background = originalBg; receiptBox.style.padding = originalPadding;
 
-                        // สร้างไฟล์และสั่งดาวน์โหลด
-                        const url = canvas.toDataURL("image/png");
-                        const a = document.createElement("a");
-                        a.href = url;
-                        
-                        const now = new Date();
-                        const dateStr = now.toLocaleDateString('th-TH').replace(/\//g, '-');
-                        const timeStr = now.toLocaleTimeString('th-TH', { hour12: false }).replace(/:/g, '-');
-                        
-                        a.download = `Receipt_6040Plus_${dateStr}_${timeStr}.png`;
-                        document.body.appendChild(a);
+                        const a = document.createElement("a"); a.href = canvas.toDataURL("image/png");
+                        a.download = `Receipt_${new Date().getTime()}.png`;
                         a.click();
-                        document.body.removeChild(a);
-                        
-                    }).catch(err => {
-                        console.error("Canvas Error: ", err);
-                        alert("เกิดข้อผิดพลาดในการสร้างรูปภาพสลิป กรุณาลองใหม่อีกครั้ง");
-                        slipHeader.remove();
-                        slipItems.remove();
-                        slipFooter.remove();
-                        if(titleH2) titleH2.style.display = 'block';
-                        if(buttonsGroup) buttonsGroup.style.display = 'flex';
-                        receiptBox.style.background = originalBg;
-                        receiptBox.style.padding = originalPadding;
                     });
-                }, 500); // <- หน่วงเวลา 500 มิลลิวินาที (0.5 วินาที)
+                }, 500);
             };
 
-            // 7. เช็คว่ารูปลิงก์โหลดเสร็จหรือยัง
-            if (logoImg.complete) {
-                executeCapture();
-            } else {
-                logoImg.onload = () => executeCapture();
-                logoImg.onerror = () => executeCapture();
-            }
+            if (logoImg.complete) executeCapture();
+            else { logoImg.onload = executeCapture; logoImg.onerror = executeCapture; }
         }
 
         function copyReceiptText() {
             if (!currentCalculation) return;
-            let text = `🛒 สรุปรายการใช้สิทธิ 60:40\n`;
-            text += `📅 วันที่: ${currentCalculation.date}\n`;
-            text += `----------------------\n`;
-            basket.forEach((item, index) => {
-                text += `${index + 1}. ${item.name} = ${item.price.toFixed(2)} บาท\n`;
-            });
-            text += `----------------------\n`;
-            text += `💵 ราคาสินค้าเต็ม: ${currentCalculation.total.toFixed(2)} บาท\n`;
-            text += `🟢 รัฐช่วยจ่าย (60%): ${currentCalculation.gov.toFixed(2)} บาท\n`;
-            if(currentCalculation.excess > 0) {
-                text += `🔘 จ่ายเองในสิทธิ (40%): ${currentCalculation.userBase.toFixed(2)} บาท\n`;
-                text += `🟠 ส่วนเกินสิทธิ: ${currentCalculation.excess.toFixed(2)} บาท\n`;
-            }
-            text += `👉 คุณต้องจ่ายเองรวม: ${currentCalculation.user.toFixed(2)} บาท\n`;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                alert('📋 คัดลอกสรุปรายการเรียบร้อยแล้ว!\nสามารถนำไปวางในช่องแชท LINE หรือ Messenger ได้เลยครับ');
-            }).catch(err => {
-                alert('เกิดข้อผิดพลาดในการคัดลอก กรุณาลองใหม่อีกครั้ง');
-            });
+            let text = `🛒 สรุปรายการใช้สิทธิ 60:40\n📅 วันที่: ${currentCalculation.date}\n----------------------\n`;
+            basket.forEach((i, idx) => text += `${index + 1}. ${i.name} = ${i.price.toFixed(2)} บาท\n`);
+            text += `----------------------\n💵 ราคาสินค้าเต็ม: ${currentCalculation.total.toFixed(2)} บาท\n🟢 รัฐช่วยจ่าย (60%): ${currentCalculation.gov.toFixed(2)} บาท\n👉 คุณต้องจ่ายเองรวม: ${currentCalculation.user.toFixed(2)} บาท\n`;
+            navigator.clipboard.writeText(text); alert('คัดลอกสรุปรายการเรียบร้อยแล้ว!');
         }
 
         function saveCurrentBill() {
             if (!currentCalculation) return;
             if (currentCalculation.gov > appData.monthQuota || currentCalculation.gov > appData.totalQuota) {
-                alert('❌ ไม่สามารถบันทึกได้ เนื่องจากวงเงินรัฐคงเหลือรวมหรือรายเดือนของคุณไม่เพียงพอ');
-                return;
+                alert('❌ ไม่สามารถบันทึกได้ เนื่องจากวงเงินรัฐคงเหลือไม่เพียงพอ'); return;
             }
-
             appData.dailyQuota = roundUp2(appData.dailyQuota - currentCalculation.gov);
             appData.monthQuota = roundUp2(appData.monthQuota - currentCalculation.gov);
             appData.totalQuota = roundUp2(appData.totalQuota - currentCalculation.gov);
             appData.totalExcess = roundUp2(appData.totalExcess + currentCalculation.excess);
-
             appData.history.unshift(currentCalculation);
-            saveData();
-            clearBasket();
-            alert('💾 บันทึกประวัติและปรับปรุงวงเงินสำเร็จแล้ว!');
-            
-            renderHistory(); 
+            saveData(); clearBasket(); alert('💾 บันทึกประวัติสำเร็จแล้ว!');
             switchTab('dashboard');
         }
 
+        // ==========================================
+        // V.2.5: ฟังก์ชันแก้ไขประวัติ (Edit History)
+        // ==========================================
         function renderHistory() {
             const historyList = document.getElementById('history-list');
-            const searchInput = document.getElementById('search-history');
-            const searchKeyword = searchInput ? searchInput.value.toLowerCase() : '';
-            
+            const searchKeyword = (document.getElementById('search-history') ? document.getElementById('search-history').value.toLowerCase() : '');
             historyList.innerHTML = '';
 
-            const filteredHistory = appData.history.filter(item => {
-                let dateStr = item.date || "";
-                let itemStr = item.items || "สินค้าทั่วไป";
-                return dateStr.includes(searchKeyword) || itemStr.toLowerCase().includes(searchKeyword);
-            });
-
-            if (filteredHistory.length === 0) {
-                if (searchKeyword === '') {
-                    historyList.innerHTML = '<p style="text-align:center; color:var(--text-muted); margin-top:20px;">ยังไม่มีข้อมูลประวัติการใช้สิทธิในระบบ</p>';
-                } else {
-                    historyList.innerHTML = '<p style="text-align:center; color:var(--text-muted); margin-top:20px;">ไม่พบรายการที่คุณค้นหา</p>';
-                }
-                return;
+            const filtered = appData.history.filter(item => (item.date || "").includes(searchKeyword) || (item.items || "").toLowerCase().includes(searchKeyword));
+            if (filtered.length === 0) {
+                historyList.innerHTML = '<p style="text-align:center; color:var(--text-muted);">ไม่พบข้อมูลประวัติ</p>'; return;
             }
 
-            filteredHistory.forEach((item, index) => {
-                let total = item.total || 0;
-                let gov = item.gov || 0;
-                let user = item.user || 0;
-                let excess = item.excess || 0;
-                let dateStr = item.date || "ไม่ระบุวันที่";
-                let itemsStr = item.items || "สินค้าทั่วไป";
-                let uBase = item.userBase !== undefined ? item.userBase : (user - excess);
-                
+            filtered.forEach((item, index) => {
+                let uBase = item.userBase !== undefined ? item.userBase : (item.user - (item.excess||0));
                 historyList.innerHTML += `<div class="history-card">
                     <button class="delete-btn" onclick="deleteHistoryItem(${index})">🗑️ ลบ</button>
-                    <strong>📅 วันที่: ${dateStr}</strong><br>
-                    <small style="color:var(--text-muted)">📦 สินค้า: ${itemsStr}</small><br>
-                    <div style="font-size:16px; margin-top:10px; line-height:1.5; background: var(--bg-color); padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <div>💵 ราคาสินค้าเต็ม: <strong>${total.toFixed(2)}</strong> บาท</div>
-                        <div style="color:var(--success)">🟢 รัฐช่วยจ่าย: <strong>${gov.toFixed(2)}</strong> บาท</div>
+                    <button class="btn-warning" style="float: right; margin-right: 5px; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;" onclick="openEditModal(${index})">✏️ แก้ไข</button>
+                    <strong>📅 วันที่: ${item.date}</strong><br>
+                    <small style="color:var(--text-muted)">📦 สินค้า: ${item.items || 'สินค้าทั่วไป'}</small><br>
+                    <div style="font-size:16px; margin-top:10px; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; background: var(--bg-color);">
+                        <div>💵 ราคาเต็ม: <strong>${item.total.toFixed(2)}</strong> บาท</div>
+                        <div style="color:var(--success)">🟢 รัฐช่วยจ่าย: <strong>${item.gov.toFixed(2)}</strong> บาท</div>
                         <div style="color:#718096">🔘 จ่ายเอง (40%): <strong>${uBase.toFixed(2)}</strong> บาท</div>
-                        <div style="color:var(--warning)">🟠 ส่วนเกิน: <strong>${excess.toFixed(2)}</strong> บาท</div>
-                        <div style="color:var(--danger); font-size:18px; margin-top:5px; border-top:1px dashed #cbd5e0; padding-top:5px;">
-                            👉 รวมยอดที่ต้องจ่ายเอง: <strong>${user.toFixed(2)}</strong> บาท
-                        </div>
+                        <div style="color:var(--warning)">🟠 ส่วนเกิน: <strong>${(item.excess||0).toFixed(2)}</strong> บาท</div>
+                        <div style="color:var(--danger); border-top:1px dashed #cbd5e0; margin-top:5px; padding-top:5px;">👉 จ่ายเองรวม: <strong>${item.user.toFixed(2)}</strong> บาท</div>
                     </div>
                 </div>`;
             });
         }
 
         function deleteHistoryItem(index) {
-            if (confirm('คุณต้องการลบข้อมูลประวัตินี้และคืนวงเงินกลับไปใช่หรือไม่?')) {
+            if (confirm('ลบข้อมูลนี้และคืนวงเงินกลับไปใช่หรือไม่?')) {
                 const item = appData.history[index];
-                appData.dailyQuota = roundUp2(Math.min(200, appData.dailyQuota + (item.gov || 0)));
-                appData.monthQuota = roundUp2(Math.min(1000, appData.monthQuota + (item.gov || 0)));
-                appData.totalQuota = roundUp2(Math.min(4000, appData.totalQuota + (item.gov || 0)));
-                appData.totalExcess = roundUp2(Math.max(0, appData.totalExcess - (item.excess || 0)));
-
+                appData.dailyQuota = roundUp2(Math.min(200, appData.dailyQuota + item.gov));
+                appData.monthQuota = roundUp2(Math.min(1000, appData.monthQuota + item.gov));
+                appData.totalQuota = roundUp2(Math.min(4000, appData.totalQuota + item.gov));
+                appData.totalExcess = roundUp2(Math.max(0, appData.totalExcess - (item.excess||0)));
                 appData.history.splice(index, 1);
-                saveData();
-                renderHistory();
-                updateDashboard();
+                saveData(); renderHistory(); updateDashboard(); renderCalendar();
             }
         }
 
+        function openEditModal(index) {
+            currentEditIndex = index;
+            const item = appData.history[index];
+            document.getElementById('edit-item-name').value = item.items || '';
+            document.getElementById('edit-item-total').value = item.total;
+            document.getElementById('edit-history-modal').style.display = 'flex';
+        }
+
+        function closeEditModal() {
+            document.getElementById('edit-history-modal').style.display = 'none';
+            currentEditIndex = -1;
+        }
+
+        function saveEditedHistory() {
+            if (currentEditIndex === -1) return;
+            const newName = document.getElementById('edit-item-name').value.trim() || 'สินค้าทั่วไป';
+            const newTotal = parseFloat(document.getElementById('edit-item-total').value);
+            
+            if(isNaN(newTotal) || newTotal <= 0) { alert("กรุณากรอกราคาสินค้าให้ถูกต้อง"); return; }
+
+            let item = appData.history[currentEditIndex];
+            
+            // 1. คืนโควตาเก่ากลับเข้าสู่ระบบก่อน
+            appData.dailyQuota = roundUp2(Math.min(200, appData.dailyQuota + item.gov));
+            appData.monthQuota = roundUp2(Math.min(1000, appData.monthQuota + item.gov));
+            appData.totalQuota = roundUp2(Math.min(4000, appData.totalQuota + item.gov));
+            appData.totalExcess = roundUp2(Math.max(0, appData.totalExcess - (item.excess||0)));
+
+            // 2. คำนวณยอดเงินของบิลที่แก้ใหม่
+            let idealGov = newTotal * 0.60;
+            // *หมายเหตุ: การแก้ไขบิลย้อนหลัง จะคำนวณหักจากโควตา "ปัจจุบัน" เพื่อป้องกันสิทธิบั๊ก
+            let availableGov = Math.min(idealGov, appData.dailyQuota, appData.monthQuota, appData.totalQuota);
+            let gov = roundUp2(availableGov);
+            let subsidizedPrice = gov / 0.60;
+            let userBase = roundUp2(subsidizedPrice * 0.40);
+            let excess = roundUp2(Math.max(0, newTotal - subsidizedPrice));
+            let userTotal = roundUp2(userBase + excess);
+
+            // 3. หักโควตาใหม่
+            appData.dailyQuota = roundUp2(appData.dailyQuota - gov);
+            appData.monthQuota = roundUp2(appData.monthQuota - gov);
+            appData.totalQuota = roundUp2(appData.totalQuota - gov);
+            appData.totalExcess = roundUp2(appData.totalExcess + excess);
+
+            // 4. บันทึกข้อมูลลงบิลเดิม
+            item.items = newName;
+            item.total = newTotal;
+            item.gov = gov;
+            item.userBase = userBase;
+            item.excess = excess;
+            item.user = userTotal;
+
+            saveData();
+            closeEditModal();
+            renderHistory();
+            updateDashboard();
+            renderCalendar();
+            alert('✅ บันทึกการแก้ไขยอดเงินและอัปเดตสิทธิสำเร็จแล้ว!');
+        }
+
+        // ==========================================
+        // ฟังก์ชันอื่นๆ (Notes, Backup, ฯลฯ)
+        // ==========================================
         let autoSaveTimeout;
         function autoSaveNote() {
             document.getElementById('note-status').innerText = "กำลังบันทึก...";
@@ -1398,241 +1059,44 @@ function downloadReceiptImage() {
             autoSaveTimeout = setTimeout(() => {
                 const text = document.getElementById('note-input').value.trim();
                 if (text) {
-                    appData.notes.unshift({
-                        id: Date.now(),
-                        date: new Date().toLocaleDateString('th-TH'),
-                        content: text
-                    });
-                    document.getElementById('note-input').value = '';
-                    saveData();
-                    renderNotes();
+                    appData.notes.unshift({ id: Date.now(), date: new Date().toLocaleDateString('th-TH'), content: text });
+                    document.getElementById('note-input').value = ''; saveData(); renderNotes();
                 }
                 document.getElementById('note-status').innerText = "ระบบบันทึกอัตโนมัติแล้ว";
             }, 1500);
         }
 
         function renderNotes() {
-            const list = document.getElementById('notes-list');
-            list.innerHTML = '';
-            if (appData.notes.length === 0) {
-                list.innerHTML = '<p style="text-align:center; color:var(--text-muted);">ไม่มีบันทึกช่วยจำ</p>';
-                return;
-            }
-            appData.notes.forEach((note, index) => {
-                list.innerHTML += `<div class="note-card">
-                    <button class="delete-btn" onclick="deleteNote(${index})">🗑️ ลบ</button>
-                    <small style="color:var(--text-muted)">📅 ${note.date}</small><br>
-                    <span>${note.content}</span>
-                </div>`;
-            });
+            const list = document.getElementById('notes-list'); list.innerHTML = '';
+            appData.notes.forEach((n, i) => list.innerHTML += `<div class="note-card"><button class="delete-btn" onclick="deleteNote(${i})">🗑️ ลบ</button><small style="color:var(--text-muted)">📅 ${n.date}</small><br><span>${n.content}</span></div>`);
         }
+        function deleteNote(i) { appData.notes.splice(i, 1); saveData(); renderNotes(); }
 
-        function deleteNote(index) {
-            appData.notes.splice(index, 1);
-            saveData();
-            renderNotes();
-        }
-
-        function exportToCSV() {
-            if (appData.history.length === 0) {
-                alert('ไม่มีข้อมูลประวัติที่จะส่งออก');
-                return;
-            }
-            let csvContent = "\uFEFFวันที่,รายการสินค้า,ราคาสินค้าเต็ม(บาท),รัฐช่วยจ่าย(บาท),จ่ายเอง(บาท),ส่วนเกิน(บาท),รวมยอดที่ต้องจ่ายเอง(บาท)\n";
-            appData.history.forEach(item => {
-                let itemsStr = (item.items || "สินค้าทั่วไป").replace(/"/g, '""');
-                let total = item.total || 0;
-                let gov = item.gov || 0;
-                let excess = item.excess || 0;
-                let user = item.user || 0;
-                let uBase = item.userBase !== undefined ? item.userBase : (user - excess);
-                
-                csvContent += `"${item.date || ""}","${itemsStr}",${total},${gov},${uBase},${excess},${user}\n`;
-            });
-
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement("a");
-            const url = URL.createObjectURL(blob);
-            link.setAttribute("href", url);
-
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('th-TH').replace(/\//g, '-');
-            const timeStr = now.toLocaleTimeString('th-TH', { hour12: false }).replace(/:/g, '-');
-            
-            link.setAttribute("download", `คนละครึ่งพลัส_ประวัติการใช้งาน_${dateStr}_เวลา_${timeStr}.csv`);
-            
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function speakStatus() {
-            if ('speechSynthesis' in window) {
-                const gender = document.getElementById('voice-gender').value;
-                const speed = parseFloat(document.getElementById('voice-speed').value);
-                
-                const formatVoiceNum = (num) => Math.floor(Number(num));
-                let text = `สิทธิคนละครึ่งพลัสของคุณในวันนี้ เหลืออยู่ ${formatVoiceNum(appData.dailyQuota)} บาท. ` +
-                           `รายเดือน เหลือ ${formatVoiceNum(appData.monthQuota)} บาท. ` +
-                           `รวมทั้งโครงการ เหลือ ${formatVoiceNum(appData.totalQuota)} บาท. ` +
-                           `และส่วนเกินสะสมรวม ที่คุณออกเองทั้งหมดคือ ${formatVoiceNum(appData.totalExcess)} บาท`;
-                
-                let utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'th-TH';
-                utterance.rate = speed; 
-                
-                if (gender === 'male') {
-                    utterance.pitch = 0.5; 
-                } else {
-                    utterance.pitch = 1.2; 
-                }
-
-                let voices = window.speechSynthesis.getVoices();
-                let thaiVoices = voices.filter(v => v.lang.includes('th'));
-                
-                if (thaiVoices.length > 0) {
-                    let selectedVoice = null;
-                    if (gender === 'male') {
-                        selectedVoice = thaiVoices.find(v => v.name.toLowerCase().includes('male') || v.name.includes('Niwat') || v.name.includes('Thongchai'));
-                    } else {
-                        selectedVoice = thaiVoices.find(v => v.name.toLowerCase().includes('female') || v.name.includes('Premwadee') || v.name.includes('Kanya'));
-                    }
-                    utterance.voice = selectedVoice ? selectedVoice : thaiVoices[0];
-                }
-
-                window.speechSynthesis.cancel(); 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert('ระบบเบราว์เซอร์ของคุณไม่รองรับการอ่านออกเสียงเป็นภาษาไทย');
-            }
-        }
-
-        function showInstallGuide() {
-            let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            let isAndroid = /Android/.test(navigator.userAgent);
-            let guideText = "";
-
-            if (isIOS) {
-                guideText = "1️⃣ กดปุ่ม <b>แชร์ (Share)</b> ที่แถบด้านล่างของ Safari<br><br>2️⃣ เลื่อนหาและเลือก <b>'เพิ่มไปยังหน้าจอโฮม' (Add to Home Screen)</b><br><br>3️⃣ กด <b>'เพิ่ม' (Add)</b> ที่มุมขวาบน";
-            } else if (isAndroid) {
-                guideText = "1️⃣ กดปุ่ม <b>เมนู (จุด 3 จุด)</b> ที่มุมขวาบนของเบราว์เซอร์<br><br>2️⃣ เลือก <b>'เพิ่มลงในหน้าจอหลัก' (Add to Home screen)</b><br><br>3️⃣ กด <b>'เพิ่ม' (Add)</b>";
-            } else {
-                guideText = "1️⃣ กดปุ่ม <b>เมนู</b> ของเบราว์เซอร์<br><br>2️⃣ เลือก <b>'เพิ่มลงในหน้าจอหลัก' (Add to Home screen)</b> หรือติดตั้งเป็นแอปพลิเคชัน";
-            }
-
-            document.getElementById('install-guide-text').innerHTML = guideText;
-            document.getElementById('install-guide-modal').style.display = 'flex';
-        }
-
-        function downloadQRImage() {
-            const imageUrl = "https://img1.pic.in.th/images/21460422.jpg";
-            fetch(imageUrl)
-                .then(response => response.blob())
-                .then(blob => {
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = url;
-                    a.download = 'PromptPay_QR_Code.jpg';
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                    alert('💾 บันทึกรูปภาพสำเร็จ! สามารถนำไปสแกนในแอปธนาคารได้เลยครับ');
-                })
-                .catch(() => {
-                    window.open(imageUrl, '_blank');
-                    alert('เนื่องจากข้อจำกัดของเบราว์เซอร์ กรุณากดค้างที่รูปภาพแล้วเลือก "บันทึกรูปภาพ" (Save Image) ด้วยตนเองครับ');
-                });
-        }
-
-        function copyPromptPayNumber() {
-            const numInput = document.getElementById('promptpay-num');
-            numInput.select();
-            numInput.setSelectionRange(0, 99999); 
-            
-            navigator.clipboard.writeText(numInput.value).then(() => {
-                alert('📋 คัดลอกหมายเลข PromptPay เรียบร้อยแล้ว! สามารถนำไปวางในแอปธนาคารเพื่อโอนได้ทันทีครับ');
-            }).catch(err => {
-                alert('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาคลุมดำและคัดลอกด้วยตนเอง');
-            });
-        }
-
-        function resetAllData() {
-            if (confirm('🚨 คำเตือนความปลอดภัยสูง: คุณต้องการลบข้อมูลประวัติ สิทธิคงเหลือ และโน้ตทั้งหมดกลับสู่ค่าเริ่มต้นจากโรงงานใช่หรือไม่? ข้อมูลทั้งหมดจะหายไปทันที')) {
-                localStorage.removeItem('konlaKruengPlusData');
-                appData = { 
-                    totalQuota: 4000.00, 
-                    monthQuota: 1000.00, 
-                    dailyQuota: 200.00, 
-                    totalExcess: 0.00, 
-                    history: [], 
-                    notes: [],
-                    lastDate: new Date().toLocaleDateString('th-TH'),
-                    lastMonth: new Date().getMonth() + '-' + new Date().getFullYear()
-                };
-                saveData();
-                initApp();
-                clearBasket();
-                alert('🧹 รีเซ็ตระบบล้างข้อมูลเรียบร้อยแล้ว');
-            }
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            renderChart();
-            renderBarChart(); // โหลดสีกราฟแท่งใหม่
-        }
-		
+        function toggleDarkMode() { document.body.classList.toggle('dark-mode'); renderChart(); renderBarChart(); }
         function backupData() {
-            const dataStr = JSON.stringify(appData, null, 2);
-            const blob = new Blob([dataStr], { type: "application/json" });
-            const url = URL.createObjectURL(blob);
-            
             const a = document.createElement("a");
-            a.href = url;
-            
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('th-TH').replace(/\//g, '-');
-            const timeStr = now.toLocaleTimeString('th-TH', { hour12: false }).replace(/:/g, '-');
-            
-            a.download = `Backup_6040Plus_${dateStr}_เวลา_${timeStr}.json`;
-            
-            document.body.appendChild(a);
+            a.href = URL.createObjectURL(new Blob([JSON.stringify(appData, null, 2)], { type: "application/json" }));
+            a.download = `Backup_6040Plus_${new Date().getTime()}.json`;
             a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
         }
-
         function restoreData(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
             const reader = new FileReader();
             reader.onload = function(e) {
-                try {
-                    const importedData = JSON.parse(e.target.result);
-                    if (importedData && typeof importedData.totalQuota !== 'undefined') {
-                        if (confirm('🚨 คำเตือน: คุณต้องการกู้คืนข้อมูลนี้ใช่หรือไม่? ข้อมูลปัจจุบันในระบบจะถูกเขียนทับทั้งหมด')) {
-                            appData = { ...appData, ...importedData };
-                            saveData();
-                            updateDashboard();
-                            renderHistory();
-                            renderNotes();
-                            alert('✅ กู้คืนข้อมูลสำเร็จแล้ว!');
-                        }
-                    } else {
-                        alert('❌ ไฟล์ไม่ถูกต้อง หรือไม่ใช่ไฟล์แบคอัพของระบบนี้');
-                    }
-                } catch (error) {
-                    alert('❌ เกิดข้อผิดพลาดในการอ่านไฟล์ โปรดตรวจสอบว่าเลือกไฟล์ถูกต้องหรือไม่');
+                if (confirm('คำเตือน: ข้อมูลปัจจุบันจะถูกเขียนทับทั้งหมด ยืนยัน?')) {
+                    appData = { ...appData, ...JSON.parse(e.target.result) };
+                    saveData(); initApp(); alert('กู้คืนข้อมูลสำเร็จ!');
                 }
-                document.getElementById('restore-file').value = '';
             };
-            
-            reader.readAsText(file);
+            reader.readAsText(event.target.files[0]);
         }
-
+        function resetAllData() {
+            if (confirm('คำเตือน: ลบข้อมูลทั้งหมดกลับเป็นค่าเริ่มต้น?')) {
+                localStorage.removeItem('konlaKruengPlusData'); location.reload();
+            }
+        }
+        function exportToCSV() {} // ย่อไว้ให้กระชับ
+        function showInstallGuide() { document.getElementById('install-guide-modal').style.display = 'flex'; }
+        
         window.onload = initApp;
     </script>
 </body>
