@@ -16,7 +16,7 @@
     <link rel="apple-touch-startup-image" href="https://img2.pic.in.th/myIcon.png">
     <link rel="manifest" href="manifest.json">
     
-    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.2</title>
+    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.3</title>
 	
     <meta property="og:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569">
     <meta property="og:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงินให้คุ้มค่า และบันทึกประวัติการใช้จ่ายรายวันของคุณ">
@@ -28,6 +28,8 @@
     <meta name="twitter:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569">
     <meta name="twitter:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงิน และบันทึกประวัติการใช้จ่าย">
     <meta name="twitter:image" content="https://img2.pic.in.th/cover-1.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	
     <style>
         :root {
             --bg-color: #f4f7f6;
@@ -324,7 +326,7 @@
 
     <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #3182ce; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease;">
         <img src="https://img2.pic.in.th/myIcon.png" alt="Logo" style="width: 180px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-        <h2 style="color: #ffffff; margin-top: 20px; border: none;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569</h2>
+        <h2 style="color: #ffffff; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569</h2>
     </div>
 
     <div class="container">
@@ -404,26 +406,33 @@
                 </div>
             </div>
 
-       <div class="card">
-            <h2>จัดการข้อมูลระบบ</h2>
-            <div class="btn-group">
-                <button class="btn btn-primary" onclick="backupData()" style="background-color: #2b6cb0;">💾 สำรองข้อมูล (Backup)</button>
-                <label class="btn btn-warning" style="cursor: pointer; display: block; width: 100%; max-width: 400px; box-sizing: border-box;">
-                    📂 กู้คืนข้อมูล (Restore)
-                    <input type="file" id="restore-file" accept=".json" style="display: none;" onchange="restoreData(event)">
-                </label>
-                
-                <button class="btn btn-secondary" onclick="exportToCSV()">📥 ส่งออกประวัติเป็น CSV</button>
-                <button class="btn btn-danger" onclick="resetAllData()">🧹 ล้างข้อมูลระบบทั้งหมด</button>
+            <div class="card">
+                <h2>📊 กราฟสรุปการใช้สิทธิโครงการ</h2>
+                <div style="position: relative; height: 260px; width: 100%; display: flex; justify-content: center; margin-top: 10px;">
+                    <canvas id="quotaChart"></canvas>
+                </div>
+                <div style="margin-top: 15px; font-size: 15px; color: var(--text-muted); text-align: center;">
+                    แสดงสัดส่วนสิทธิที่รัฐจ่ายไปแล้ว เทียบกับสิทธิคงเหลือทั้งหมดตลอดโครงการ
+                </div>
             </div>
-        </div>
-			
+            <div class="card">
+                <h2>จัดการข้อมูลระบบ</h2>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="backupData()" style="background-color: #2b6cb0;">💾 สำรองข้อมูล (Backup)</button>
+                    <label class="btn btn-warning" style="cursor: pointer; display: block; width: 100%; max-width: 400px; box-sizing: border-box;">
+                        📂 กู้คืนข้อมูล (Restore)
+                        <input type="file" id="restore-file" accept=".json" style="display: none;" onchange="restoreData(event)">
+                    </label>
+                    <button class="btn btn-secondary" onclick="exportToCSV()">📥 ส่งออกประวัติเป็น CSV</button>
+                    <button class="btn btn-danger" onclick="resetAllData()">🧹 ล้างข้อมูลระบบทั้งหมด</button>
+                </div>
+            </div>
 			
         </div>
 
         <div id="calculator" class="app-section">
 			
-	<div align="left" style="background: #f7fafc; padding: 15px; border-radius: 10px; border-left: 5px solid var(--primary); margin-bottom: 20px;">
+	        <div align="left" style="background: #f7fafc; padding: 15px; border-radius: 10px; border-left: 5px solid var(--primary); margin-bottom: 20px;">
                 <div style="font-size: 16px; font-weight: bold; color: var(--primary); margin-bottom: 5px;">
                     📌 เงื่อนไขโครงการ (รัฐออก 60% : เราจ่าย 40%)
                 </div>
@@ -444,7 +453,6 @@
                     * 🛒 หากซื้อเกินยอดที่ระบุไว้ คุณจะต้องจ่ายส่วนต่างเพิ่มเอง 100%
                 </div>
             </div><br>
-
             
             <div class="card">
                 <h2>คำนวณจำนวนเงิน 60:40</h2>
@@ -552,7 +560,7 @@
         </div>
 
         <div class="footer">
-            <strong>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.2</strong><br>
+            <strong>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.3</strong><br>
              โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank" style="font-size:18px; color: #00ccff; text-decoration:none;"><span style="font-size:18px; color: #00ccff; text-decoration:none;">#โปรแกรมมั่วที่รัก</span></a>
         </div>
 
@@ -581,8 +589,11 @@
     </div>
 
     <script>
+        // ตัวแปรสำหรับเก็บ Instance ของกราฟ Chart.js
+        let quotaChartInstance = null;
+
         // ==========================================
-        // ส่วนของ PWA: Service Worker และ Splash Screen (V.2.2)
+        // ส่วนของ PWA: Service Worker และ Splash Screen
         // ==========================================
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -603,7 +614,7 @@
         });
 
         // ==========================================
-        // โค้ดระบบหลักเดิม (V.2.1)
+        // โค้ดระบบหลัก
         // ==========================================
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = function() {
@@ -724,9 +735,83 @@
             } else {
                 alertBox.style.display = 'none';
             }
+
+            // เรียกใช้วาดกราฟ (Visual Dashboard)
+            renderChart();
+        }
+
+        // ==========================================
+        // ฟังก์ชันวาดกราฟ Chart.js (V.2.3)
+        // ==========================================
+        function renderChart() {
+            const ctx = document.getElementById('quotaChart');
+            if (!ctx) return;
+
+            const totalMax = 4000;
+            const remaining = appData.totalQuota;
+            const used = totalMax - remaining;
+
+            // ตรวจสอบโหมดกลางคืนเพื่อสลับสีตัวอักษร
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const textColor = isDarkMode ? '#f7fafc' : '#2d3748';
+
+            // ทำลายกราฟเก่าทิ้งเพื่อวาดใหม่
+            if (quotaChartInstance) {
+                quotaChartInstance.destroy();
+            }
+
+            quotaChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['ใช้สิทธิไปแล้ว (บาท)', 'สิทธิคงเหลือ (บาท)'],
+                    datasets: [{
+                        data: [used, remaining],
+                        backgroundColor: [
+                            '#e53e3e', // สีแดง (ใช้ไปแล้ว)
+                            '#38a169'  // สีเขียว (คงเหลือ)
+                        ],
+                        borderWidth: 2,
+                        borderColor: isDarkMode ? '#1a202c' : '#ffffff',
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: textColor,
+                                font: {
+                                    family: "'Sarabun', sans-serif",
+                                    size: 15,
+                                    weight: 'bold'
+                                },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(context.parsed);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '65%' // ปรับความหนาของกราฟโดนัท
+                }
+            });
         }
         
-function optimizeAll() {
+        function optimizeAll() {
             let box = document.getElementById('optimize-result1');
             if (box.innerHTML.trim() !== '') { box.innerHTML = ''; return; }
             box.innerHTML = `
@@ -796,7 +881,6 @@ function optimizeAll() {
             `;
         }
 		
-
         function previewPrice() {
             const priceInput = document.getElementById('item-price').value;
             const previewBox = document.getElementById('price-preview');
@@ -1101,12 +1185,10 @@ function optimizeAll() {
             const url = URL.createObjectURL(blob);
             link.setAttribute("href", url);
 
-            // ดึงเวลาปัจจุบันเพื่อตั้งชื่อไฟล์ไม่ให้ซ้ำ
             const now = new Date();
             const dateStr = now.toLocaleDateString('th-TH').replace(/\//g, '-');
             const timeStr = now.toLocaleTimeString('th-TH', { hour12: false }).replace(/:/g, '-');
             
-            // ตั้งชื่อไฟล์ CSV พร้อมวันที่และเวลา
             link.setAttribute("download", `คนละครึ่งพลัส_ประวัติการใช้งาน_${dateStr}_เวลา_${timeStr}.csv`);
             
             link.style.visibility = 'hidden';
@@ -1228,31 +1310,25 @@ function optimizeAll() {
 
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
+            // รีเฟรชกราฟเพื่อเปลี่ยนสีตัวอักษรให้เข้ากับโหมดกลางคืน
+            renderChart();
         }
 		
 		// ==========================================
         // ระบบสำรองและกู้คืนข้อมูล (Backup & Restore)
         // ==========================================
-        
-// 1. ฟังก์ชันสร้างไฟล์แบคอัพ (อัปเดตชื่อไฟล์ไม่ให้ซ้ำ)
         function backupData() {
-            // แปลงข้อมูลแอปทั้งหมดเป็นข้อความ JSON
             const dataStr = JSON.stringify(appData, null, 2);
-            // สร้างไฟล์จำลอง
             const blob = new Blob([dataStr], { type: "application/json" });
             const url = URL.createObjectURL(blob);
             
-            // สร้างลิงก์และสั่งดาวน์โหลด
             const a = document.createElement("a");
             a.href = url;
             
-            // ดึงเวลาปัจจุบันเพื่อตั้งชื่อไฟล์ไม่ให้ซ้ำ
             const now = new Date();
             const dateStr = now.toLocaleDateString('th-TH').replace(/\//g, '-');
-            // ดึงเวลา ชั่วโมง-นาที-วินาที (แทนที่เครื่องหมาย : ด้วย - เพื่อไม่ให้ระบบไฟล์พัง)
             const timeStr = now.toLocaleTimeString('th-TH', { hour12: false }).replace(/:/g, '-');
             
-            // ตั้งชื่อไฟล์พร้อมวันที่และเวลาชี้เฉพาะ
             a.download = `Backup_6040Plus_${dateStr}_เวลา_${timeStr}.json`;
             
             document.body.appendChild(a);
@@ -1261,7 +1337,6 @@ function optimizeAll() {
             URL.revokeObjectURL(url);
         }
 
-        // 2. ฟังก์ชันกู้คืนข้อมูลจากไฟล์
         function restoreData(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -1270,19 +1345,13 @@ function optimizeAll() {
             reader.onload = function(e) {
                 try {
                     const importedData = JSON.parse(e.target.result);
-                    
-                    // ตรวจสอบความถูกต้องของไฟล์เบื้องต้น
                     if (importedData && typeof importedData.totalQuota !== 'undefined') {
                         if (confirm('🚨 คำเตือน: คุณต้องการกู้คืนข้อมูลนี้ใช่หรือไม่? ข้อมูลปัจจุบันในระบบจะถูกเขียนทับทั้งหมด')) {
-                            // นำข้อมูลที่อ่านได้มาทับข้อมูลเดิม
                             appData = { ...appData, ...importedData };
-                            saveData(); // บันทึกลงเครื่อง
-                            
-                            // อัปเดตหน้าจอใหม่ทั้งหมด
+                            saveData();
                             updateDashboard();
                             renderHistory();
                             renderNotes();
-                            
                             alert('✅ กู้คืนข้อมูลสำเร็จแล้ว!');
                         }
                     } else {
@@ -1291,7 +1360,6 @@ function optimizeAll() {
                 } catch (error) {
                     alert('❌ เกิดข้อผิดพลาดในการอ่านไฟล์ โปรดตรวจสอบว่าเลือกไฟล์ถูกต้องหรือไม่');
                 }
-                // ล้างค่า input เพื่อให้สามารถเลือกไฟล์เดิมซ้ำได้ในอนาคต
                 document.getElementById('restore-file').value = '';
             };
             
