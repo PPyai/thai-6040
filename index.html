@@ -1203,7 +1203,7 @@ function downloadReceiptImage() {
                     <ul style="padding-left: 20px; margin-top: 8px; margin-bottom: 15px; list-style-type: disc;">
             `;
             basket.forEach(item => {
-                itemsHtml += `<li>${item.name} <span style="float: right;">${item.price.toFixed(2)} บ.</span></li>`;
+                itemsHtml += `<li>${item.name} <span style="float: right;">${item.price.toFixed(2)} บาท</span></li>`;
             });
             itemsHtml += `</ul></div>`;
             slipItems.innerHTML = itemsHtml;
@@ -1216,6 +1216,7 @@ function downloadReceiptImage() {
                 <div style="text-align: center; margin-top: 20px; border-top: 2px dashed #cbd5e0; padding-top: 15px; font-size: 14px; color: var(--text-muted);">
                     สร้างโดยแอป คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569<br>
                     <span style="font-size: 12px; opacity: 0.7;">https://ppyai.github.io/thai-6040/</span>
+	  <span style="font-size: 12px; opacity: 0.7;">โดย #โปรแกรมมั่วที่รัก</span>
                 </div>
             `;
             receiptBox.appendChild(slipFooter);
