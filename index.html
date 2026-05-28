@@ -16,19 +16,22 @@
     <link rel="apple-touch-startup-image" href="https://img2.pic.in.th/myIcon.png">
     <link rel="manifest" href="manifest.json">
     
-    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.3</title>
+    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.4</title>
 	
-    <meta property="og:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569">
+    <meta property="og:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.4">
     <meta property="og:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงินให้คุ้มค่า และบันทึกประวัติการใช้จ่ายรายวันของคุณ">
     <meta property="og:image" content="https://img2.pic.in.th/cover-1.png">
     <meta property="og:url" content="https://ppyai.github.io/thai-6040/">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569">
+    <meta name="twitter:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.4">
     <meta name="twitter:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงิน และบันทึกประวัติการใช้จ่าย">
     <meta name="twitter:image" content="https://img2.pic.in.th/cover-1.png">
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 	
     <style>
         :root {
@@ -221,6 +224,7 @@
             max-width: 500px;
             text-align: center;
             box-sizing: border-box;
+            position: relative; /* สำหรับ html2canvas */
         }
         .text-black { color: var(--text-main); font-weight: bold; }
         .text-green { color: var(--success); font-weight: bold; }
@@ -326,7 +330,7 @@
 
     <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #3182ce; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease;">
         <img src="https://img2.pic.in.th/myIcon.png" alt="Logo" style="width: 180px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-        <h2 style="color: #ffffff; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569 V.2.3</h2>
+        <h2 style="color: #ffffff; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569 V.2.4</h2>
     </div>
 
     <div class="container">
@@ -412,7 +416,17 @@
                     <canvas id="quotaChart"></canvas>
                 </div>
                 <div style="margin-top: 15px; font-size: 15px; color: var(--text-muted); text-align: center;">
-                    แสดงสัดส่วนสิทธิที่รัฐจ่ายไปแล้ว เทียบกับสิทธิคงเหลือทั้งหมดตลอดโครงการ
+                    แสดงสัดส่วนสิทธิที่รัฐจ่ายไปแล้ว เทียบกับสิทธิคงเหลือทั้งหมด
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>📈 สถิติการใช้จ่าย (7 วันล่าสุด)</h2>
+                <div style="position: relative; height: 260px; width: 100%; display: flex; justify-content: center; margin-top: 10px;">
+                    <canvas id="spendingBarChart"></canvas>
+                </div>
+                <div style="margin-top: 15px; font-size: 15px; color: var(--text-muted); text-align: center;">
+                    แสดงยอดรวมที่คุณต้องจ่ายเงินเอง (ส่วน 40% + ส่วนเกิน) ในแต่ละวัน
                 </div>
             </div>
             <div class="card">
@@ -507,8 +521,11 @@
                         <p class="text-red text-xl" id="res-user-total" style="margin: 0;">จ่ายเองรวมทั้งหมด: 0.00 บาท</p>
                     </div>
 
-                    <button class="btn btn-secondary" onclick="copyReceiptText()" style="margin-top:10px; background-color: #4a5568;">📋 คัดลอกข้อความสรุปทั้งหมด</button>
-                    <button class="btn btn-primary" id="btn-save-history" style="margin-top:10px;" onclick="saveCurrentBill()">💾 บันทึกรายการลงประวัติ</button>
+                    <div class="btn-group">
+                        <button class="btn btn-warning" onclick="downloadReceiptImage()" style="margin-top:10px; background-color: #ed8936; color: white;">🖼️ บันทึกสลิปเป็นรูปภาพ</button>
+                        <button class="btn btn-secondary" onclick="copyReceiptText()" style="background-color: #4a5568;">📋 คัดลอกข้อความสรุปทั้งหมด</button>
+                        <button class="btn btn-primary" id="btn-save-history" onclick="saveCurrentBill()">💾 บันทึกรายการลงประวัติ</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -560,7 +577,7 @@
         </div>
 
         <div class="footer">
-            <strong>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.3</strong><br>
+            <strong>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.4</strong><br>
              โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank" style="font-size:18px; color: #00ccff; text-decoration:none;"><span style="font-size:18px; color: #00ccff; text-decoration:none;">#โปรแกรมมั่วที่รัก</span></a>
         </div>
 
@@ -589,12 +606,13 @@
     </div>
 
     <script>
-        // ตัวแปรสำหรับเก็บ Instance ของกราฟ Chart.js
-        let quotaChartInstance = null;
+        // ลงทะเบียน Plugin สำหรับแสดงตัวเลขบนกราฟ
+        Chart.register(ChartDataLabels);
 
-        // ==========================================
-        // ส่วนของ PWA: Service Worker และ Splash Screen
-        // ==========================================
+        // ตัวแปรสำหรับเก็บ Instance ของกราฟ
+        let quotaChartInstance = null;
+        let spendingBarChartInstance = null; // กราฟแท่งใหม่
+
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
@@ -613,9 +631,6 @@
             }, 1500);
         });
 
-        // ==========================================
-        // โค้ดระบบหลัก
-        // ==========================================
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = function() {
                 window.speechSynthesis.getVoices();
@@ -736,13 +751,15 @@
                 alertBox.style.display = 'none';
             }
 
-            // เรียกใช้วาดกราฟ (Visual Dashboard)
+            // เรียกใช้วาดกราฟ V.2.4
             renderChart();
+            renderBarChart();
         }
 
+// ==========================================
+        // ฟังก์ชันวาดกราฟ Chart.js (V.2.4 อัปเดตแสดงคำว่า "บาท")
         // ==========================================
-        // ฟังก์ชันวาดกราฟ Chart.js (V.2.3)
-        // ==========================================
+        
         function renderChart() {
             const ctx = document.getElementById('quotaChart');
             if (!ctx) return;
@@ -751,11 +768,9 @@
             const remaining = appData.totalQuota;
             const used = totalMax - remaining;
 
-            // ตรวจสอบโหมดกลางคืนเพื่อสลับสีตัวอักษร
             const isDarkMode = document.body.classList.contains('dark-mode');
             const textColor = isDarkMode ? '#f7fafc' : '#2d3748';
 
-            // ทำลายกราฟเก่าทิ้งเพื่อวาดใหม่
             if (quotaChartInstance) {
                 quotaChartInstance.destroy();
             }
@@ -763,13 +778,10 @@
             quotaChartInstance = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['ใช้สิทธิไปแล้ว (บาท)', 'สิทธิคงเหลือ (บาท)'],
+                    labels: ['ใช้สิทธิไปแล้ว', 'สิทธิคงเหลือ'],
                     datasets: [{
                         data: [used, remaining],
-                        backgroundColor: [
-                            '#e53e3e', // สีแดง (ใช้ไปแล้ว)
-                            '#38a169'  // สีเขียว (คงเหลือ)
-                        ],
+                        backgroundColor: ['#e53e3e', '#38a169'],
                         borderWidth: 2,
                         borderColor: isDarkMode ? '#1a202c' : '#ffffff',
                         hoverOffset: 4
@@ -783,21 +795,29 @@
                             position: 'bottom',
                             labels: {
                                 color: textColor,
-                                font: {
-                                    family: "'Sarabun', sans-serif",
-                                    size: 15,
-                                    weight: 'bold'
-                                },
+                                font: { family: "'Sarabun', sans-serif", size: 15, weight: 'bold' },
                                 padding: 20
+                            }
+                        },
+                        // อัปเดต: แสดงตัวเลขเงิน "บาท" และ % ขึ้นบรรทัดใหม่
+                        datalabels: {
+                            color: '#ffffff',
+                            textAlign: 'center',
+                            font: { weight: 'bold', size: 14, family: "'Sarabun', sans-serif" },
+                            formatter: (value, ctx) => {
+                                let sum = 0;
+                                let dataArr = ctx.chart.data.datasets[0].data;
+                                dataArr.map(data => { sum += data; });
+                                if(value === 0) return ''; 
+                                let percentage = (value * 100 / sum).toFixed(1) + "%";
+                                return Math.round(value).toLocaleString() + ' บาท\n(' + percentage + ')';
                             }
                         },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
                                     let label = context.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
+                                    if (label) { label += ': '; }
                                     if (context.parsed !== null) {
                                         label += new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(context.parsed);
                                     }
@@ -806,7 +826,124 @@
                             }
                         }
                     },
-                    cutout: '65%' // ปรับความหนาของกราฟโดนัท
+                    cutout: '60%' 
+                }
+            });
+        }
+
+        // กราฟแท่ง สถิติย้อนหลัง 7 วัน (แบบแยกส่วน 40% และ ส่วนเกิน)
+        function renderBarChart() {
+            const ctx = document.getElementById('spendingBarChart');
+            if (!ctx) return;
+
+            if (spendingBarChartInstance) {
+                spendingBarChartInstance.destroy();
+            }
+
+            const labels = [];
+            const dataBase = [];   // เก็บยอด 40%
+            const dataExcess = []; // เก็บยอดส่วนเกิน
+            const today = new Date();
+            
+            // รวบรวมยอดแยกตามประเภท (ส่วน 40% และ ส่วนเกิน)
+            let spendingMap = {};
+            appData.history.forEach(item => {
+                let uBase = item.userBase !== undefined ? item.userBase : (item.user - (item.excess || 0));
+                let exc = item.excess || 0;
+                
+                if (!spendingMap[item.date]) {
+                    spendingMap[item.date] = { base: 0, excess: 0 };
+                }
+                spendingMap[item.date].base += uBase;
+                spendingMap[item.date].excess += exc;
+            });
+
+            // สร้าง Array 7 วันย้อนหลัง
+            for (let i = 6; i >= 0; i--) {
+                let d = new Date(today);
+                d.setDate(d.getDate() - i);
+                let dateStr = d.toLocaleDateString('th-TH'); // DD/MM/YYYY
+                
+                let shortDate = d.getDate() + '/' + (d.getMonth() + 1);
+                labels.push(shortDate);
+                
+                if (spendingMap[dateStr]) {
+                    dataBase.push(spendingMap[dateStr].base);
+                    dataExcess.push(spendingMap[dateStr].excess);
+                } else {
+                    dataBase.push(0);
+                    dataExcess.push(0);
+                }
+            }
+
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const textColor = isDarkMode ? '#f7fafc' : '#2d3748';
+            const gridColor = isDarkMode ? '#4a5568' : '#e2e8f0';
+
+            spendingBarChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'ส่วนเกิน (100%)',
+                            data: dataExcess,
+                            backgroundColor: '#dd6b20', // สีส้ม
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'จ่ายตามสิทธิ (40%)',
+                            data: dataBase,
+                            backgroundColor: '#718096', // สีเทา
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                color: textColor,
+                                font: { family: "'Sarabun', sans-serif" },
+                                boxWidth: 15
+                            }
+                        }, 
+                        // อัปเดต: แสดงตัวเลขพร้อมคำว่า "บาท"
+                        datalabels: {
+                            color: '#ffffff',
+                            font: { size: 12, family: "'Sarabun', sans-serif", weight: 'bold' },
+                            formatter: (val) => val > 0 ? Math.round(val).toLocaleString() + ' บาท' : ''
+                        },
+                        tooltip: {
+                            mode: 'index', 
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(context.parsed.y);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            stacked: true, 
+                            beginAtZero: true, 
+                            ticks: { color: textColor }, 
+                            grid: { color: gridColor },
+                            grace: '10%'
+                        },
+                        x: { 
+                            stacked: true, 
+                            ticks: { color: textColor }, 
+                            grid: { display: false } 
+                        }
+                    },
+                    layout: {
+                        padding: { top: 10 }
+                    }
                 }
             });
         }
@@ -1011,6 +1148,49 @@
                 alertText += ' ระบบได้คำนวณส่วนที่ต้องจ่ายเพิ่มให้แล้ว';
                 alert(alertText);
             }
+        }
+
+        // V.2.4: ฟังก์ชันสำหรับดาวน์โหลดสลิปเป็นรูปภาพ
+        function downloadReceiptImage() {
+            const receiptBox = document.getElementById('calc-result-box');
+            const buttonsGroup = receiptBox.querySelector('.btn-group');
+            
+            // 1. ซ่อนปุ่มต่างๆ ชั่วคราวก่อนเพื่อไม่ให้ติดไปในรูป
+            if(buttonsGroup) buttonsGroup.style.display = 'none';
+            
+            // ปรับสีพื้นหลังให้เป็นสีขาว/สว่าง บังคับเวลาเปิดโหมดกลางคืน
+            const originalBg = receiptBox.style.background;
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            if (isDarkMode) receiptBox.style.background = '#2d3748';
+
+            // 2. ใช้ html2canvas จับภาพ
+            html2canvas(receiptBox, { 
+                scale: 2, // เพิ่มความคมชัด
+                backgroundColor: isDarkMode ? '#1a202c' : '#ffffff' 
+            }).then(canvas => {
+                // คืนค่าปุ่มและสีพื้นหลังกลับมาเหมือนเดิม
+                if(buttonsGroup) buttonsGroup.style.display = 'flex';
+                receiptBox.style.background = originalBg;
+
+                // 3. สร้างไฟล์และสั่งดาวน์โหลด
+                const url = canvas.toDataURL("image/png");
+                const a = document.createElement("a");
+                a.href = url;
+                
+                const now = new Date();
+                const dateStr = now.toLocaleDateString('th-TH').replace(/\//g, '-');
+                const timeStr = now.toLocaleTimeString('th-TH', { hour12: false }).replace(/:/g, '-');
+                
+                a.download = `Receipt_6040Plus_${dateStr}_${timeStr}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+            }).catch(err => {
+                alert("เกิดข้อผิดพลาดในการสร้างรูปภาพสลิป กรุณาลองใหม่อีกครั้ง");
+                if(buttonsGroup) buttonsGroup.style.display = 'flex';
+                receiptBox.style.background = originalBg;
+            });
         }
 
         function copyReceiptText() {
@@ -1310,13 +1490,10 @@
 
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
-            // รีเฟรชกราฟเพื่อเปลี่ยนสีตัวอักษรให้เข้ากับโหมดกลางคืน
             renderChart();
+            renderBarChart(); // โหลดสีกราฟแท่งใหม่
         }
 		
-		// ==========================================
-        // ระบบสำรองและกู้คืนข้อมูล (Backup & Restore)
-        // ==========================================
         function backupData() {
             const dataStr = JSON.stringify(appData, null, 2);
             const blob = new Blob([dataStr], { type: "application/json" });
