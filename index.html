@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- PWA & Mobile Settings -->
     <meta name="theme-color" content="#3182ce">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="60:40 พลัส">
     
-    <!-- Icons & Manifest -->
     <link rel="icon" type="image/png" sizes="192x192" href="https://img1.pic.in.th/images/myIcon-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="https://img2.pic.in.th/myIcon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://img2.pic.in.th/myIcon.png">
@@ -20,7 +18,6 @@
     
     <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.2</title>
 	
-<!-- เริ่ม: ตั้งค่ารูปภาพและข้อความตอนแชร์ลิงก์ (Open Graph) -->
     <meta property="og:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569">
     <meta property="og:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงินให้คุ้มค่า และบันทึกประวัติการใช้จ่ายรายวันของคุณ">
     <meta property="og:image" content="https://img2.pic.in.th/cover-1.png">
@@ -31,8 +28,6 @@
     <meta name="twitter:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569">
     <meta name="twitter:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงิน และบันทึกประวัติการใช้จ่าย">
     <meta name="twitter:image" content="https://img2.pic.in.th/cover-1.png">
-    <!-- จบ: ตั้งค่ารูปภาพและข้อความตอนแชร์ลิงก์ -->
-	
     <style>
         :root {
             --bg-color: #f4f7f6;
@@ -327,7 +322,6 @@
 </head>
 <body>
 
-    <!-- Splash Screen โลโก้ใหม่ (V.2.2) -->
     <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #3182ce; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease;">
         <img src="https://img2.pic.in.th/myIcon.png" alt="Logo" style="width: 180px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
         <h2 style="color: #ffffff; margin-top: 20px; border: none;">คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569</h2>
@@ -410,30 +404,15 @@
                 </div>
             </div>
 
-<!-- ส่วนแจ้งเตือนใหม่ (V.2.2 ปรับปรุงเลือกเวลาได้) -->
-            <div class="card">
-                <h2>ตั้งค่าการแจ้งเตือน</h2>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="reminder-time">เลือกเวลาที่ต้องการให้แจ้งเตือน:</label>
-                    <input type="time" id="reminder-time" value="10:00" style="max-width: 200px; margin: 0 auto; display: block;">
-                </div>
-                <div class="btn-group">
-                    <button class="btn btn-primary" onclick="requestNotificationPermission()">🔔 1. เปิดรับการแจ้งเตือน</button>
-                    <button class="btn btn-success" onclick="scheduleDailyReminder()">⏰ 2. ยืนยันเวลาตั้งเตือน</button>
-                </div>
-            </div>
-        
        <div class="card">
             <h2>จัดการข้อมูลระบบ</h2>
             <div class="btn-group">
-                <!-- ปุ่มสำรองและกู้คืน (ใหม่) -->
                 <button class="btn btn-primary" onclick="backupData()" style="background-color: #2b6cb0;">💾 สำรองข้อมูล (Backup)</button>
                 <label class="btn btn-warning" style="cursor: pointer; display: block; width: 100%; max-width: 400px; box-sizing: border-box;">
                     📂 กู้คืนข้อมูล (Restore)
                     <input type="file" id="restore-file" accept=".json" style="display: none;" onchange="restoreData(event)">
                 </label>
                 
-                <!-- ปุ่มเดิม -->
                 <button class="btn btn-secondary" onclick="exportToCSV()">📥 ส่งออกประวัติเป็น CSV</button>
                 <button class="btn btn-danger" onclick="resetAllData()">🧹 ล้างข้อมูลระบบทั้งหมด</button>
             </div>
@@ -466,7 +445,7 @@
                 </div>
             </div><br>
 
-           
+            
             <div class="card">
                 <h2>คำนวณจำนวนเงิน 60:40</h2>
                 
@@ -578,8 +557,7 @@
         </div>
 
         <div align="center"><br>
-            <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
-            <!-- Histats.com  START  (aync)-->
+            <div id="histats_counter"></div>
             <script type="text/javascript">var _Hasync= _Hasync|| [];
             _Hasync.push(['Histats.start', '1,5029433,4,30,130,80,00011111']);
             _Hasync.push(['Histats.fasi', '1']);
@@ -590,8 +568,7 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
             })();</script>
             <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5029433&101" alt="" border="0"></a></noscript>
-            <!-- Histats.com  END  -->
-        </div>
+            </div>
 
     </div>
 
@@ -624,75 +601,6 @@
                 }
             }, 1500);
         });
-
-        // ==========================================
-        // ส่วนของแจ้งเตือน Notification (V.2.2)
-        // ==========================================
-        function requestNotificationPermission() {
-            if ("Notification" in window) {
-                Notification.requestPermission().then(permission => {
-                    if (permission === "granted") {
-                        alert("✅ เปิดใช้งานการแจ้งเตือนสำเร็จแล้ว!");
-                    } else {
-                        alert("❌ คุณปฏิเสธการแจ้งเตือน");
-                    }
-                });
-            } else {
-                alert("เบราว์เซอร์ของคุณไม่รองรับการแจ้งเตือน");
-            }
-        }
-
-function scheduleDailyReminder() {
-            const timeInput = document.getElementById('reminder-time').value;
-            if (!timeInput) {
-                alert("กรุณาระบุเวลาที่ต้องการแจ้งเตือน");
-                return;
-            }
-            
-            const [hours, minutes] = timeInput.split(':').map(Number);
-            
-            // สร้างวันที่เริ่มต้น
-            let now = new Date();
-            let startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, 0);
-            
-            // ฟังก์ชันจัดรูปแบบเวลาสำหรับไฟล์ ICS (YYYYMMDDTHHMMSS)
-            let pad = (n) => (n < 10 ? '0' + n : n);
-            let formatICSDate = (date) => `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}T${pad(date.getHours())}${pad(date.getMinutes())}${pad(date.getSeconds())}`;
-            
-            let dtstart = formatICSDate(startDate);
-            let endDate = new Date(startDate.getTime() + 15 * 60000); // กิจกรรมยาว 15 นาที
-            let dtend = formatICSDate(endDate);
-
-            // โครงสร้างไฟล์ iCalendar แจ้งเตือนซ้ำทุกวัน (RRULE:FREQ=DAILY)
-            let icsData = `BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-SUMMARY:📝 ตรวจสอบสิทธิ 60:40 พลัส
-DESCRIPTION:อย่าลืมเข้ามาคำนวณการใช้จ่ายและสิทธิคงเหลือของวันนี้กันนะครับ!\\nเข้าแอปที่นี่: https://ppyai.github.io/thai-6040/
-DTSTART:${dtstart}
-DTEND:${dtend}
-RRULE:FREQ=DAILY
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:📝 ตรวจสอบสิทธิ 60:40 พลัส
-TRIGGER:-PT0M
-END:VALARM
-END:VEVENT
-END:VCALENDAR`;
-
-            // สร้างไฟล์และสั่งดาวน์โหลด
-            const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = '6040_Daily_Reminder.ics';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-            
-            alert(`ดาวน์โหลดไฟล์ตั้งเตือนเรียบร้อยแล้ว!\\nกรุณากดเปิดไฟล์เพื่อเพิ่มลงในแอปปฏิทินของเครื่องคุณครับ`);
-        }
 
         // ==========================================
         // โค้ดระบบหลักเดิม (V.2.1)
@@ -1171,7 +1079,7 @@ function optimizeAll() {
             renderNotes();
         }
 
-function exportToCSV() {
+        function exportToCSV() {
             if (appData.history.length === 0) {
                 alert('ไม่มีข้อมูลประวัติที่จะส่งออก');
                 return;
