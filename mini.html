@@ -233,6 +233,17 @@
             --text-muted: #a0aec0;
         }
         body.dark-mode .input-screen { background: #1a202c; }
+        
+        /* ปรับแต่งสีตัวเลขให้สว่างและมองเห็นชัดขึ้นในโหมดมืด */
+        body.dark-mode .input-screen input { color: #68d391; } 
+        body.dark-mode .val-gov { color: #68d391; } 
+        body.dark-mode .val-user { color: #63b3ed; } 
+        body.dark-mode .val-excess { color: #fbd38d; } 
+        body.dark-mode .result-row.total { color: #fc8181; } 
+
+        /* ปรับสีเบอร์มือถือในโหมดมืดเป็นสีเทาเข้ม */
+        body.dark-mode #promptpay-num { color: #cbd5e0; }
+
         body.dark-mode .quick-btn { background: #4a5568; color: #f7fafc; }
         body.dark-mode .quick-btn.clear-btn { background: #742a2a; color: #feb2b2; }
         body.dark-mode .result-box { border-color: #4a5568; }
@@ -340,8 +351,8 @@
                 
                 <div class="input-screen" style="margin-bottom: 15px; padding: 10px; background: #edf2f7;">
                     <label style="font-size: 14px; text-align: left; color: var(--text-muted); margin-bottom: 5px;">หมายเลข PromptPay (พร้อมเพย์):</label>
-                    <input type="text" id="promptpay-num" value="093-310-9708" readonly 
-                           style="font-size: 24px; text-align: center; border: 2px dashed #cbd5e0; cursor: pointer; padding: 5px; color: var(--text-main); width: 100%; font-weight: bold; font-family: inherit; background: transparent; outline: none;" 
+                    <input type="text" id="promptpay-num" value="09-3310-9708" readonly 
+                           style="font-size: 24px; text-align: center; border: 2px dashed #cbd5e0; cursor: pointer; padding: 5px; color: #999999; width: 100%; font-weight: bold; font-family: inherit; background: transparent; outline: none;" 
                            onclick="copyPromptPayNumber()" title="คลิกเพื่อคัดลอก">
                 </div>
                 <button id="btn-copy-pp" class="action-btn" onclick="copyPromptPayNumber()" style="background: #009900; font-size: 16px; padding: 12px; border-radius: 10px;">📋 กดคัดลอกหมายเลข</button>
@@ -499,7 +510,7 @@
                 }, 2000);
                 
             }).catch(err => {
-                alert('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาคลุมดำตัวเลขและคัดลอกด้วยตนเองครับ');
+                alert('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณากดค้างที่หมายเลขแล้วคัดลอกด้วยตนเองครับ');
             });
         }
     </script>
