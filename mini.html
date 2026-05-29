@@ -3,14 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>เครื่องคิดเลข 60:40 Mini</title>
+    
+    <meta name="theme-color" content="#38a169">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 Mini ">
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="myIcon-512-mini.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="myIcon-512-mini.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="myIcon-512-mini.png">
+    <link rel="apple-touch-startup-image" href="myIcon-512-mini.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" Mini V.1.0</title>
+	
+    <meta property="og:title" content="เครื่องคิดเลข ไทยช่วยไทยพลัส 60:40 ปี 2569 Mini">
+    <meta property="og:description" content="แอปคำนวณสิทธิฉบับย่อ ใช้งานง่าย พิมพ์ราคาปุ๊บ รู้ยอดจ่ายเองปั๊บ!">
+    <meta property="og:image" content="https://img2.pic.in.th/cover-1.png">
+    <meta property="og:url" content="https://ppyai.github.io/thai-6040/">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="เครื่องคิดเลข ไทยช่วยไทยพลัส 60:40 ปี 2569 Mini">
+    <meta name="twitter:description" content="แอปคำนวณสิทธิฉบับย่อ ใช้งานง่าย พิมพ์ราคาปุ๊บ รู้ยอดจ่ายเองปั๊บ!">
+    <meta name="twitter:image" content="https://img2.pic.in.th/cover-1.png">
+	
     <style>
         :root {
-            --bg-color: #f4f7f6;
+            --bg-color: #f0fff4; 
             --card-bg: #ffffff;
             --text-main: #2d3748;
-            --primary: #3182ce;
-            --success: #38a169;
+            --text-muted: #718096;
+            --primary: #38a169; 
+            --success: #2f855a; 
             --danger: #e53e3e;
             --warning: #dd6b20;
             --border-radius: 20px;
@@ -31,7 +57,7 @@
 
         .app-container {
             width: 100%;
-            max-width: 450px; /* ขนาดกำลังพอดีกับหน้าจอมือถือ/เครื่องคิดเลข */
+            max-width: 450px;
             background: var(--card-bg);
             border-radius: var(--border-radius);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -53,7 +79,6 @@
             padding: 20px;
         }
 
-        /* กล่องใส่ราคา (หน้าจอเครื่องคิดเลข) */
         .input-screen {
             background: #edf2f7;
             border-radius: 15px;
@@ -83,11 +108,11 @@
             font-family: inherit;
         }
 
-        /* ปุ่มกดแบบด่วน */
+        /* ปุ่มกดแบบด่วน 5 คอลัมน์ 2 แถว */
         .quick-btn-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
             margin-bottom: 20px;
         }
 
@@ -95,17 +120,25 @@
             background: #e2e8f0;
             border: none;
             border-radius: 12px;
-            padding: 15px 0;
-            font-size: 18px;
+            padding: 12px 0;
+            font-size: 16px;
             font-weight: bold;
             color: var(--text-main);
             cursor: pointer;
             transition: 0.1s;
         }
         .quick-btn:active { background: #cbd5e0; transform: scale(0.95); }
-        .quick-btn.clear-btn { background: #fed7d7; color: #c53030; }
+        
+        .quick-btn.clear-btn { 
+            background: #fed7d7; 
+            color: #c53030; 
+            grid-row: span 2; /* กินพื้นที่ความสูง 2 แถว */
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        /* กล่องผลลัพธ์ */
         .result-box {
             border: 2px dashed #cbd5e0;
             border-radius: 15px;
@@ -133,10 +166,9 @@
         }
 
         .val-gov { color: var(--success); font-weight: bold; }
-        .val-user { color: #718096; font-weight: bold; }
+        .val-user { color: #0099FF; font-weight: bold; }
         .val-excess { color: var(--warning); font-weight: bold; }
 
-        /* ส่วนคำอธิบาย */
         .info-card {
             background: #ebf8ff;
             border: 1px solid #bee3f8;
@@ -149,7 +181,7 @@
 
         .info-card h4 {
             margin: 0 0 10px 0;
-            color: var(--primary);
+            color: blue;
             font-size: 17px;
         }
 
@@ -174,14 +206,44 @@
         }
         
         .footer a { color: var(--primary); text-decoration: none; font-weight: bold; }
+
+        /* โหมดกลางคืน */
+        body.dark-mode {
+            --bg-color: #1a202c;
+            --card-bg: #2d3748;
+            --text-main: #f7fafc;
+            --text-muted: #a0aec0;
+        }
+        body.dark-mode .input-screen { background: #1a202c; }
+        body.dark-mode .quick-btn { background: #4a5568; color: #f7fafc; }
+        body.dark-mode .quick-btn.clear-btn { background: #742a2a; color: #feb2b2; }
+        body.dark-mode .result-box { border-color: #4a5568; }
+        body.dark-mode .result-row { border-bottom-color: #4a5568; }
+        body.dark-mode .info-card { background: #2a4365; border-color: #2b6cb0; }
+        body.dark-mode .footer { background: #1a202c; border-top-color: #4a5568; }
+        body.dark-mode #dark-mode-btn { border-color: #4a5568; background-color: #1a202c; }
     </style>
 </head>
 <body>
 
+    <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0fff4; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease;">
+        <img src="myIcon-512-mini.png" alt="Logo" style="width: 180px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+      <h2 style="color: #2f855a; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>
+        ไทยช่วยไทยพลัส 60:40<br>
+        ปี 2569
+        Mini V.1.0</h2>
+    </div>
+
     <div class="app-container">
         <div class="header">
-            ไทยช่วยไทยพลัส 60:40<br>
-            <span style="font-size: 16px; font-weight: normal;">Mini Calculator</span>
+            ไทยช่วยไทยพลัส 60:40 ปี 2569<br>
+            <span style="font-size: 16px; font-weight: normal;">Mini Calculator V.1.0</span>
+        </div><br>
+        
+        <div align="center"><img src="https://raw.githubusercontent.com/PPyai/thai-6040/refs/heads/main/60402569W-mini.png" alt="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569" border="0" style="max-width: 100%; border-radius: 12px;"></div><br>
+ 
+        <div style="display: flex; justify-content: center; margin-bottom: 5px;">
+            <button id="dark-mode-btn" onclick="toggleDarkMode()" style="background-color: var(--card-bg); border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px; cursor: pointer; color: var(--text-main); font-family: inherit; font-size: 16px; font-weight: bold; transition: 0.2s;">🌙 โหมดกลางคืน</button>
         </div>
 
         <div class="calculator-body">
@@ -192,28 +254,34 @@
             </div>
 
             <div class="quick-btn-grid">
+                <button class="quick-btn" onclick="addPrice(10)">+10</button>
+                <button class="quick-btn" onclick="addPrice(20)">+20</button>
                 <button class="quick-btn" onclick="addPrice(50)">+50</button>
                 <button class="quick-btn" onclick="addPrice(100)">+100</button>
-                <button class="quick-btn" onclick="addPrice(500)">+500</button>
                 <button class="quick-btn clear-btn" onclick="clearInput()">C</button>
+
+                <button class="quick-btn" onclick="addPrice(150)">+150</button>
+                <button class="quick-btn" onclick="addPrice(200)">+200</button>
+                <button class="quick-btn" onclick="addPrice(300)">+300</button>
+                <button class="quick-btn" onclick="addPrice(500)">+500</button>
             </div>
 
             <div class="result-box">
                 <div class="result-row">
                     <span>🟢 รัฐจ่าย (60%)</span>
-                    <span class="val-gov" id="res-gov">0.00</span>
+                    <span class="val-gov" id="res-gov">0.00 บาท</span>
                 </div>
                 <div class="result-row">
-                    <span>🔘 เราจ่ายสิทธิ (40%)</span>
-                    <span class="val-user" id="res-user">0.00</span>
+                    <span>🔵 เราจ่าย (40%)</span>
+                    <span class="val-user" id="res-user">0.00 บาท</span>
                 </div>
                 <div class="result-row" id="excess-row" style="display: none;">
                     <span>🟠 ส่วนเกิน (100%)</span>
-                    <span class="val-excess" id="res-excess">0.00</span>
+                    <span class="val-excess" id="res-excess">0.00 บาท</span>
                 </div>
                 <div class="result-row total">
                     <span>👉 เติมเงิน/จ่ายเอง</span>
-                    <span id="res-total-user">0.00</span>
+                    <span id="res-total-user">0.00 บาท</span>
                 </div>
             </div>
 
@@ -222,16 +290,16 @@
             <div class="info-card" style="margin-top: 20px;">
                 <h4>💡 สรุปสูตร "ซื้อให้คุ้ม"</h4>
                 <div style="margin-bottom: 5px;">
-                    <strong style="color:var(--danger)">🗓️ รายวัน (สูงสุด 200.-)</strong><br>
-                    ควรซื้อ: <b>333 บาท</b> (รัฐ 200 | เติมเอง 133)
+                    <strong style="color:var(--danger)">🗓️ รายวัน (สูงสุด 200 บาท)</strong><br>
+                    ควรซื้อ: <b>333.33 บาท</b> (รัฐจ่าย 200 บาท | เติมเอง 133.33 บาท)
                 </div>
                 <div style="margin-bottom: 5px;">
-                    <strong style="color:var(--success)">📅 รายเดือน (สูงสุด 1,000.-)</strong><br>
-                    ควรซื้อ: <b>1,666 บาท</b> (รัฐ 1,000 | เติมเอง 666)
+                    <strong style="color: orange">📅 รายเดือน (สูงสุด 1,000 บาท)</strong><br>
+                    ควรซื้อ: <b>1,666.67 บาท</b> (รัฐจ่าย 1,000 บาท | เติมเอง 666.67 บาท)
                 </div>
                 <div>
-                    <strong style="color:var(--primary)">🏆 ตลอดโครงการ (สูงสุด 4,000.-)</strong><br>
-                    ควรซื้อ: <b>6,666 บาท</b> (รัฐ 4,000 | เติมเอง 2,666)
+                    <strong style="color: #0099ff">🏆 ตลอดโครงการ (สูงสุด 4,000 บาท)</strong><br>
+                    ควรซื้อ: <b>6,666.67 บาท</b> (รัฐจ่าย 4,000 บาท | เติมเอง 2,666.67 บาท)
                 </div>
                 <div style="font-size: 13px; color: #718096; margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 5px;">
                     *หากซื้อเกินยอดแนะนำต่อวัน จะเกิด <b>"ส่วนเกิน"</b> ที่คุณต้องจ่ายเอง 100%
@@ -241,23 +309,53 @@
         </div>
 
         <div class="footer">
-            คำนวณ "ไทยช่วยไทยพลัส 60:40" Mini<br>
+            คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" Mini<br>
             โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank">#โปรแกรมมั่วที่รัก</a>
         </div>
+        
+        <div align="center" style="padding-bottom: 20px; background: var(--bg-color);">
+            <div id="histats_counter"></div>
+            <script type="text/javascript">var _Hasync= _Hasync|| [];
+            _Hasync.push(['Histats.start', '1,5029433,4,107,170,20,00011111']);
+            _Hasync.push(['Histats.fasi', '1']);
+            _Hasync.push(['Histats.track_hits', '']);
+            (function() {
+            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+            })();</script>
+            <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5029433&101" alt="" border="0"></a></noscript>
+            </div>
+        
     </div>
 
     <script>
+        // การทำงานของ Splash Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                if(splash) { 
+                    splash.style.opacity = '0'; 
+                    setTimeout(() => splash.style.display = 'none', 500); 
+                }
+            }, 1500);
+        });
+
         const MAX_GOV_PER_DAY = 200;
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
         
         function calculate() {
             let priceInput = document.getElementById('price-input').value;
             let price = parseFloat(priceInput);
             
             if (isNaN(price) || price <= 0) {
-                document.getElementById('res-gov').innerText = '0.00';
-                document.getElementById('res-user').innerText = '0.00';
-                document.getElementById('res-excess').innerText = '0.00';
-                document.getElementById('res-total-user').innerText = '0.00';
+                document.getElementById('res-gov').innerText = '0.00 บาท';
+                document.getElementById('res-user').innerText = '0.00 บาท';
+                document.getElementById('res-excess').innerText = '0.00 บาท';
+                document.getElementById('res-total-user').innerText = '0.00 บาท';
                 document.getElementById('excess-row').style.display = 'none';
                 return;
             }
@@ -269,17 +367,17 @@
             let excess = Math.max(0, price - subsidizedPrice);
             let totalUserPay = userBase + excess;
 
-            document.getElementById('res-gov').innerText = actualGov.toFixed(2);
-            document.getElementById('res-user').innerText = userBase.toFixed(2);
+            document.getElementById('res-gov').innerText = actualGov.toFixed(2) + ' บาท';
+            document.getElementById('res-user').innerText = userBase.toFixed(2) + ' บาท';
             
             if (excess > 0) {
-                document.getElementById('res-excess').innerText = excess.toFixed(2);
+                document.getElementById('res-excess').innerText = excess.toFixed(2) + ' บาท';
                 document.getElementById('excess-row').style.display = 'flex';
             } else {
                 document.getElementById('excess-row').style.display = 'none';
             }
 
-            document.getElementById('res-total-user').innerText = totalUserPay.toFixed(2);
+            document.getElementById('res-total-user').innerText = totalUserPay.toFixed(2) + ' บาท';
         }
 
         function addPrice(amount) {
@@ -297,8 +395,8 @@
             let price = parseFloat(document.getElementById('price-input').value);
             if(isNaN(price) || price <= 0) return;
 
-            let total = document.getElementById('res-total-user').innerText;
-            let text = `🛒 ยอดราคาสินค้า: ${price} บาท\n👉 คุณต้องเติมเงิน/จ่ายเองรวม: ${total} บาท\n(คิดจากแอป 60:40 Mini)`;
+            let totalText = document.getElementById('res-total-user').innerText;
+            let text = `🛒 ยอดราคาสินค้า: ${price} บาท\n👉 คุณต้องเติมเงิน/จ่ายเองรวม: ${totalText}\n(คิดจากแอป 60:40 Mini)`;
             
             navigator.clipboard.writeText(text).then(() => {
                 let btn = document.getElementById('copy-btn');
