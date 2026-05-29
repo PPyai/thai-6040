@@ -16,16 +16,16 @@
     <link rel="apple-touch-startup-image" href="https://img2.pic.in.th/myIcon.png">
     <link rel="manifest" href="manifest.json">
     
-    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.6</title>
+    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.7</title>
 	
-    <meta property="og:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.6">
+    <meta property="og:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.7">
     <meta property="og:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงินให้คุ้มค่า และบันทึกประวัติการใช้จ่ายรายวันของคุณ">
     <meta property="og:image" content="https://img2.pic.in.th/cover-1.png">
     <meta property="og:url" content="https://ppyai.github.io/thai-6040/">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.6">
+    <meta name="twitter:title" content="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 V.2.7">
     <meta name="twitter:description" content="แอปพลิเคชันช่วยคำนวณสิทธิรัฐช่วยจ่าย 60:40 วางแผนการเติมเงิน และบันทึกประวัติการใช้จ่าย">
     <meta name="twitter:image" content="https://img2.pic.in.th/cover-1.png">
     
@@ -168,7 +168,7 @@
 
     <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #3182ce; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease;">
         <img src="https://img2.pic.in.th/myIcon.png" alt="Logo" style="width: 180px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-        <h2 style="color: #ffffff; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569 V.2.6</h2>
+        <h2 style="color: #ffffff; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569 V.2.7</h2>
     </div>
 
     <div class="container">
@@ -249,7 +249,7 @@
             </div>
         </div>
 
-<!-- แท็บคำนวณ -->
+        <!-- แท็บคำนวณ -->
         <div id="calculator" class="app-section">
             
             <!-- กู้คืน: คำอธิบายเงื่อนไขโครงการ -->
@@ -277,7 +277,6 @@
 
             <div class="card">
                 <h2>คำนวณจำนวนเงิน 60:40</h2>
-                <!-- โค้ดส่วนอื่นๆ ในหน้าคำนวณยังเหมือนเดิม -->
 
                 <div class="form-group">
                     <label for="item-name" style="text-align: left;">ชื่อสินค้า / บริการ</label>
@@ -345,7 +344,7 @@
             </div>
         </div>
 
-<div id="history-section" class="app-section">
+        <div id="history-section" class="app-section">
             <div class="card">
                 <h2>🗓️ ปฏิทินการใช้สิทธิเดือนนี้</h2>
                 <div id="calendar-grid" style="width: 100%; margin-bottom: 20px;"></div>
@@ -379,17 +378,36 @@
                 </div>
             </div>
         </div>
-        
 
-
+        <!-- แท็บโน้ต (อัปเดตใหม่ V.2.7) -->
         <div id="notes-section" class="app-section">
             <div class="card">
                 <h2>สมุดบันทึกช่วยจำ</h2>
-                <div class="form-group">
-                    <label for="note-input">พิมพ์ข้อความเตือนความจำ:</label>
-                    <textarea id="note-input" rows="4" placeholder="บันทึกข้อความที่นี่..." oninput="autoSaveNote()"></textarea>
+                
+                <!-- V.2.7: คำอธิบายการใช้งาน -->
+                <div style="background: #ebf8ff; padding: 15px; border-radius: 8px; border: 1px solid #bee3f8; margin-bottom: 20px; font-size: 15px; text-align: left; color: var(--text-main); width: 100%; box-sizing: border-box;">
+                    <strong style="color: var(--primary);">💡 วิธีใช้งาน:</strong>
+                    <ul style="margin-top: 5px; padding-left: 20px; margin-bottom: 0;">
+                        <li>พิมพ์ข้อความลงในกล่องด้านล่าง ระบบจะ <b>บันทึกเป็นโน้ตใหม่ให้อัตโนมัติ</b> เมื่อคุณหยุดพิมพ์ตามเวลาที่ตั้งไว้</li>
+                        <li>คุณสามารถปรับเวลา "หน่วงก่อนบันทึก" ได้ เพื่อป้องกันแอปหน่วงขณะพิมพ์ยาวๆ</li>
+                        <li>โน้ตที่บันทึกแล้วสามารถกด <b>✏️ แก้ไข</b> หรือ <b>🗑️ ลบ</b> ได้ตลอดเวลา</li>
+                    </ul>
                 </div>
-                <p style="font-size: 15px; color: var(--text-muted); text-align: center; width: 100%; margin-bottom: 20px;" id="note-status">ระบบมีบันทึกอัตโนมัติ</p>
+
+                <!-- V.2.7: Slider ปรับเวลาบันทึกอัตโนมัติ -->
+                <div class="form-group" style="margin-bottom: 20px; width: 100%; max-width: 500px; background: #f7fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; box-sizing: border-box;">
+                    <label for="auto-save-slider" style="text-align: left; font-size: 16px; margin-bottom: 10px;">
+                        ⏱️ เวลาหน่วงก่อนบันทึก: <span id="auto-save-val" style="color: var(--primary); font-weight: bold; font-size: 18px;">3</span> วินาที
+                    </label>
+                    <input type="range" id="auto-save-slider" min="1" max="10" step="1" value="3" style="width: 100%; cursor: pointer;" oninput="updateAutoSaveTime(this.value)">
+                </div>
+
+                <div class="form-group">
+                    <label for="note-input" style="text-align: left;">พิมพ์ข้อความเตือนความจำตรงนี้:</label>
+                    <textarea id="note-input" rows="4" placeholder="พิมพ์ข้อความ... (ระบบจะบันทึกและล้างกล่องเมื่อหยุดพิมพ์)" oninput="autoSaveNote()"></textarea>
+                </div>
+                <p style="font-size: 15px; color: var(--primary); text-align: center; width: 100%; margin-bottom: 20px; font-weight: bold;" id="note-status">พร้อมใช้งาน</p>
+                
                 <div id="notes-list" style="width: 100%;"></div>
             </div>
         </div>
@@ -420,7 +438,7 @@
        </div>
 
         <div class="footer">
-            <strong>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.6</strong><br>
+            <strong>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" V.2.7</strong><br>
              โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank" style="font-size:18px; color: #00ccff; text-decoration:none;">#โปรแกรมมั่วที่รัก</a>
         </div>
 
@@ -467,11 +485,25 @@
         </div>
     </div>
 
+    <!-- V.2.7: Modal สำหรับแก้ไขโน้ต -->
+    <div id="edit-note-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 style="color:var(--primary); margin-top:0; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">✏️ แก้ไขบันทึกช่วยจำ</h3>
+            <div class="form-group" style="text-align:left;">
+                <textarea id="edit-note-content" rows="6" style="font-size: 16px; width: 100%; border: 2px solid #cbd5e0; border-radius: 10px; padding: 10px;"></textarea>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-success" style="padding:10px; font-size: 16px;" onclick="saveEditedNote()">บันทึกข้อความ</button>
+                <button class="btn btn-secondary" style="padding:10px; font-size: 16px;" onclick="closeEditNoteModal()">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         Chart.register(ChartDataLabels);
         let quotaChartInstance = null;
         let spendingBarChartInstance = null; 
-        let categoryChartInstance = null; // V.2.6 กราฟหมวดหมู่
+        let categoryChartInstance = null; 
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); });
@@ -552,7 +584,7 @@
             if(tabId === 'history-section') {
                 renderHistory();
                 renderCalendar();
-                renderCategoryChart(); // V.2.6 แสดงกราฟหมวดหมู่
+                renderCategoryChart(); 
             }
         }
 
@@ -721,13 +753,11 @@
             });
         }
 
-        // V.2.6: Category Pie Chart
         function renderCategoryChart() {
             const ctx = document.getElementById('categoryChart');
             if (!ctx) return;
             if (categoryChartInstance) categoryChartInstance.destroy();
 
-            // Calculate totals per category
             let catTotals = {};
             appData.history.forEach(bill => {
                 if(bill.itemDetails && bill.itemDetails.length > 0) {
@@ -744,7 +774,6 @@
             const data = Object.values(catTotals);
             
             if(data.length === 0 || data.every(d => d === 0)) {
-                // No data
                 categoryChartInstance = new Chart(ctx, {
                     type: 'doughnut',
                     data: { labels: ['ยังไม่มีข้อมูล'], datasets: [{ data: [1], backgroundColor: ['#cbd5e0'] }] },
@@ -871,11 +900,11 @@
         function addItemToList() {
             let name = document.getElementById('item-name').value.trim() || "สินค้าทั่วไป";
             let price = parseFloat(document.getElementById('item-price').value);
-            let category = document.getElementById('item-category').value; // V.2.6 หมวดหมู่
+            let category = document.getElementById('item-category').value; 
 
             if (isNaN(price) || price <= 0) { alert('กรุณากรอกราคาให้ถูกต้อง'); return; }
 
-            basket.push({ name, price: roundUp2(price), category }); // V.2.6
+            basket.push({ name, price: roundUp2(price), category }); 
             document.getElementById('item-name').value = '';
             document.getElementById('item-price').value = '';
             document.getElementById('price-preview').style.display = 'none';
@@ -922,7 +951,7 @@
             currentCalculation = {
                 date: new Date().toLocaleDateString('th-TH'),
                 items: basket.map(i => i.name).join(', '),
-                itemDetails: [...basket], // V.2.6 บันทึกรายละเอียดพร้อมหมวดหมู่
+                itemDetails: [...basket], 
                 total: totalProductPrice,
                 gov: actualGovShare,
                 userBase: baseUserShare,
@@ -938,7 +967,6 @@
             document.getElementById('calc-result-box').style.display = 'block';
         }
 
-        // V.2.6: Web Share API (แชร์สลิปตรงเข้า LINE)
         function downloadReceiptImage() {
             if (!currentCalculation) return;
             const receiptBox = document.getElementById('calc-result-box');
@@ -979,13 +1007,11 @@
             const executeCapture = () => {
                 setTimeout(() => {
                     html2canvas(receiptBox, { scale: 2.5, backgroundColor: isDarkMode ? '#1a202c' : '#ffffff', useCORS: true }).then(canvas => {
-                        // คืนค่า UI เดิมกลับมา
                         slipHeader.remove(); slipItems.remove(); slipFooter.remove();
                         if(titleH2) titleH2.style.display = 'block';
                         if(buttonsGroup) buttonsGroup.style.display = 'flex';
                         receiptBox.style.background = originalBg; receiptBox.style.padding = originalPadding;
 
-                        // โหลดไฟล์รูปลงเครื่องโดยตรง (ตัด Web Share API ทิ้ง)
                         const url = canvas.toDataURL("image/png");
                         const a = document.createElement("a");
                         a.href = url;
@@ -1042,7 +1068,6 @@
             filtered.forEach((item, index) => {
                 let uBase = item.userBase !== undefined ? item.userBase : (item.user - (item.excess||0));
                 
-                // V.2.6 ดึงหมวดหมู่มาแสดงในประวัติ
                 let categoryBadges = '';
                 if(item.itemDetails) {
                     let cats = [...new Set(item.itemDetails.map(i => i.category || 'อื่นๆ'))];
@@ -1118,19 +1143,16 @@
             alert('✅ บันทึกการแก้ไขยอดเงินและอัปเดตสิทธิสำเร็จแล้ว!');
         }
 
-        // V.2.6: กู้คืนและปรับปรุงฟังก์ชันส่งออก CSV
         function exportToCSV() {
             if (appData.history.length === 0) {
                 alert('ไม่มีข้อมูลประวัติที่จะส่งออก'); return;
             }
             
-            // เพิ่ม \uFEFF เพื่อให้ Excel อ่านภาษาไทยได้ถูกต้อง และเพิ่มคอลัมน์หมวดหมู่
             let csvContent = "\uFEFFวันที่,รายการสินค้า,หมวดหมู่หลัก,ราคาสินค้าเต็ม(บาท),รัฐช่วยจ่าย(บาท),จ่ายเองในสิทธิ(บาท),ส่วนเกินสิทธิ(บาท),รวมยอดที่คุณจ่ายเอง(บาท)\n";
             
             appData.history.forEach(item => {
                 let itemsStr = (item.items || "สินค้าทั่วไป").replace(/"/g, '""');
                 
-                // ดึงหมวดหมู่ออกมา
                 let catStr = "ไม่ได้ระบุ";
                 if(item.itemDetails) {
                     let cats = item.itemDetails.map(i => i.category || 'อื่นๆ');
@@ -1161,25 +1183,91 @@
             document.body.removeChild(link);
         }
 
+        // ==========================================
+        // V.2.7: ระบบสมุดบันทึกช่วยจำ (อัปเดตใหม่)
+        // ==========================================
         let autoSaveTimeout;
+        let autoSaveDelay = 3000; // ค่าเริ่มต้นหน่วงเวลา 3 วินาที
+
+        function updateAutoSaveTime(seconds) {
+            autoSaveDelay = seconds * 1000;
+            document.getElementById('auto-save-val').innerText = seconds;
+        }
+
         function autoSaveNote() {
-            document.getElementById('note-status').innerText = "กำลังบันทึก...";
+            document.getElementById('note-status').innerText = "กำลังพิมพ์... (จะบันทึกเมื่อหยุดพัก)";
+            document.getElementById('note-status').style.color = "var(--warning)";
+            
             clearTimeout(autoSaveTimeout);
             autoSaveTimeout = setTimeout(() => {
                 const text = document.getElementById('note-input').value.trim();
                 if (text) {
                     appData.notes.unshift({ id: Date.now(), date: new Date().toLocaleDateString('th-TH'), content: text });
-                    document.getElementById('note-input').value = ''; saveData(); renderNotes();
+                    document.getElementById('note-input').value = ''; 
+                    saveData(); 
+                    renderNotes();
+                    document.getElementById('note-status').innerText = "✅ บันทึกเป็นโน้ตใหม่เรียบร้อยแล้ว";
+                    document.getElementById('note-status').style.color = "var(--success)";
+                    setTimeout(() => { 
+                        document.getElementById('note-status').innerText = "พร้อมใช้งาน"; 
+                        document.getElementById('note-status').style.color = "var(--primary)";
+                    }, 3000);
+                } else {
+                    document.getElementById('note-status').innerText = "พร้อมใช้งาน";
+                    document.getElementById('note-status').style.color = "var(--primary)";
                 }
-                document.getElementById('note-status').innerText = "ระบบบันทึกอัตโนมัติแล้ว";
-            }, 1500);
+            }, autoSaveDelay);
         }
 
         function renderNotes() {
             const list = document.getElementById('notes-list'); list.innerHTML = '';
-            appData.notes.forEach((n, i) => list.innerHTML += `<div class="note-card"><button class="delete-btn" onclick="deleteNote(${i})">🗑️ ลบ</button><small style="color:var(--text-muted)">📅 ${n.date}</small><br><span>${n.content}</span></div>`);
+            if (appData.notes.length === 0) {
+                list.innerHTML = '<p style="text-align:center; color:var(--text-muted);">ยังไม่มีบันทึกช่วยจำในระบบ</p>';
+                return;
+            }
+            appData.notes.forEach((n, i) => {
+                list.innerHTML += `<div class="note-card">
+                    <div style="float: right; margin-left: 10px; margin-bottom: 5px;">
+                        <button class="btn-warning" style="border:none; padding:5px 10px; border-radius:6px; cursor:pointer; margin-right:5px; color:white; font-size:14px; background-color: #ed8936;" onclick="openEditNoteModal(${i})">✏️ แก้ไข</button>
+                        <button class="delete-btn" style="padding:5px 10px; font-size:14px; float:none;" onclick="deleteNote(${i})">🗑️ ลบ</button>
+                    </div>
+                    <small style="color:var(--text-muted); display:inline-block; margin-bottom:5px;">📅 ${n.date}</small>
+                    <div style="white-space: pre-wrap; clear:both; word-wrap: break-word;">${n.content}</div>
+                </div>`;
+            });
         }
-        function deleteNote(i) { appData.notes.splice(i, 1); saveData(); renderNotes(); }
+        
+        function deleteNote(i) { 
+            if(confirm('ยืนยันการลบบันทึกนี้ใช่หรือไม่?')) {
+                appData.notes.splice(i, 1); saveData(); renderNotes(); 
+            }
+        }
+
+        // V.2.7: การทำงานของปุ่มแก้ไขโน้ต
+        let currentEditNoteIndex = -1;
+        function openEditNoteModal(index) {
+            currentEditNoteIndex = index;
+            document.getElementById('edit-note-content').value = appData.notes[index].content;
+            document.getElementById('edit-note-modal').style.display = 'flex';
+        }
+
+        function closeEditNoteModal() {
+            document.getElementById('edit-note-modal').style.display = 'none';
+            currentEditNoteIndex = -1;
+        }
+
+        function saveEditedNote() {
+            if(currentEditNoteIndex === -1) return;
+            const newContent = document.getElementById('edit-note-content').value.trim();
+            if(newContent) {
+                appData.notes[currentEditNoteIndex].content = newContent;
+                saveData();
+                renderNotes();
+                closeEditNoteModal();
+            } else {
+                alert('ข้อความบันทึกไม่สามารถว่างเปล่าได้ครับ');
+            }
+        }
 
         function toggleDarkMode() { document.body.classList.toggle('dark-mode'); renderChart(); renderBarChart(); renderCategoryChart(); }
         function backupData() {
@@ -1201,11 +1289,27 @@
         function resetAllData() {
             if (confirm('คำเตือน: ลบข้อมูลทั้งหมดกลับเป็นค่าเริ่มต้น?')) { localStorage.removeItem('konlaKruengPlusData'); location.reload(); }
         }
-        function showInstallGuide() { document.getElementById('install-guide-modal').style.display = 'flex'; }
+        
+function showInstallGuide() {
+            let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            let isAndroid = /Android/.test(navigator.userAgent);
+            let guideText = "";
+
+            if (isIOS) {
+                guideText = "1️⃣ กดปุ่ม <b>แชร์ (Share)</b> ที่แถบด้านล่างของ Safari<br><br>2️⃣ เลื่อนหาและเลือก <b>'เพิ่มไปยังหน้าจอโฮม' (Add to Home Screen)</b><br><br>3️⃣ กด <b>'เพิ่ม' (Add)</b> ที่มุมขวาบน";
+            } else if (isAndroid) {
+                guideText = "1️⃣ กดปุ่ม <b>เมนู (จุด 3 จุด)</b> ที่มุมขวาบนของ Chrome/เบราว์เซอร์<br><br>2️⃣ เลือก <b>'เพิ่มลงในหน้าจอหลัก' (Add to Home screen)</b><br><br>3️⃣ กด <b>'เพิ่ม' (Add)</b>";
+            } else {
+                guideText = "1️⃣ กดปุ่ม <b>เมนู</b> ของเบราว์เซอร์<br><br>2️⃣ เลือก <b>'ติดตั้งแอป / เพิ่มลงในหน้าจอหลัก' (Install / Add to Home screen)</b>";
+            }
+
+            document.getElementById('install-guide-text').innerHTML = guideText;
+            document.getElementById('install-guide-modal').style.display = 'flex';
+        }
         
         window.onload = initApp;
 
-function downloadQRImage() {
+        function downloadQRImage() {
             const imageUrl = "https://img1.pic.in.th/images/21460422.jpg";
             fetch(imageUrl)
                 .then(response => response.blob())
