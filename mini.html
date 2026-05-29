@@ -276,17 +276,19 @@
                 <input type="number" id="price-input" placeholder="0" oninput="calculate()" onfocus="this.value=''">
             </div>
 
-            <div class="quick-btn-grid">
+                        <div class="quick-btn-grid">
+                <button class="quick-btn" onclick="addPrice(1)">+1</button>
+                <button class="quick-btn" onclick="addPrice(2)">+2</button>
+                <button class="quick-btn" onclick="addPrice(5)">+5</button>
                 <button class="quick-btn" onclick="addPrice(10)">+10</button>
+                <button class="quick-btn clear-btn" onclick="clearInput()">C</button>
                 <button class="quick-btn" onclick="addPrice(20)">+20</button>
                 <button class="quick-btn" onclick="addPrice(50)">+50</button>
                 <button class="quick-btn" onclick="addPrice(100)">+100</button>
-                <button class="quick-btn clear-btn" onclick="clearInput()">C</button>
-                <button class="quick-btn" onclick="addPrice(150)">+150</button>
-                <button class="quick-btn" onclick="addPrice(200)">+200</button>
-                <button class="quick-btn" onclick="addPrice(300)">+300</button>
                 <button class="quick-btn" onclick="addPrice(500)">+500</button>
+                <button class="quick-btn clear-btn" onclick="clearInput()">C</button>
             </div>
+
 
             <div class="result-box">
                 <div class="result-row">
