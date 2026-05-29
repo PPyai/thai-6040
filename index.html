@@ -429,11 +429,13 @@
 
                 <button class="btn btn-primary" onclick="downloadQRImage()" style="margin: 15px auto; display: block;">💾 กดเซฟรูป QR Code</button>
 
-                <div class="form-group" style="margin-top: 25px; display: none;">
-                    <label for="promptpay-num">หมายเลข PromptPay (เพื่อกดคัดลอก):</label>
-                    <input type="text" id="promptpay-num" value="000-000-0000" readonly style="background: #edf2f7; letter-spacing: 2px; color: #2d3748;">
+<div class="form-group" style="margin-top: 25px;">
+                    <label for="promptpay-num">หมายเลข PromptPay (พร้อมเพย์):</label>
+                    <input type="text" id="promptpay-num" value="093-310-9708" readonly 
+                           style="background: #edf2f7; letter-spacing: 2px; color: #2d3748; text-align: center; font-size: 26px; font-weight: bold; border: 2px dashed #cbd5e0; cursor: pointer;" 
+                           onclick="copyPromptPayNumber()" title="คลิกเพื่อคัดลอก">
                 </div>
-                <button class="btn btn-success" onclick="copyPromptPayNumber()" style="margin: 0 auto; display: block; display: none;">📋 กดคัดลอกหมายเลข</button>
+                <button id="btn-copy-pp" class="btn btn-success" onclick="copyPromptPayNumber()" style="margin: 0 auto; display: block; max-width: 300px;">📋 กดคัดลอกหมายเลข</button>
             </div>
        </div>
 
@@ -1330,15 +1332,27 @@ function showInstallGuide() {
                 });
         }
 
-        function copyPromptPayNumber() {
+function copyPromptPayNumber() {
             const numInput = document.getElementById('promptpay-num');
-            numInput.select();
-            numInput.setSelectionRange(0, 99999); 
+            // ถอดเครื่องหมายขีดออกก่อนคัดลอก เพื่อให้แอปธนาคารอ่านง่าย (จะได้เลข 0933109708)
+            const rawNumber = numInput.value.replace(/-/g, ''); 
             
-            navigator.clipboard.writeText(numInput.value).then(() => {
-                alert('📋 คัดลอกหมายเลข PromptPay เรียบร้อยแล้ว! สามารถนำไปวางในแอปธนาคารเพื่อโอนได้ทันทีครับ');
+            navigator.clipboard.writeText(rawNumber).then(() => {
+                // เปลี่ยนข้อความและสีปุ่มชั่วคราวเพื่อแจ้งเตือนว่าคัดลอกแล้ว
+                const copyBtn = document.getElementById('btn-copy-pp');
+                const originalText = copyBtn.innerHTML;
+                
+                copyBtn.innerHTML = '✅ คัดลอกสำเร็จ!';
+                copyBtn.style.backgroundColor = '#2f855a'; // สีเขียวเข้มขึ้น
+                
+                // คืนค่าปุ่มกลับมาเหมือนเดิมหลังผ่านไป 2 วินาที
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                    copyBtn.style.backgroundColor = 'var(--success)';
+                }, 2000);
+                
             }).catch(err => {
-                alert('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาคลุมดำและคัดลอกด้วยตนเอง');
+                alert('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาคลุมดำตัวเลขและคัดลอกด้วยตนเองครับ');
             });
         }
 
