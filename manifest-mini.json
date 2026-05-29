@@ -1,0 +1,16 @@
+{
+  "name": "คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 Mini",
+  "short_name": "คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569 Mini",
+  "description": "คำนวณสิทธ ิ ไทยช่วยไทยพลัส 60:40 ฉบับมินิ ใช้งานง่าย",
+  "start_url": "mini.html",
+  "display": "standalone",
+  "background_color": "#f0fff4",
+  "theme_color": "#38a169",
+  "icons": [
+    {
+      "src": "myIcon-512-mini.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
