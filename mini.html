@@ -197,6 +197,24 @@
             cursor: pointer;
         }
 
+        /* รูปแบบปุ่มสนับสนุน */
+        #support-btn {
+            background-color: #e2e8f0;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #4a5568;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        #support-btn:active {
+            transform: scale(0.95);
+        }
+
         .footer {
             text-align: center;
             padding: 15px;
@@ -222,6 +240,7 @@
         body.dark-mode .info-card { background: #2a4365; border-color: #2b6cb0; }
         body.dark-mode .footer { background: #1a202c; border-top-color: #4a5568; }
         body.dark-mode #dark-mode-btn { border-color: #4a5568; background-color: #1a202c; }
+        body.dark-mode #support-btn { background-color: #4a5568; color: #f7fafc; }
     </style>
 </head>
 <body>
@@ -304,6 +323,28 @@
                 <div style="font-size: 13px; color: #718096; margin-top: 10px; border-top: 1px dashed #cbd5e0; padding-top: 5px;">
                     *หากซื้อเกินยอดแนะนำต่อวัน จะเกิด <b>"ส่วนเกิน"</b> ที่คุณต้องจ่ายเอง 100%
                 </div>
+            </div>
+
+            <!-- ปุ่มสนับสนุน -->
+            <div style="text-align: center; margin-top: 15px; margin-bottom: 10px;">
+                <button id="support-btn" onclick="toggleSupport()">❤️ สนับสนุนผู้พัฒนา</button>
+            </div>
+            
+            <!-- ส่วนแสดง QR Code (ซ่อนไว้เป็นค่าเริ่มต้น) -->
+            <div id="support-section" style="display: none; background: var(--card-bg); border: 2px dashed #cbd5e0; border-radius: 15px; padding: 15px; margin-bottom: 10px; text-align: center;">
+                <p style="font-size: 14px; color: var(--text-muted); margin-top: 0; margin-bottom: 15px;">คุณสามารถสนับสนุนและเป็นกำลังใจได้ผ่านช่องทาง PromptPay</p>
+                <div style="background: white; padding: 10px; border-radius: 12px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                    <img src="https://img1.pic.in.th/images/21460422.jpg" alt="PromptPay QR Code" style="max-width: 100%; width: 220px; height: auto; border-radius: 8px; display: block; margin: 0 auto;">
+                </div>
+                <button class="action-btn" onclick="downloadQRImage()" style="background: var(--primary); font-size: 16px; padding: 12px; margin-bottom: 15px; border-radius: 10px;">💾 กดเซฟรูป QR Code</button>
+                
+                <div class="input-screen" style="margin-bottom: 15px; padding: 10px; background: #edf2f7;">
+                    <label style="font-size: 14px; text-align: left; color: var(--text-muted); margin-bottom: 5px;">หมายเลข PromptPay (พร้อมเพย์):</label>
+                    <input type="text" id="promptpay-num" value="093-310-9708" readonly 
+                           style="font-size: 24px; text-align: center; border: 2px dashed #cbd5e0; cursor: pointer; padding: 5px; color: var(--text-main); width: 100%; font-weight: bold; font-family: inherit; background: transparent; outline: none;" 
+                           onclick="copyPromptPayNumber()" title="คลิกเพื่อคัดลอก">
+                </div>
+                <button id="btn-copy-pp" class="action-btn" onclick="copyPromptPayNumber()" style="background: var(--success); font-size: 16px; padding: 12px; border-radius: 10px;">📋 กดคัดลอกหมายเลข</button>
             </div>
 
         </div>
@@ -407,6 +448,58 @@
                     btn.innerText = originalText;
                     btn.style.background = "var(--success)";
                 }, 2000);
+            });
+        }
+
+        // การทำงานของส่วนสนับสนุน
+        function toggleSupport() {
+            let section = document.getElementById('support-section');
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        }
+
+        function downloadQRImage() {
+            const imageUrl = "https://img1.pic.in.th/images/21460422.jpg";
+            fetch(imageUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'PromptPay_QR_Code.jpg';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    alert('💾 บันทึกรูปภาพสำเร็จ! สามารถนำไปสแกนในแอปธนาคารได้เลยครับ');
+                })
+                .catch(() => {
+                    window.open(imageUrl, '_blank');
+                    alert('เนื่องจากข้อจำกัดของเบราว์เซอร์ กรุณากดค้างที่รูปภาพแล้วเลือก "บันทึกรูปภาพ" (Save Image) ด้วยตนเองครับ');
+                });
+        }
+
+        function copyPromptPayNumber() {
+            const numInput = document.getElementById('promptpay-num');
+            const rawNumber = numInput.value.replace(/-/g, ''); 
+            
+            navigator.clipboard.writeText(rawNumber).then(() => {
+                const copyBtn = document.getElementById('btn-copy-pp');
+                const originalText = copyBtn.innerHTML;
+                
+                copyBtn.innerHTML = '✅ คัดลอกสำเร็จ!';
+                copyBtn.style.backgroundColor = '#2f855a'; 
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                    copyBtn.style.backgroundColor = 'var(--success)';
+                }, 2000);
+                
+            }).catch(err => {
+                alert('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาคลุมดำตัวเลขและคัดลอกด้วยตนเองครับ');
             });
         }
     </script>
