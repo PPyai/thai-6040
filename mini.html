@@ -331,19 +331,24 @@
                 <button id="support-btn" onclick="toggleSupport()">❤️ สนับสนุนผู้พัฒนา</button>
             </div>
             
+            <!-- ส่วนแสดง QR Code -->
             <div id="support-section" style="display: none; background: var(--card-bg); border: 2px dashed #cbd5e0; border-radius: 15px; padding: 15px; margin-bottom: 10px; text-align: center;">
                 <p style="font-size: 14px; color: var(--text-muted); margin-top: 0; margin-bottom: 15px;">สนับสนุนผ่าน PromptPay</p>
                 <div style="background: white; padding: 10px; border-radius: 12px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 15px;">
                     <img src="https://img1.pic.in.th/images/21460422.jpg" alt="QR" style="max-width: 100%; width: 220px; border-radius: 8px;">
                 </div>
+                <!-- ปุ่มเซฟรูปภาพที่หายไป -->
+                <button class="action-btn" onclick="downloadQRImage()" style="background: #0099ff; font-size: 16px; padding: 12px; margin-bottom: 15px; border-radius: 10px;">💾 กดเซฟรูป QR Code</button>
+                
                 <div class="input-screen" style="margin-bottom: 15px; padding: 10px; background: #edf2f7;">
                     <label style="font-size: 14px; text-align: left; color: var(--text-muted); margin-bottom: 5px;">หมายเลข PromptPay (พร้อมเพย์):</label>
-                    <input type="text" id="promptpay-num" value="09-3310-9708" readonly 
-                           style="font-size: 24px; text-align: center; border: 2px dashed #cbd5e0; cursor: pointer; padding: 5px; color: #999999; width: 100%; font-weight: bold; font-family: inherit; background: transparent; outline: none;" 
+                    <input type="text" id="promptpay-num" value="093-310-9708" readonly 
+                           style="font-size: 24px; text-align: center; border: 2px dashed #cbd5e0; cursor: pointer; padding: 5px; color: var(--text-main); width: 100%; font-weight: bold; font-family: inherit; background: transparent; outline: none;" 
                            onclick="copyPromptPayNumber()" title="คลิกเพื่อคัดลอก">
                 </div>
-                <button id="btn-copy-pp" class="action-btn" onclick="copyPromptPayNumber()">📋 คัดลอกหมายเลข</button>
+                <button id="btn-copy-pp" class="action-btn" onclick="copyPromptPayNumber()" style="background: #009900; font-size: 16px; padding: 12px; border-radius: 10px;">📋 กดคัดลอกหมายเลข</button>
             </div>
+
         </div>
 
         <div class="footer">คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" Mini<br>โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank">#โปรแกรมมั่วที่รัก</a></div>
@@ -407,7 +412,27 @@
             document.getElementById('install-guide-text').innerHTML = text;
             document.getElementById('install-guide-modal').style.display = 'flex';
         }
-        function downloadQRImage() { window.open("https://img1.pic.in.th/images/21460422.jpg"); }
-    </script>
+        function downloadQRImage() {
+    const imageUrl = "https://img1.pic.in.th/images/21460422.jpg";
+    fetch(imageUrl)
+        .then(response => response.blob())
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'PromptPay_QR_Code.jpg';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            alert('💾 บันทึกรูปภาพสำเร็จ!');
+        })
+        .catch(() => {
+            window.open(imageUrl, '_blank');
+        });
+}
+
+	
+	</script>
 </body>
 </html>
