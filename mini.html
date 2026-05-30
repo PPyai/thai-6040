@@ -16,7 +16,7 @@
     <link rel="apple-touch-startup-image" href="myIcon-512-mini.png">
     <link rel="manifest" href="manifest-mini.json">
     
-    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" Mini V.1.1</title>
+    <title>คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" Mini (สลับโหมด)</title>
 	
     <meta property="og:title" content="เครื่องคิดเลข ไทยช่วยไทยพลัส 60:40 ปี 2569 Mini">
     <meta property="og:description" content="แอปคำนวณสิทธิฉบับย่อ ใช้งานง่าย พิมพ์ราคาปุ๊บ รู้ยอดจ่ายเองปั๊บ!">
@@ -77,6 +77,28 @@
 
         .calculator-body {
             padding: 20px;
+        }
+
+        /* รูปแบบปุ่มสลับโหมด */
+        .mode-btn {
+            flex: 1;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        .mode-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .mode-btn.inactive {
+            background: #e2e8f0;
+            color: var(--text-main);
         }
 
         .input-screen {
@@ -180,7 +202,7 @@
 
         .info-card h4 {
             margin: 0 0 10px 0;
-            color: #00900;
+            color: #009900;
             font-size: 17px;
         }
 
@@ -244,6 +266,8 @@
         body.dark-mode .footer { background: #1a202c; border-top-color: #4a5568; }
         body.dark-mode #dark-mode-btn { border-color: #4a5568; background-color: #1a202c; }
         body.dark-mode #support-btn { background-color: #4a5568; color: #f7fafc; }
+        /* โหมดมืดสำหรับปุ่มสลับโหมด */
+        body.dark-mode .mode-btn.inactive { background: #4a5568; color: #f7fafc; }
 
         /* Modal สไตล์ */
         .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:99999; justify-content:center; align-items:center; }
@@ -254,13 +278,13 @@
 
     <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0fff4; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease;">
         <img src="myIcon-512-mini.png" alt="Logo" style="width: 180px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-        <h2 style="color: #2f855a; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569<br>Mini V.1.1</h2>
+        <h2 style="color: #2f855a; margin-top: 20px; border: none; text-align: center;">คำนวณ<br>ไทยช่วยไทยพลัส 60:40<br>ปี 2569<br>Mini V.2</h2>
     </div>
 
     <div class="app-container">
         <div class="header">
             ไทยช่วยไทยพลัส 60:40 ปี 2569<br>
-            <span style="font-size: 16px; font-weight: normal;">Mini Calculator V.1.1</span>
+            <span style="font-size: 16px; font-weight: normal;">Mini Calculator V.2 (สลับโหมด)</span>
         </div><br>
         
         <div align="center"><img src="https://raw.githubusercontent.com/PPyai/thai-6040/refs/heads/main/60402569W-mini.png" alt="Logo" style="max-width: 100%; border-radius: 12px;"></div><br>
@@ -268,12 +292,19 @@
         <div style="display: flex; justify-content: center; gap: 5px; margin-bottom: 10px; flex-wrap: wrap;">
             <button id="dark-mode-btn" onclick="toggleDarkMode()" style="background-color: var(--card-bg); border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px; cursor: pointer; color: var(--text-main); font-family: inherit; font-size: 16px; font-weight: bold;">🌙 กลางคืน</button>
             <button onclick="showInstallGuide()" style="background-color: var(--primary); border: none; border-radius: 8px; padding: 5px 15px; cursor: pointer; color: white; font-family: inherit; font-size: 16px; font-weight: bold;">📲 ติดตั้งแอป</button>
-            <button onclick="window.location.href='index.html'" style="background-color: #4a5568; border: none; border-radius: 8px; padding: 5px 15px; cursor: pointer; color: white; font-family: inherit; font-size: 16px; font-weight: bold;">🌐 เวอร์ชันเต็ม</button>
+            <button onclick="window.location.href='https://ppyai.github.io/thai-6040/'" style="background-color: #4a5568; border: none; border-radius: 8px; padding: 5px 15px; cursor: pointer; color: white; font-family: inherit; font-size: 16px; font-weight: bold;">🌐 เวอร์ชันเต็ม</button>
         </div>
 
         <div class="calculator-body">
+            
+            <!-- ส่วนสลับโหมด -->
+            <div style="display: flex; justify-content: center; margin-bottom: 15px; gap: 8px;">
+                <button id="mode-price-btn" class="mode-btn active" onclick="setCalcMode('PRICE')">🛒 คิดจากราคาสินค้า</button>
+                <button id="mode-budget-btn" class="mode-btn inactive" onclick="setCalcMode('BUDGET')">💵 คิดจากเงินที่มี</button>
+            </div>
+
             <div class="input-screen">
-                <label>💰 ราคาสินค้า (บาท)</label>
+                <label id="input-label">💰 ราคาสินค้า (บาท)</label>
                 <input type="number" id="price-input" placeholder="0" oninput="calculate()" onfocus="this.value=''">
             </div>
 
@@ -289,27 +320,26 @@
                 <button class="quick-btn" onclick="addPrice(500)">+500</button>
             </div>
 
-
             <div class="result-box">
                 <div class="result-row">
-                    <span>🟢 รัฐจ่าย (60%)</span>
+                    <span id="row-gov-label">🟢 รัฐจ่าย (60%)</span>
                     <span class="val-gov" id="res-gov">0.00 บาท</span>
                 </div>
                 <div class="result-row">
-                    <span>🔵 เราจ่าย (40%)</span>
+                    <span id="row-user-label">🔵 เราจ่าย (40%)</span>
                     <span class="val-user" id="res-user">0.00 บาท</span>
                 </div>
                 <div class="result-row" id="excess-row" style="display: none;">
-                    <span>🟠 ส่วนเกิน (100%)</span>
+                    <span id="row-excess-label">🟠 ส่วนเกิน (100%)</span>
                     <span class="val-excess" id="res-excess">0.00 บาท</span>
                 </div>
                 <div class="result-row total">
-                    <span>👉 เติมเงิน/จ่ายเอง</span>
+                    <span id="res-total-label">👉 เติมเงิน/จ่ายเอง</span>
                     <span id="res-total-user">0.00 บาท</span>
                 </div>
             </div>
 
-            <button class="action-btn" id="copy-btn" onclick="copyResult()">📋 คัดลอกยอดจ่ายเงิน</button>
+            <button class="action-btn" id="copy-btn" onclick="copyResult()">📋 คัดลอกผลลัพธ์</button>
 
             <div class="info-card" style="margin-top: 20px;">
                 <h4>💡 สรุปสูตร "ซื้อให้คุ้ม"</h4>
@@ -346,10 +376,9 @@
                 </div>
                 <button id="btn-copy-pp" class="action-btn" onclick="copyPromptPayNumber()" style="background: #009900; font-size: 16px; padding: 12px; border-radius: 10px;">📋 กดคัดลอกหมายเลข</button>
             </div>
-
         </div>
 
-        <div class="footer">คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" Mini V.1.1<br>โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank">#โปรแกรมมั่วที่รัก</a></div>
+        <div class="footer">คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" Mini2<br>โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank">#โปรแกรมมั่วที่รัก</a></div>
         
         <div align="center" style="padding-bottom: 20px; background: var(--bg-color);">
             <div id="histats_counter"></div>
@@ -376,10 +405,42 @@
     <script>
         window.addEventListener('load', () => { setTimeout(() => { const splash = document.getElementById('splash-screen'); if(splash) { splash.style.opacity = '0'; setTimeout(() => splash.style.display = 'none', 500); } }, 1500); });
         const MAX_GOV_PER_DAY = 200;
+        let currentMode = 'PRICE';
+
         function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
+        
+        // ฟังก์ชันสลับโหมดและเปลี่ยนป้ายกำกับ
+        function setCalcMode(mode) {
+            currentMode = mode;
+            let btnPrice = document.getElementById('mode-price-btn');
+            let btnBudget = document.getElementById('mode-budget-btn');
+            
+            if (mode === 'PRICE') {
+                btnPrice.classList.add('active'); btnPrice.classList.remove('inactive');
+                btnBudget.classList.add('inactive'); btnBudget.classList.remove('active');
+                
+                document.getElementById('input-label').innerText = '💰 ราคาสินค้า (บาท)';
+                document.getElementById('row-gov-label').innerText = '🟢 รัฐจ่าย (60%)';
+                document.getElementById('row-user-label').innerText = '🔵 เราจ่าย (40%)';
+                document.getElementById('row-excess-label').innerText = '🟠 ส่วนเกิน (100%)';
+                document.getElementById('res-total-label').innerText = '👉 เติมเงิน/จ่ายเอง';
+            } else {
+                btnBudget.classList.add('active'); btnBudget.classList.remove('inactive');
+                btnPrice.classList.add('inactive'); btnPrice.classList.remove('active');
+                
+                document.getElementById('input-label').innerText = '💵 มีเงิน/งบประมาณ (บาท)';
+                document.getElementById('row-gov-label').innerText = '🟢 รัฐช่วยสมทบ (60%)';
+                document.getElementById('row-user-label').innerText = '🔵 งบในสิทธิ (40%)';
+                document.getElementById('row-excess-label').innerText = '🟠 งบส่วนเกิน (100%)';
+                document.getElementById('res-total-label').innerText = '🛒 ซื้อของได้ราคาสูงสุด';
+            }
+            calculate();
+        }
+
         function calculate() {
-            let price = parseFloat(document.getElementById('price-input').value);
-            if (isNaN(price) || price <= 0) {
+            let val = parseFloat(document.getElementById('price-input').value);
+            
+            if (isNaN(val) || val <= 0) {
                 document.getElementById('res-gov').innerText = '0.00 บาท';
                 document.getElementById('res-user').innerText = '0.00 บาท';
                 document.getElementById('res-excess').innerText = '0.00 บาท';
@@ -387,21 +448,94 @@
                 document.getElementById('excess-row').style.display = 'none';
                 return;
             }
-            let actualGov = Math.min(price * 0.60, MAX_GOV_PER_DAY);
-            let userBase = (actualGov / 0.60) * 0.40;
-            let excess = Math.max(0, price - (actualGov / 0.60));
-            document.getElementById('res-gov').innerText = actualGov.toFixed(2) + ' บาท';
-            document.getElementById('res-user').innerText = userBase.toFixed(2) + ' บาท';
-            if (excess > 0) { document.getElementById('res-excess').innerText = excess.toFixed(2) + ' บาท'; document.getElementById('excess-row').style.display = 'flex'; }
-            else { document.getElementById('excess-row').style.display = 'none'; }
-            document.getElementById('res-total-user').innerText = (userBase + excess).toFixed(2) + ' บาท';
+
+            if (currentMode === 'PRICE') {
+                // โหมดที่ 1: คำนวณแบบเดิม (ราคาสินค้า -> ยอดจ่าย)
+                let idealGov = val * 0.60;
+                let actualGov = Math.min(idealGov, MAX_GOV_PER_DAY);
+                let subsidizedPrice = actualGov / 0.60;
+                let userBase = subsidizedPrice * 0.40;
+                let excess = Math.max(0, val - subsidizedPrice);
+                let totalUserPay = userBase + excess;
+
+                document.getElementById('res-gov').innerText = actualGov.toFixed(2) + ' บาท';
+                document.getElementById('res-user').innerText = userBase.toFixed(2) + ' บาท';
+                
+                if (excess > 0) {
+                    document.getElementById('res-excess').innerText = excess.toFixed(2) + ' บาท';
+                    document.getElementById('excess-row').style.display = 'flex';
+                } else {
+                    document.getElementById('excess-row').style.display = 'none';
+                }
+                document.getElementById('res-total-user').innerText = totalUserPay.toFixed(2) + ' บาท';
+                
+            } else {
+                // โหมดที่ 2: คำนวณจากงบประมาณที่มี (แยก 60 / 40 / ส่วนเกิน ให้เห็นชัดเจน)
+                let budget = val;
+                let maxPrice = 0;
+                let govPay = 0;
+                let userBase = 0;
+                let excess = 0;
+                
+                // เพดานที่รัฐช่วยสูงสุดคือ 200 บาท (คำนวณเป็นงบที่เราออก 40% ได้สูงสุด = 133.33 บาท)
+                let maxSubsidizedUser = (MAX_GOV_PER_DAY / 0.60) * 0.40;
+
+                if (budget <= maxSubsidizedUser) {
+                    // กรณีเงินที่มี ไม่เกินเพดานที่รัฐช่วยออก (133.33 บาท)
+                    userBase = budget;
+                    excess = 0;
+                    maxPrice = budget / 0.40;
+                    govPay = maxPrice * 0.60;
+                } else {
+                    // กรณีเงินที่มี มากกว่าเพดาน (สิทธิรัฐตันที่ 200 บาทแล้ว)
+                    userBase = maxSubsidizedUser; // งบส่วนแรกที่อยู่ในสิทธิ 40% (133.33)
+                    excess = budget - maxSubsidizedUser; // เงินส่วนเกินที่เราต้องจ่ายเองเต็ม 100%
+                    govPay = MAX_GOV_PER_DAY; // รัฐช่วยตันที่ 200
+                    maxPrice = govPay + userBase + excess; // ราคาของสูงสุดที่ซื้อได้
+                }
+                
+                document.getElementById('res-gov').innerText = govPay.toFixed(2) + ' บาท';
+                document.getElementById('res-user').innerText = userBase.toFixed(2) + ' บาท';
+                
+                if (excess > 0) {
+                    document.getElementById('res-excess').innerText = excess.toFixed(2) + ' บาท';
+                    document.getElementById('excess-row').style.display = 'flex';
+                } else {
+                    document.getElementById('excess-row').style.display = 'none';
+                }
+                
+                document.getElementById('res-total-user').innerText = maxPrice.toFixed(2) + ' บาท';
+            }
         }
+
         function addPrice(amount) { document.getElementById('price-input').value = (parseFloat(document.getElementById('price-input').value) || 0) + amount; calculate(); }
         function clearInput() { document.getElementById('price-input').value = ''; calculate(); }
+        
         function copyResult() {
-            let total = document.getElementById('res-total-user').innerText;
-            navigator.clipboard.writeText(`ยอดรวมที่ต้องจ่าย: ${total}`).then(() => alert('คัดลอกสำเร็จ!'));
+            let val = parseFloat(document.getElementById('price-input').value);
+            if(isNaN(val) || val <= 0) return;
+
+            let totalText = document.getElementById('res-total-user').innerText;
+            let text = "";
+            
+            if (currentMode === 'PRICE') {
+                text = `🛒 ยอดราคาสินค้า: ${val} บาท\n👉 คุณต้องเติมเงิน/จ่ายเองรวม: ${totalText}\n(คิดจากแอป 60:40 Mini)`;
+            } else {
+                text = `💵 มีงบประมาณ: ${val} บาท\n🛒 คุณสามารถซื้อของได้ราคาสูงสุด: ${totalText}\n(คิดจากแอป 60:40 Mini)`;
+            }
+            
+            navigator.clipboard.writeText(text).then(() => {
+                let btn = document.getElementById('copy-btn');
+                let originalText = btn.innerText;
+                btn.innerText = "✅ คัดลอกสำเร็จ!";
+                btn.style.background = "#2f855a";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = "var(--success)";
+                }, 2000);
+            });
         }
+        
         function toggleSupport() { let s = document.getElementById('support-section'); s.style.display = (s.style.display === 'none') ? 'block' : 'none'; }
         function copyPromptPayNumber() { navigator.clipboard.writeText('0933109708').then(() => alert('คัดลอกเบอร์พร้อมเพย์แล้ว')); }
         function showInstallGuide() {
@@ -411,26 +545,24 @@
             document.getElementById('install-guide-modal').style.display = 'flex';
         }
         function downloadQRImage() {
-    const imageUrl = "https://img1.pic.in.th/images/21460422.jpg";
-    fetch(imageUrl)
-        .then(response => response.blob())
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = 'PromptPay_QR_Code.jpg';
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            alert('💾 บันทึกรูปภาพสำเร็จ!');
-        })
-        .catch(() => {
-            window.open(imageUrl, '_blank');
-        });
-}
-
-	
-	</script>
+            const imageUrl = "https://img1.pic.in.th/images/21460422.jpg";
+            fetch(imageUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'PromptPay_QR_Code.jpg';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    alert('💾 บันทึกรูปภาพสำเร็จ!');
+                })
+                .catch(() => {
+                    window.open(imageUrl, '_blank');
+                });
+        }
+    </script>
 </body>
 </html>
