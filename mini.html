@@ -289,10 +289,11 @@
         
         <div align="center"><img src="https://raw.githubusercontent.com/PPyai/thai-6040/refs/heads/main/60402569W-mini.png" alt="Logo" style="max-width: 100%; border-radius: 12px;"></div><br>
  
-        <div style="display: flex; justify-content: center; gap: 5px; margin-bottom: 10px; flex-wrap: wrap;">
-            <button id="dark-mode-btn" onclick="toggleDarkMode()" style="background-color: var(--card-bg); border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px; cursor: pointer; color: var(--text-main); font-family: inherit; font-size: 16px; font-weight: bold;">🌙 กลางคืน</button>
-            <button onclick="showInstallGuide()" style="background-color: var(--primary); border: none; border-radius: 8px; padding: 5px 15px; cursor: pointer; color: white; font-family: inherit; font-size: 16px; font-weight: bold;">📲 ติดตั้งแอป</button>
-            <button onclick="window.location.href='https://ppyai.github.io/thai-6040/'" style="background-color: #4a5568; border: none; border-radius: 8px; padding: 5px 15px; cursor: pointer; color: white; font-family: inherit; font-size: 16px; font-weight: bold;">🌐 เวอร์ชันเต็ม</button>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px;">
+            <button id="dark-mode-btn" onclick="toggleDarkMode()" style="background-color: var(--card-bg); border: 1px solid #cbd5e0; border-radius: 8px; padding: 10px 5px; cursor: pointer; color: var(--text-main); font-family: inherit; font-size: 15px; font-weight: bold; width: 100%;">🌙 กลางคืน</button>
+            <button onclick="showInstallGuide()" style="background-color: var(--primary); border: none; border-radius: 8px; padding: 10px 5px; cursor: pointer; color: white; font-family: inherit; font-size: 15px; font-weight: bold; width: 100%;">📲 ติดตั้งแอป</button>
+            <button onclick="window.location.href='https://ppyai.github.io/thai-6040/'" style="background-color: #4a5568; border: none; border-radius: 8px; padding: 10px 5px; cursor: pointer; color: white; font-family: inherit; font-size: 15px; font-weight: bold; width: 100%;">🌐 เวอร์ชันเต็ม</button>
+            <button onclick="shareApp()" style="background-color: #dd6b20; border: none; border-radius: 8px; padding: 10px 5px; cursor: pointer; color: white; font-family: inherit; font-size: 15px; font-weight: bold; width: 100%;">📢 แชร์แอป</button>
         </div>
 
         <div class="calculator-body">
@@ -378,7 +379,7 @@
             </div>
         </div>
 
-        <div class="footer">คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" Mini2<br>โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank">#โปรแกรมมั่วที่รัก</a></div>
+        <div class="footer">คำนวณ "ไทยช่วยไทยพลัส 60:40 ปี 2569" Mini V.2<br>โดย <a href="https://www.facebook.com/ProgramOur.Love" target="_blank">#โปรแกรมมั่วที่รัก</a></div>
         
         <div align="center" style="padding-bottom: 20px; background: var(--bg-color);">
             <div id="histats_counter"></div>
@@ -403,6 +404,13 @@
     </div>
 
     <script>
+
+if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => { 
+                navigator.serviceWorker.register('./sw.js').catch(() => {}); 
+            });
+        }
+
         window.addEventListener('load', () => { setTimeout(() => { const splash = document.getElementById('splash-screen'); if(splash) { splash.style.opacity = '0'; setTimeout(() => splash.style.display = 'none', 500); } }, 1500); });
         const MAX_GOV_PER_DAY = 200;
         let currentMode = 'PRICE';
@@ -563,6 +571,27 @@
                     window.open(imageUrl, '_blank');
                 });
         }
+
+// ฟังก์ชันแชร์แอป
+        function shareApp() {
+            const shareData = {
+                title: 'แอปคำนวณ ไทยช่วยไทยพลัส 60:40',
+                text: 'แนะนำแอปคำนวณสิทธิ 60:40 ใช้งานง่าย ช่วยวางแผนการเติมเงินให้คุ้มค่าที่สุด! ลองใช้เลย 👉',
+                url: 'https://ppyai.github.io/thai-6040/'
+            };
+
+            // ตรวจสอบว่าเบราว์เซอร์/มือถือ รองรับระบบแชร์หรือไม่
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .catch((err) => console.log('ผู้ใช้ยกเลิกการแชร์ หรือพบข้อผิดพลาด:', err));
+            } else {
+                // ถ้าระบบไม่รองรับ (เช่น เบราว์เซอร์เก่าบางตัว) ให้ใช้วิธีคัดลอกลิงก์แทน
+                navigator.clipboard.writeText(shareData.text + ' ' + shareData.url).then(() => {
+                    alert('คัดลอกข้อความและลิงก์แอปเรียบร้อยแล้ว! สามารถนำไปวางเพื่อแชร์ต่อให้เพื่อนได้เลยครับ');
+                });
+            }
+        }
+
     </script>
 </body>
 </html>

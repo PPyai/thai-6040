@@ -175,10 +175,11 @@
         <h1>ไทยช่วยไทยพลัส 60:40 ปี 2569</h1>
         <div align="center"><img src="https://img1.pic.in.th/images/60402569W.png" alt="คำนวณ ไทยช่วยไทยพลัส 60:40 ปี 2569" border="0" style="max-width: 100%; border-radius: 12px;"></div> 
         
-        <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; margin-top: 15px;">
-            <button class="tab-btn" onclick="toggleDarkMode()" style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px;">🌙 กลางคืน</button>
-            <button class="tab-btn" onclick="showInstallGuide()" style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px; background-color: var(--primary); color: white;">📲 ติดตั้งเป็นแอพ</button>
-            <button class="tab-btn" onclick="window.location.href='mini.html'" style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px; background-color: #4a5568; color: white;">📱 เวอร์ชัน Mini</button>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px;">
+            <button id="dark-mode-btn" onclick="toggleDarkMode()" style="background-color: var(--card-bg); border: 1px solid #cbd5e0; border-radius: 8px; padding: 10px 5px; cursor: pointer; color: var(--text-main); font-family: inherit; font-size: 15px; font-weight: bold; width: 100%;">🌙 กลางคืน</button>
+            <button onclick="showInstallGuide()" style="background-color: var(--primary); border: none; border-radius: 8px; padding: 10px 5px; cursor: pointer; color: white; font-family: inherit; font-size: 15px; font-weight: bold; width: 100%;">📲 ติดตั้งแอป</button>
+            <button onclick="window.location.href='mini.html'" style="background-color: #4a5568; border: none; border-radius: 8px; padding: 10px 5px; cursor: pointer; color: white; font-family: inherit; font-size: 15px; font-weight: bold; width: 100%;">📱 เวอร์ชัน Mini</button>
+            <button onclick="shareApp()" style="background-color: #dd6b20; border: none; border-radius: 8px; padding: 10px 5px; cursor: pointer; color: white; font-family: inherit; font-size: 15px; font-weight: bold; width: 100%;">📢 แชร์แอป</button>
         </div>
 
         <div class="nav-tabs">
@@ -1348,6 +1349,26 @@ function copyPromptPayNumber() {
             }).catch(err => {
                 alert('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาคลุมดำตัวเลขและคัดลอกด้วยตนเองครับ');
             });
+        }
+
+// ฟังก์ชันแชร์แอป
+        function shareApp() {
+            const shareData = {
+                title: 'แอปคำนวณ ไทยช่วยไทยพลัส 60:40',
+                text: 'แนะนำแอปคำนวณสิทธิ 60:40 ใช้งานง่าย ช่วยวางแผนการเติมเงินให้คุ้มค่าที่สุด! ลองใช้เลย 👉',
+                url: 'https://ppyai.github.io/thai-6040/'
+            };
+
+            // ตรวจสอบว่าเบราว์เซอร์/มือถือ รองรับระบบแชร์หรือไม่
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .catch((err) => console.log('ผู้ใช้ยกเลิกการแชร์ หรือพบข้อผิดพลาด:', err));
+            } else {
+                // ถ้าระบบไม่รองรับ (เช่น เบราว์เซอร์เก่าบางตัว) ให้ใช้วิธีคัดลอกลิงก์แทน
+                navigator.clipboard.writeText(shareData.text + ' ' + shareData.url).then(() => {
+                    alert('คัดลอกข้อความและลิงก์แอปเรียบร้อยแล้ว! สามารถนำไปวางเพื่อแชร์ต่อให้เพื่อนได้เลยครับ');
+                });
+            }
         }
 
     </script>
