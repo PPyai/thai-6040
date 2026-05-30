@@ -178,6 +178,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; margin-top: 15px;">
             <button class="tab-btn" onclick="toggleDarkMode()" style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px;">🌙 กลางคืน</button>
             <button class="tab-btn" onclick="showInstallGuide()" style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px; background-color: var(--primary); color: white;">📲 ติดตั้งเป็นแอพ</button>
+            <button class="tab-btn" onclick="window.location.href='mini.html'" style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 5px 15px; background-color: #4a5568; color: white;">📱 เวอร์ชัน Mini</button>
         </div>
 
         <div class="nav-tabs">
@@ -249,10 +250,8 @@
             </div>
         </div>
 
-        <!-- แท็บคำนวณ -->
         <div id="calculator" class="app-section">
             
-            <!-- กู้คืน: คำอธิบายเงื่อนไขโครงการ -->
             <div align="left" style="background: #f7fafc; padding: 15px; border-radius: 10px; border-left: 5px solid var(--primary); margin-bottom: 20px;">
                 <div style="font-size: 16px; font-weight: bold; color: var(--primary); margin-bottom: 5px;">
                     📌 เงื่อนไขโครงการ (รัฐออก 60% : เราจ่าย 40%)
@@ -379,12 +378,10 @@
             </div>
         </div>
 
-        <!-- แท็บโน้ต (อัปเดตใหม่ V.2.7) -->
         <div id="notes-section" class="app-section">
             <div class="card">
                 <h2>สมุดบันทึกช่วยจำ</h2>
                 
-                <!-- V.2.7: คำอธิบายการใช้งาน -->
                 <div style="background: #ebf8ff; padding: 15px; border-radius: 8px; border: 1px solid #bee3f8; margin-bottom: 20px; font-size: 15px; text-align: left; color: var(--text-main); width: 100%; box-sizing: border-box;">
                     <strong style="color: var(--primary);">💡 วิธีใช้งาน:</strong>
                     <ul style="margin-top: 5px; padding-left: 20px; margin-bottom: 0;">
@@ -394,7 +391,6 @@
                     </ul>
                 </div>
 
-                <!-- V.2.7: Slider ปรับเวลาบันทึกอัตโนมัติ -->
                 <div class="form-group" style="margin-bottom: 20px; width: 100%; max-width: 500px; background: #f7fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; box-sizing: border-box;">
                     <label for="auto-save-slider" style="text-align: left; font-size: 16px; margin-bottom: 10px;">
                         ⏱️ เวลาหน่วงก่อนบันทึก: <span id="auto-save-val" style="color: var(--primary); font-weight: bold; font-size: 18px;">3</span> วินาที
@@ -412,7 +408,6 @@
             </div>
         </div>
 
-        <!-- แท็บสนับสนุน -->
         <div id="support-section" class="app-section">
             <div class="card">
                 <h2>สนับสนุนผู้พัฒนา</h2>
@@ -487,7 +482,6 @@
         </div>
     </div>
 
-    <!-- V.2.7: Modal สำหรับแก้ไขโน้ต -->
     <div id="edit-note-modal" class="modal-overlay">
         <div class="modal-content">
             <h3 style="color:var(--primary); margin-top:0; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">✏️ แก้ไขบันทึกช่วยจำ</h3>
